@@ -44,7 +44,7 @@ function RegisterForm() {
 
     if (!error) return null;
 
-    let errors: RegisterFormErrors = {};
+    const errors: RegisterFormErrors = {};
     for (const detail of error.details)
       errors[detail.context?.key as keyof RegisterFormErrors] = detail.message;
 
@@ -77,6 +77,7 @@ function RegisterForm() {
 
     formData[inputName] = input.value;
     setFormData({ ...formData });
+    setFormErrors(errors);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
