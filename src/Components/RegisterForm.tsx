@@ -1,7 +1,7 @@
 import Joi from "joi";
 import styled from "styled-components";
 import { useState } from "react";
-import Input from "../Components/Common/Input";
+import useForm from "../Components/Common/Form";
 
 interface RegisterFormData {
   firstName: string;
@@ -27,105 +27,37 @@ function RegisterForm() {
   const [formData, setFormData] = useState<Strict<RegisterFormData>>(data);
   const [formErrors, setFormErrors] = useState<RegisterFormErrors>({});
 
-  const schema = Joi.object<RegisterFormData>({
-    firstName: Joi.string().label("First Name").min(2).required(),
-    lastName: Joi.string().label("Last Name").min(2).required(),
-    email: Joi.string()
-      .min(2)
-      .email({ tlds: { allow: false } })
-      .required()
-      .label("E-mail"),
-    password: Joi.string().min(6).required().label("Password"),
-  });
+  const rule = {
+    schema: Joi.object<RegisterFormData>({
+      firstName: Joi.string().label("First Name").min(2).required(),
+      lastName: Joi.string().label("Last Name").min(2).required(),
+      email: Joi.string()
+        .min(2)
+        .email({ tlds: { allow: false } })
+        .required()
+        .label("E-mail"),
+      password: Joi.string().min(6).required().label("Password"),
+    }),
 
-  const validate = () => {
-    const options = { abortEarly: false };
-    const { error } = schema.validate(formData, options);
-
-    if (!error) return null;
-
-    const errors: RegisterFormErrors = {};
-    for (const detail of error.details)
-      errors[detail.context?.key as keyof RegisterFormErrors] = detail.message;
-
-    return errors;
+    doSubmit: () => {
+      console.log("submitted");
+    },
+    formData,
+    setFormData,
+    formErrors,
+    setFormErrors,
   };
 
-  const validateProperty = ({
-    name,
-    value,
-  }: {
-    name: string;
-    value: string;
-  }) => {
-    const subSchema = schema.extract(name);
-    const { error } = subSchema.validate(value);
-
-    if (!error) return null;
-    return error.message;
-  };
-
-  const handleChange = ({
-    target: input,
-  }: React.ChangeEvent<HTMLInputElement>) => {
-    const errors = { ...formErrors };
-    const errorMessage = validateProperty(input);
-
-    const inputName = input.name as keyof RegisterFormErrors;
-    if (errorMessage) errors[inputName] = errorMessage;
-    else delete errors[inputName];
-
-    formData[inputName] = input.value;
-    setFormData({ ...formData });
-    setFormErrors(errors);
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const errors = validate();
-    setFormErrors(errors || {});
-
-    if (errors) return;
-    console.log("submitted");
-  };
+  const { renderInput, renderButton, handleSubmit } = useForm(rule);
 
   return (
     <Wrapper onSubmit={handleSubmit}>
       <Title>Register Form</Title>
-      <Input
-        onChange={handleChange}
-        label="First Name"
-        value={formData.firstName}
-        name="firstName"
-        error={formErrors.firstName as keyof RegisterFormErrors}
-        type="text"
-      />
-      <Input
-        onChange={handleChange}
-        label="Last Name"
-        value={formData.lastName}
-        name="lastName"
-        error={formErrors.lastName as keyof RegisterFormErrors}
-        type="text"
-      />
-      <Input
-        onChange={handleChange}
-        label="E-Mail"
-        name="email"
-        value={formData.email}
-        error={formErrors.email as keyof RegisterFormErrors}
-        type="text"
-      />
-      <Input
-        onChange={handleChange}
-        label="Password"
-        name="password"
-        value={formData.password}
-        error={formErrors.password as keyof RegisterFormErrors}
-        type="password"
-      />
-      <Button type="submit">Register</Button>
+      {renderInput({ label: "First Name", name: "firstName" })}
+      {renderInput({ label: "Last Name", name: "lastName" })}
+      {renderInput({ label: "E-mail", name: "email" })}
+      {renderInput({ label: "Password", name: "password", type: "password" })}
+      {renderButton("Register")}
     </Wrapper>
   );
 }
@@ -150,13 +82,4 @@ const Wrapper = styled.form`
 const Title = styled.span`
   font-size: 38px;
   margin: 24px;
-`;
-
-const Button = styled.button`
-  width: 70px;
-  height: 30px;
-  border-radius: 8px;
-  border: 2px solid var(--bg-secondary);
-  color: var(--text-primary);
-  background-color: var(--bg-color);
 `;
