@@ -1,0 +1,9 @@
+:root {
+  font-size: 18px;
+  font-family: "Catamaran";
+  --text-primary: #ffffff;
+  --text-secondary: #035a4b;
+  --bg-primary: #ffffff;
+  --bg-secondary: #035a4b;
+  --bg-color: #ec4558;
+}
