@@ -20,16 +20,10 @@ const Container = styled.div`
   grid-template-columns: 50% 50%;
   text-align: left;
   color: var(--text-primary);
-  width: 100%;
-  height: 97vh;
-  background-color: rgba(3, 90, 75, 0.85);
 `;
 
 const Image = styled.div`
-  background-image: url("images/hammering-roof.jpg");
+  background-image: url("images/hero_renoveta.png");
   background-size: 120%;
   background-repeat: no-repeat;
-  filter: brightness(190%);
-  width: 100%;
-  height: 97vh;
 `;

@@ -28,6 +28,15 @@ const Container = styled.div`
   display: grid;
   margin-top: 15%;
   margin-left: 15%;
+
+  h1 {
+    font-size: 42px;
+  }
+
+  p {
+    font-size: 32px;
+    font-weight: bold;
+  }
 `;
 
 const Button = styled.button`
@@ -37,7 +46,7 @@ const Button = styled.button`
   border: 2px solid var(--bg-secondary);
   color: var(--text-primary);
   background-color: var(--bg-color);
-  margin: 18px;
+  margin: 68px;
 
   .buttonleft {
     align-items: left;
