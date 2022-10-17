@@ -1,7 +1,7 @@
 import Joi from "joi";
 import styled from "styled-components";
 import { useState } from "react";
-import useForm from "../Components/Common/Form";
+import useForm from "../components/common/Form";
 
 interface RegisterFormData {
   firstName: string;
