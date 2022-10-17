@@ -4,8 +4,7 @@ import { useState } from "react";
 import useForm from "../components/common/Form";
 
 interface RegisterFormData {
-  firstName: string;
-  lastName: string;
+  name: string;
   email: string;
   password: string;
 }
@@ -15,8 +14,7 @@ type Strict<Type> = {
 };
 
 const data: Strict<RegisterFormData> = {
-  firstName: "",
-  lastName: "",
+  name: "",
   email: "",
   password: "",
 };
@@ -29,8 +27,7 @@ function RegisterForm() {
 
   const rule = {
     schema: Joi.object<RegisterFormData>({
-      firstName: Joi.string().label("First Name").min(2).required(),
-      lastName: Joi.string().label("Last Name").min(2).required(),
+      name: Joi.string().label(" Name").min(2).required(),
       email: Joi.string()
         .min(2)
         .email({ tlds: { allow: false } })
@@ -53,8 +50,7 @@ function RegisterForm() {
   return (
     <Wrapper onSubmit={handleSubmit}>
       <Title>Register Form</Title>
-      {renderInput({ label: "First Name", name: "firstName" })}
-      {renderInput({ label: "Last Name", name: "lastName" })}
+      {renderInput({ label: "Name", name: "name" })}
       {renderInput({ label: "E-mail", name: "email" })}
       {renderInput({ label: "Password", name: "password", type: "password" })}
       {renderButton("Register")}
