@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import Footer from "./components/Footer";
-import RegisterForm from "./components/RegisterForm";
+import LoginForm from "./components/LoginForm";
 
 function App(): JSX.Element {
   return (
     <>
       <Wrapper>
-      <RegisterForm />
+        <LoginForm />
       </Wrapper>
       <Footer />
     </>
