@@ -63,7 +63,7 @@ export default RegisterForm;
 const Wrapper = styled.form`
   background-color: var(--bg-secondary);
   border: 5px solid var(--bg-primary);
-  border-radius: 18px;
+  border-radius: 45px;
   color: var(--text-primary);
   padding-top: 40px;
   padding-bottom: 60px;
