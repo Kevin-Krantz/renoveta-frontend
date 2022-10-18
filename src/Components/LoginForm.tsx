@@ -49,7 +49,7 @@ function LoginForm() {
       <Title>Login Form</Title>
       {renderInput({ label: "E-mail", name: "email" })}
       {renderInput({ label: "Password", name: "password", type: "password" })}
-      {renderButton("Log in")}
+      {renderButton({ label: "Log in" })}
     </Wrapper>
   );
 }
@@ -62,12 +62,13 @@ const Wrapper = styled.form`
   color: var(--text-primary);
   padding-top: 40px;
   padding-bottom: 60px;
-  padding-left: 20px;
+  padding-left: 60px;
   padding-right: 20px;
-  width: 45%;
+  width: 30%;
+  height: 45%;
   position: absolute;
-  top: 10%;
-  left: 25%;
+  top: 25%;
+  left: 30%;
 `;
 
 const Title = styled.span`

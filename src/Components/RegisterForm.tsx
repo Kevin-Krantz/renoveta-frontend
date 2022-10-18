@@ -57,7 +57,7 @@ function RegisterForm() {
       {renderInput({ label: "Last Name", name: "lastName" })}
       {renderInput({ label: "E-mail", name: "email" })}
       {renderInput({ label: "Password", name: "password", type: "password" })}
-      {renderButton("Register")}
+      {renderButton({ label: "Register" })}
     </Wrapper>
   );
 }
@@ -67,19 +67,21 @@ export default RegisterForm;
 const Wrapper = styled.form`
   background-color: var(--bg-secondary);
   border: 5px solid var(--bg-primary);
-  border-radius: 18px;
   color: var(--text-primary);
+  border-radius: 45px;
   padding-top: 40px;
   padding-bottom: 60px;
-  padding-left: 20px;
+  padding-left: 60px;
   padding-right: 20px;
-  width: 45%;
+  width: 35%;
   position: absolute;
+  align-self: center;
   top: 10%;
   left: 25%;
 `;
 
 const Title = styled.span`
   font-size: 38px;
+  font-weight: bolder;
   margin: 24px;
 `;
