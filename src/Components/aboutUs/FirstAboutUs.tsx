@@ -23,15 +23,23 @@ const Background = styled.div`
   background-color: var(--bg-tertiary);
   border-bottom-right-radius: 180px;
   border-top-right-radius: 180px;
+  width: 90%;
+  height: auto;
   margin-top: 15px;
   margin-bottom: 15px;
-  justify-content: space-evenly;
+  justify-items: start;
 `;
 
 const Left = styled.span`
   grid-column: 1;
+  height: auto;
+  width: 80%;
+  margin-left: 16px;
 `;
 
 const Right = styled.span`
   grid-column: 2;
+  height: auto;
+  width: 80%;
+  margin-right: 64px;
 `;
