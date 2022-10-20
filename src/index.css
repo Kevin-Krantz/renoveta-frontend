@@ -1,13 +1,10 @@
 :root {
   font-size: 18px;
-  font-family: "Catamaran";
+  font-family: "Catamaran", sans-serif;
   --text-primary: #ffffff;
   --text-secondary: #035a4b;
   --bg-primary: #ffffff;
-  --bg-secondary: #035a4b;
+  --bg-secondary: #88c3ac;
+  --bg-tertiary: #c5e5d9;
   --bg-color: #ec4558;
-}
-* {
-  margin: 0;
-  font-family: "Nunito", sans-serif;
 }
