@@ -1,5 +1,5 @@
 import Input from "./Input";
-import styled from "styled-components";
+import Button from "./Button";
 
 function useForm({
   schema,
@@ -8,7 +8,7 @@ function useForm({
   setFormData,
   formErrors,
   setFormErrors,
-  RegisterFormErrors,
+  errorsForm,
 }: any) {
   const validate = () => {
     const options = { abortEarly: false };
@@ -16,9 +16,9 @@ function useForm({
 
     if (!error) return null;
 
-    const errors: typeof RegisterFormErrors = {};
+    const errors: typeof errorsForm = {};
     for (const detail of error.details)
-      errors[detail.context?.key as typeof RegisterFormErrors] = detail.message;
+      errors[detail.context?.key as typeof errorsForm] = detail.message;
 
     return errors;
   };
@@ -43,7 +43,7 @@ function useForm({
     const errors = { ...formErrors };
     const errorMessage = validateProperty(input);
 
-    const inputName = input.name as typeof RegisterFormErrors;
+    const inputName = input.name as typeof errorsForm;
     if (errorMessage) errors[inputName] = errorMessage;
     else delete errors[inputName];
 
@@ -74,18 +74,14 @@ function useForm({
         label={label}
         value={formData[name]}
         name={name}
-        error={formErrors[name] as typeof RegisterFormErrors}
+        error={formErrors[name] as typeof errorsForm}
         type={type}
       />
     );
   };
 
-  const renderButton = (label = "string") => {
-    return (
-      <Button type="submit" disabled={validate()}>
-        {label}
-      </Button>
-    );
+  const renderButton = ({ label = "string" }) => {
+    return <Button type="submit" disabled={validate()} label={label}></Button>;
   };
 
   return {
@@ -96,12 +92,3 @@ function useForm({
 }
 
 export default useForm;
-
-const Button = styled.button`
-  width: 70px;
-  height: 30px;
-  border-radius: 8px;
-  border: 2px solid var(--bg-secondary);
-  color: var(--text-primary);
-  background-color: var(--bg-color);
-`;

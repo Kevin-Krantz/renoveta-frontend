@@ -19,4 +19,5 @@ export default App;
 
 const Wrapper = styled.div`
   min-height: 45vmax;
+  background-color: var(--bg-tertiary);
 `;
