@@ -3,8 +3,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import useForm from "../components/common/Form";
 
-interface RegisterFormData {
-  name: string;
+interface LoginFormData {
   email: string;
   password: string;
 }
@@ -13,31 +12,29 @@ type Strict<Type> = {
   [Property in keyof Type]: string;
 };
 
-const data: Strict<RegisterFormData> = {
-  name: "",
+const data: Strict<LoginFormData> = {
   email: "",
   password: "",
 };
 
-type RegisterFormErrors = Strict<Partial<RegisterFormData>>;
+type Errors = Strict<Partial<LoginFormData>>;
 
-function RegisterForm() {
-  const [formData, setFormData] = useState<Strict<RegisterFormData>>(data);
-  const [formErrors, setFormErrors] = useState<RegisterFormErrors>({});
+function LoginForm() {
+  const [formData, setFormData] = useState<Strict<LoginFormData>>(data);
+  const [formErrors, setFormErrors] = useState<Errors>({});
 
   const rule = {
-    schema: Joi.object<RegisterFormData>({
-      name: Joi.string().label(" Name").min(2).required(),
+    schema: Joi.object<LoginFormData>({
       email: Joi.string()
+        .required()
         .min(2)
         .email({ tlds: { allow: false } })
-        .required()
         .label("E-mail"),
-      password: Joi.string().min(6).required().label("Password"),
+      password: Joi.string().required().label("Password"),
     }),
 
     doSubmit: () => {
-      console.log("submitted");
+      console.log("log in");
     },
     formData,
     setFormData,
@@ -49,35 +46,32 @@ function RegisterForm() {
 
   return (
     <Wrapper onSubmit={handleSubmit}>
-      <Title>Register Form</Title>
-      {renderInput({ label: "Name", name: "name" })}
+      <Title>Login Form</Title>
       {renderInput({ label: "E-mail", name: "email" })}
       {renderInput({ label: "Password", name: "password", type: "password" })}
-      {renderButton({ label: "Register" })}
+      {renderButton({ label: "Log in" })}
     </Wrapper>
   );
 }
 
-export default RegisterForm;
-
+export default LoginForm;
 const Wrapper = styled.form`
   background-color: var(--bg-secondary);
   border: 5px solid var(--bg-primary);
-  color: var(--text-primary);
   border-radius: 45px;
+  color: var(--text-primary);
   padding-top: 40px;
   padding-bottom: 60px;
   padding-left: 60px;
   padding-right: 20px;
-  width: 35%;
+  width: 30%;
+  height: 45%;
   position: absolute;
-  align-self: center;
-  top: 10%;
-  left: 25%;
+  top: 25%;
+  left: 30%;
 `;
 
 const Title = styled.span`
   font-size: 38px;
-  font-weight: bolder;
   margin: 24px;
 `;
