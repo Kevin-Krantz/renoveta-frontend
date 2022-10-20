@@ -7,9 +7,9 @@ function App(): JSX.Element {
   return (
     <>
       <Hero />
-      <Wrapper>
+      {/* <Wrapper>
         <RegisterForm />
-      </Wrapper>
+      </Wrapper> */}
       <Footer />
     </>
   );

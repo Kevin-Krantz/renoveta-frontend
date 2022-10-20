@@ -3,17 +3,15 @@ import styled from "styled-components";
 function HeroLeft() {
   return (
     <Container>
-      <div>
-        <h1>Trött på att googla dig fram? </h1>
-        <h1>Börja med Renoveta istället.</h1>
-      </div>
-      <div>
-        <p>
-          Vår digitala lösning ger dig anpassad information kring just ditt
-          renoveringsprojekt.
-        </p>
-        <p>Prova idag - enkelt, smidigt och kostnadsfritt.</p>
-      </div>
+      <h1>
+        Trött på att googla dig fram? <br />
+        Börja med Renoveta istället.
+      </h1>
+      <p>
+        Vår digitala lösning ger dig anpassad information kring just ditt
+        renoveringsprojekt. <br />
+        Prova idag - enkelt, smidigt och kostnadsfritt.
+      </p>
       <div>
         <Button className="buttonleft">Om tjänsten</Button>
         <Button className="buttonright">Prova kalkylen</Button>
@@ -26,27 +24,30 @@ export default HeroLeft;
 
 const Container = styled.div`
   display: grid;
+  margin-left: 10%;
   margin-top: 15%;
-  margin-left: 15%;
 
   h1 {
-    font-size: 42px;
+    font-size: 32px;
+    margin: 0%;
   }
 
   p {
-    font-size: 32px;
+    font-size: 24px;
     font-weight: bold;
+    margin: 0%;
   }
 `;
 
 const Button = styled.button`
-  width: 140px;
+  width: 120px;
   height: 50px;
   border-radius: 8px;
   border: 2px solid var(--bg-secondary);
   color: var(--text-primary);
   background-color: var(--bg-color);
-  margin: 68px;
+  margin-right: 32px;
+  margin-left: 32px;
 
   .buttonleft {
     align-items: left;
