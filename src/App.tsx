@@ -1,12 +1,14 @@
 import styled from "styled-components";
+import Hero from "./components/Hero";
 import Footer from "./components/Footer";
-import LoginForm from "./components/LoginForm";
+import RegisterForm from "./components/RegisterForm";
 
 function App(): JSX.Element {
   return (
     <>
+      <Hero />
       <Wrapper>
-        <LoginForm />
+        <RegisterForm />
       </Wrapper>
       <Footer />
     </>
