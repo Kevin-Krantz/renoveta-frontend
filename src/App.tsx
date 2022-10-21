@@ -1,19 +1,14 @@
 import styled from "styled-components";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
+import RegisterForm from "./components/RegisterForm";
 
 function App(): JSX.Element {
   return (
     <>
       <Navbar />
       <Wrapper>
-        <h1>TESTING</h1>
-        <h1>TESTING</h1>
-        <h1>TESTING</h1>
-        <h1>TESTING</h1>
-        <h1>TESTING</h1>
-        <h1>TESTING</h1>
-        <h1>TESTING</h1>
+        <RegisterForm />
       </Wrapper>
       <Footer />
     </>
