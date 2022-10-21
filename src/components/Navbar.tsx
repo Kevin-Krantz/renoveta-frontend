@@ -32,6 +32,8 @@ const Nav = styled.nav`
   justify-content: space-between;
   padding: 0 1rem;
   white-space: nowrap;
+  position: sticky;
+  top: 0;
 
   a {
     text-decoration: inherit;
