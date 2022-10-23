@@ -42,20 +42,28 @@ const Box = styled.div`
   padding-bottom: 40px;
   padding-top: 40px;
   position: relative;
-
-  @media (max-width: 1000px) {
-    padding: 70px 30px;
-  }
 `;
 
 const Container = styled.div`
-  img {
-    height: 120px;
-    margin-left: 250px;
+  @media all and (max-width: 27in) {
+    img {
+      height: 120px;
+      margin-left: 455px;
+    }
+  }
+
+  @media all and (max-width: 25in) {
+    img {
+      height: 120px;
+      margin-left: 240px;
+    }
   }
 `;
 
-const Column = styled.div``;
+const Column = styled.div`
+  position: relative;
+  bottom: 60px;
+`;
 
 const Row = styled.div`
   display: flex;
@@ -79,8 +87,8 @@ const FooterLink = styled.a`
   }
 
   h2 {
-    margin-right: 200px;
     font-weight: 700;
+    margin-right: 200px;
   }
 
   &:hover {
