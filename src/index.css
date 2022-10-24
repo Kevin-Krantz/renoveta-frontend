@@ -4,7 +4,13 @@
   --text-primary: #ffffff;
   --text-secondary: #035a4b;
   --bg-primary: #ffffff;
+<<<<<<< HEAD
   --bg-secondary: #c5e5d9;
   --bg-tertiary: #fadbd4;
+=======
+  --bg-secondary: #88c3ac;
+  --bg-tertiary: #fbedea;
+>>>>>>> master
   --bg-color: #ec4558;
+  margin: 0;
 }
