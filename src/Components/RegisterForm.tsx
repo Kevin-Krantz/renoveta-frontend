@@ -2,7 +2,7 @@ import Joi from "joi";
 import styled from "styled-components";
 import { useState } from "react";
 import useForm from "../components/common/Form";
-import axios from "axios";
+import user from "../services/userService";
 
 interface RegisterFormData {
   name: string;
@@ -28,7 +28,7 @@ function RegisterForm() {
 
   const rule = {
     schema: Joi.object<RegisterFormData>({
-      name: Joi.string().label(" Name").min(2).required(),
+      name: Joi.string().label("Name").min(2).required(),
       email: Joi.string()
         .min(2)
         .email({ tlds: { allow: false } })
@@ -38,8 +38,16 @@ function RegisterForm() {
     }),
 
     doSubmit: async () => {
-      await axios.post("http://localhost:8000/api/users", formData);
-      console.log("submitted");
+      try {
+        await user.register(formData);
+        console.log("submitted");
+        //vart ska user sen? inloggad page?
+      } catch (error) {
+        if (error.response.status === 400) {
+          const formErrors = { name: error.response.data };
+          setFormErrors(formErrors);
+        }
+      }
     },
     formData,
     setFormData,
