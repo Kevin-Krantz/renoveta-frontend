@@ -74,7 +74,7 @@ const Wrapper = styled.form`
   padding-left: 20px;
   padding-right: 20px;
   width: 45%;
-  position: absolute;
+  margin-left: 25%;
   top: 10%;
   left: 25%;
 `;

@@ -34,6 +34,7 @@ const Nav = styled.nav`
   white-space: nowrap;
   position: sticky;
   top: 0;
+  background-color: #ffffff;
 
   a {
     text-decoration: inherit;
