@@ -1,17 +1,17 @@
 import styled from "styled-components";
+import AboutUs from "./components/aboutUs/AboutUs";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
-import RegisterForm from "./components/RegisterForm";
 
 function App(): JSX.Element {
   return (
-    <Container>
+    <>
       <Navbar />
       <Wrapper>
-        <RegisterForm />
+        <AboutUs />
       </Wrapper>
       <Footer />
-    </Container>
+    </>
   );
 }
 
@@ -19,6 +19,5 @@ export default App;
 
 const Wrapper = styled.div`
   min-height: 45vmax;
+  background-color: var(--bg-tertiary);
 `;
-
-const Container = styled.div``;
