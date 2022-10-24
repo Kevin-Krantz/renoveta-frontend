@@ -2,63 +2,115 @@ import styled from "styled-components";
 
 function Footer(): JSX.Element {
   return (
-    <MainFooter>
-      <div>
-        <RenovetaLogo src="./images/Renovetalogo.png" />
-        <Sub>
-          <FixedBigText>
-            <h1>Ditt digitala verktyg för</h1>
-            <h1>att planera din</h1>
-            <h1>renovering</h1>
-          </FixedBigText>
+    <Box>
+      <Container>
+        <img alt="" src="/images/Renovetalogo.png" />
+        <Row>
+          <Heading>
+            <h1>Ditt digitala verktyg för att planera din renovering</h1>
+          </Heading>
           <VerticalLine></VerticalLine>
-          <FixedSmallText>
-            <h1>Om Renoveta</h1>
-            <h1>Vad är Renoveta?</h1>
-            <h1>Hur fungerar det?</h1>
-            <h1>Kontakta oss</h1>
+          <Column>
+            <FooterLink href="#">
+              <h2>Om Renoveta</h2>
+            </FooterLink>
+            <FooterLink href="#">
+              <h2>Vad är Renoveta?</h2>
+            </FooterLink>
+            <FooterLink href="#">
+              <h2>Hur fungerar det?</h2>
+            </FooterLink>
+            <FooterLink href="#">
+              <h2>Kontakta oss</h2>
+            </FooterLink>
             <br />
             <br />
-            <h1>Följ oss på sociala medier</h1>
-          </FixedSmallText>
-        </Sub>
-      </div>
-    </MainFooter>
+            <FooterLink className="nounderline" href="#">
+              <h2>Följ oss på sociala medier</h2>
+            </FooterLink>
+          </Column>
+        </Row>
+      </Container>
+    </Box>
   );
 }
 
 export default Footer;
 
-const MainFooter = styled.div`
-  background-color: #67bd9c;
-  color: white;
+const Box = styled.div`
+  background: #c8e5d9;
+  padding-bottom: 40px;
+  padding-top: 40px;
+  position: relative;
 `;
 
-const Sub = styled.div`
+const Container = styled.div`
+  @media all and (max-width: 27in) {
+    img {
+      height: 120px;
+      margin-left: 455px;
+    }
+  }
+
+  @media all and (max-width: 25in) {
+    img {
+      height: 120px;
+      margin-left: 240px;
+    }
+  }
+`;
+
+const Column = styled.div`
+  position: relative;
+  bottom: 60px;
+`;
+
+const Row = styled.div`
   display: flex;
-  justify-content: space-between;
+  grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+  justify-content: space-evenly;
+  place-items: flex-start;
+
+  @media (max-width: 1000px) {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
 `;
 
-const RenovetaLogo = styled.img`
-  margin-top: 45px;
-  margin-left: 20px;
-  width: 450px;
+const FooterLink = styled.a`
+  font-size: 18px;
+  color: #1a5a4b;
+  text-underline-offset: 5px;
+  line-height: 2.5em;
+
+  &.nounderline {
+    text-decoration: none;
+  }
+
+  h2 {
+    font-weight: 700;
+    margin-right: 200px;
+  }
+
+  &:hover {
+    color: #ffffff;
+    transition: 50ms ease-in;
+  }
+`;
+
+const Heading = styled.div`
+  font-size: 25px;
+  color: #1a5a4b;
+
+  h1 {
+    font-weight: 700;
+    line-height: 1.2em;
+    width: 552px;
+  }
 `;
 
 const VerticalLine = styled.div`
-  border-left: 1px solid white;
-  margin-top: -150px;
-  margin-bottom: 20px;
-`;
-
-const FixedBigText = styled.div`
-  font-size: 35px;
-  margin-left: 60px;
-`;
-
-const FixedSmallText = styled.div`
-  margin-right: 400px;
-  text-decoration-line: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 5px;
+  border-left: 1px solid #1a5a4b;
+  height: 350px;
+  position: absolute;
+  top: 70px;
 `;
