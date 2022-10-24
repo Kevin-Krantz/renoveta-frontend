@@ -44,7 +44,7 @@ function RegisterForm() {
         //vart ska user sen? inloggad page?
       } catch (error) {
         if (error.response.status === 400) {
-          const formErrors = { name: error.response.data };
+          const formErrors = { email: error.response.data };
           setFormErrors(formErrors);
         }
       }
