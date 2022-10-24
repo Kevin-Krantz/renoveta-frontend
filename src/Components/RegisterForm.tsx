@@ -69,9 +69,8 @@ const Wrapper = styled.form`
   padding-bottom: 60px;
   padding-left: 60px;
   padding-right: 20px;
-  width: 35%;
-  position: absolute;
-  align-self: center;
+  width: 45%;
+  margin-left: 25%;
   top: 10%;
   left: 25%;
 `;
