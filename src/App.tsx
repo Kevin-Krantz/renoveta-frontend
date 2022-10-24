@@ -1,21 +1,14 @@
 import styled from "styled-components";
-<<<<<<< HEAD
-import AboutUs from "./components/aboutUs/AboutUs";
-=======
 import Hero from "./components/Hero";
->>>>>>> master
 import Footer from "./components/Footer";
+import RegisterForm from "./components/RegisterForm";
 
 function App(): JSX.Element {
   return (
     <>
       <Hero />
       <Wrapper>
-<<<<<<< HEAD
-        <AboutUs />
-=======
         <RegisterForm />
->>>>>>> master
       </Wrapper>
       <Footer />
     </>

@@ -2,6 +2,7 @@ import Joi from "joi";
 import styled from "styled-components";
 import { useState } from "react";
 import useForm from "../components/common/Form";
+import axios from "axios";
 
 interface RegisterFormData {
   name: string;
@@ -36,7 +37,8 @@ function RegisterForm() {
       password: Joi.string().min(6).required().label("Password"),
     }),
 
-    doSubmit: () => {
+    doSubmit: async () => {
+      await axios.post("http://localhost:8000/api/users", formData);
       console.log("submitted");
     },
     formData,
