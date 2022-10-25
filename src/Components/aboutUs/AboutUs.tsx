@@ -1,12 +1,15 @@
 import styled from "styled-components";
-import FirstAboutUs from "./FirstAboutUs";
-import SecondAboutUs from "./SecondAboutUs";
+import Elin from "./Elin";
+import Maximillian from "./Maximillian";
+import Linus from "./Linus";
+import Sofia from "./Sofia";
 
 function AboutUs() {
   return (
     <Wrapper>
-      <FirstAboutUs />
-      <SecondAboutUs />
+      <h1> Renoveta är.............</h1>
+      <Linus />
+      <Elin />
     </Wrapper>
   );
 }
@@ -14,6 +17,7 @@ function AboutUs() {
 export default AboutUs;
 
 const Wrapper = styled.div`
-  display: grid;
-  background-color: var(--bg-secondary);
+  h1 {
+    text-align: center;
+  }
 `;

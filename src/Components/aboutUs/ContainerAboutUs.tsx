@@ -5,43 +5,71 @@ interface Props {
   name: string;
   position: string;
   job: string;
-  text: string;
 }
-function ContainerAboutUs({ img, name, position, job, text }: Props) {
+export function LeftContainer({ img, name, position, job }: Props) {
   return (
     <Wrapper>
-      <Left src={img} />
-      <div>
-        <Name>{name}</Name>
-        <Job>{position}</Job>
-        <Job>{job}</Job>
-        <p>{text}</p>
-      </div>
+      <Image src={img} />
+      <BgImage src="images\Rectangle-BG-pink2.png" />
+      <Text>
+        <h1>{name}</h1>
+        <p>{position}</p>
+        <p>{job}</p>
+      </Text>
     </Wrapper>
   );
 }
 
-export default ContainerAboutUs;
+export function RightContainer({ img, name, position, job }: Props) {
+  return (
+    <Wrapper>
+      <ImageTwo src={img} />
+      <BgImage src="images\Rectangle-BG-pink.png" />
+      <Text>
+        <h1>{name}</h1>
+        <p>{position}</p>
+        <p>{job}</p>
+      </Text>
+    </Wrapper>
+  );
+}
 
 const Wrapper = styled.div`
-  display: grid;
+  position: relative;
+  text-align: left;
+  align-items: center;
   color: var(--text-secondary);
 `;
 
-const Left = styled.img`
+const Image = styled.img`
   height: 200px;
   width: 150px;
-  padding-bottom: 15px;
-  padding-right: 50px;
-  padding-top: 15px;
+  position: absolute;
+  top: 32px;
+  left: 20%;
 `;
 
-const Name = styled.p`
-  font-size: 18px;
-  font-weight: bolder;
+const ImageTwo = styled(Image)`
+  left: 80%;
 `;
 
-const Job = styled.p`
-  font-size: 16px;
-  font-weight: bold;
+const BgImage = styled.img`
+  position: absolute;
+  top: 200px;
+  size: 50%;
+`;
+
+const Text = styled.div`
+  position: absolute;
+  top: 250px;
+  left: 20%;
+  h1 {
+    font-size: 18px;
+    font-weight: bolder;
+    text-align: left;
+  }
+  p {
+    font-size: 16px;
+    font-weight: bold;
+  }
 `;
