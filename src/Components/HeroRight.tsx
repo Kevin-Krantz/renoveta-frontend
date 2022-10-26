@@ -10,7 +10,10 @@ function HeroRight() {
 
 export default HeroRight;
 const Container = styled.div`
-  display: grid;
-  margin-top: 0%;
-  margin-left: 0%;
+  margin-right: 10%;
+
+  img {
+    width: 140%;
+    height: 100%;
+  }
 `;
