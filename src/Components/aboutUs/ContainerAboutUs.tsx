@@ -10,7 +10,7 @@ export function LeftContainer({ img, name, position, job }: Props) {
   return (
     <Wrapper>
       <Image src={img} />
-      <BgImage src="images\Rectangle-BG-pink2.png" />
+      <BgImage src="images\pink-rectangle-right.png" />
       <Text>
         <h1>{name}</h1>
         <p>{position}</p>
@@ -23,13 +23,13 @@ export function LeftContainer({ img, name, position, job }: Props) {
 export function RightContainer({ img, name, position, job }: Props) {
   return (
     <Wrapper>
-      <ImageTwo src={img} />
-      <BgImage src="images\Rectangle-BG-pink.png" />
-      <Text>
+      <ImageRight src={img} />
+      <BgImageRight src="images\pink-rectangle-left.png" />
+      <TextRight>
         <h1>{name}</h1>
         <p>{position}</p>
         <p>{job}</p>
-      </Text>
+      </TextRight>
     </Wrapper>
   );
 }
@@ -39,24 +39,29 @@ const Wrapper = styled.div`
   text-align: left;
   align-items: center;
   color: var(--text-secondary);
+  margin: none;
+  padding: none;
 `;
 
 const Image = styled.img`
   height: 200px;
   width: 150px;
   position: absolute;
-  top: 32px;
+  top: 8px;
   left: 20%;
 `;
 
-const ImageTwo = styled(Image)`
-  left: 80%;
+const ImageRight = styled(Image)`
+  left: 70%;
 `;
 
 const BgImage = styled.img`
   position: absolute;
   top: 200px;
-  size: 50%;
+`;
+
+const BgImageRight = styled(BgImage)`
+  right: 0;
 `;
 
 const Text = styled.div`
@@ -72,4 +77,8 @@ const Text = styled.div`
     font-size: 16px;
     font-weight: bold;
   }
+`;
+
+const TextRight = styled(Text)`
+  left: 70%;
 `;
