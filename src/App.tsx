@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import Footer from "./components/Footer";
+<<<<<<< HEAD
+=======
 import Navbar from "./components/Navbar";
+>>>>>>> master
 import RegisterForm from "./components/RegisterForm";
 
 function App(): JSX.Element {
@@ -12,9 +15,14 @@ function App(): JSX.Element {
 =======
       <Navbar />
       <Wrapper>
+<<<<<<< HEAD
+        <RegisterForm />
+      </Wrapper>
+=======
 >>>>>>> master
         <RegisterForm />
       </Wrapper> */}
+>>>>>>> master
       <Footer />
     </>
   );

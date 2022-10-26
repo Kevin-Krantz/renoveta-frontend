@@ -60,14 +60,14 @@ const Wrapper = styled.form`
   border: 5px solid var(--bg-primary);
   border-radius: 45px;
   color: var(--text-primary);
-  padding-top: 40px;
-  padding-bottom: 60px;
+  padding-top: 20px;
+  padding-bottom: 40px;
   padding-left: 60px;
   padding-right: 20px;
   width: 30%;
-  height: 45%;
+  height: auto;
   position: absolute;
-  top: 25%;
+  top: 5%;
   left: 30%;
 `;
 
