@@ -6,10 +6,15 @@ import RegisterForm from "./components/RegisterForm";
 function App(): JSX.Element {
   return (
     <>
+<<<<<<< HEAD
+      <Hero />
+      {/* <Wrapper>
+=======
       <Navbar />
       <Wrapper>
+>>>>>>> master
         <RegisterForm />
-      </Wrapper>
+      </Wrapper> */}
       <Footer />
     </>
   );
