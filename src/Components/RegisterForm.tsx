@@ -2,6 +2,7 @@ import Joi from "joi";
 import styled from "styled-components";
 import { useState } from "react";
 import useForm from "../components/common/Form";
+import user from "../services/userService";
 
 interface RegisterFormData {
   name: string;
@@ -27,7 +28,7 @@ function RegisterForm() {
 
   const rule = {
     schema: Joi.object<RegisterFormData>({
-      name: Joi.string().label(" Name").min(2).required(),
+      name: Joi.string().label("Name").min(2).required(),
       email: Joi.string()
         .min(2)
         .email({ tlds: { allow: false } })
@@ -36,8 +37,17 @@ function RegisterForm() {
       password: Joi.string().min(6).required().label("Password"),
     }),
 
-    doSubmit: () => {
-      console.log("submitted");
+    doSubmit: async () => {
+      try {
+        await user.register(formData);
+        console.log("submitted");
+        //vart ska user sen? inloggad page?
+      } catch (error) {
+        if (error.response.status === 400) {
+          const formErrors = { name: error.response.data };
+          setFormErrors(formErrors);
+        }
+      }
     },
     formData,
     setFormData,
@@ -69,9 +79,8 @@ const Wrapper = styled.form`
   padding-bottom: 60px;
   padding-left: 60px;
   padding-right: 20px;
-  width: 35%;
-  position: absolute;
-  align-self: center;
+  width: 45%;
+  margin-left: 25%;
   top: 10%;
   left: 25%;
 `;
