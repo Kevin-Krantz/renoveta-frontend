@@ -1,8 +1,14 @@
 import styled from "styled-components";
+<<<<<<< HEAD
+import AboutUs from "./components/aboutUs/AboutUs";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
+=======
 import Footer from "./components/Footer";
 <<<<<<< HEAD
 =======
 import Navbar from "./components/Navbar";
+>>>>>>> master
 >>>>>>> master
 import RegisterForm from "./components/RegisterForm";
 
@@ -14,9 +20,14 @@ function App(): JSX.Element {
       {/* <Wrapper>
 =======
       <Navbar />
+      <RegisterForm />
       <Wrapper>
 <<<<<<< HEAD
+        <AboutUs />
+=======
+<<<<<<< HEAD
         <RegisterForm />
+>>>>>>> master
       </Wrapper>
 =======
 >>>>>>> master
