@@ -79,18 +79,11 @@ const Wrapper = styled.form`
   padding-bottom: 40px;
   padding-left: 60px;
   padding-right: 20px;
-<<<<<<< HEAD
   width: 30%;
   height: auto;
   position: absolute;
   top: 5%;
   left: 30%;
-=======
-  width: 45%;
-  margin-left: 25%;
-  top: 10%;
-  left: 25%;
->>>>>>> master
 `;
 
 const Title = styled.span`
