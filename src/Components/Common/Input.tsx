@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 interface Props<T> {
   name: keyof T;
-  label: string;
+  label?: string;
   value: string;
-  error: string;
+  error?: string;
   type: string;
   onChange(e: React.ChangeEvent<HTMLInputElement>): void;
+  className?: string;
 }
 
 function Input<T>({ error, name, label, value, onChange, type }: Props<T>) {

@@ -1,26 +1,39 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 interface Props {
   type: any;
-  disabled: any;
+  disabled?: any;
   label: string;
+  primary: boolean;
+  className?: string;
 }
 
-function Button({ type, disabled, label }: Props) {
+function Button({ type, disabled, label, primary, className }: Props) {
   return (
-    <B type={type} disabled={disabled}>
+    <B primary={primary} type={type} disabled={disabled} className={className}>
       {label}
     </B>
   );
 }
 
 export default Button;
-const B = styled.button`
-  width: 80px;
-  height: 50px;
-  border-radius: 8px;
-  border: 2px solid var(--bg-secondary);
-  color: var(--text-primary);
-  background-color: var(--bg-color);
+
+interface ButtonProps {
+  primary: boolean;
+}
+
+const B = styled.button<ButtonProps>`
+  width: 209px;
+  height: 57px;
+  border-radius: 45px;
+  border: 2px solid var(--bg-color);
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
   cursor: pointer;
+  ${(props) =>
+    props.primary &&
+    css`
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+    `};
 `;
