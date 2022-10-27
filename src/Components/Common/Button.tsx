@@ -36,4 +36,12 @@ const B = styled.button<ButtonProps>`
       background-color: var(--bg-color);
       color: var(--text-primary);
     `};
+
+  :hover {
+    transform: scale(1.03);
+  }
+
+  :active {
+    transform: scale(1);
+  }
 `;

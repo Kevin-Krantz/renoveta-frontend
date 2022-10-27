@@ -13,7 +13,7 @@ function BoxRight() {
       </div>
       <div>
         <p>
-          2. Hur stort är ditt tak i kvm?{" "}
+          2. Hur stort är ditt tak i kvm?
           <Input
             className="input"
             value={input}
