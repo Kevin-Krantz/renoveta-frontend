@@ -1,40 +1,20 @@
 import styled from "styled-components";
-<<<<<<< HEAD
 import AboutUs from "./components/aboutUs/AboutUs";
 import Footer from "./components/Footer";
+import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
-=======
-import Footer from "./components/Footer";
-<<<<<<< HEAD
-=======
-import Navbar from "./components/Navbar";
->>>>>>> master
->>>>>>> master
 import RegisterForm from "./components/RegisterForm";
 
 function App(): JSX.Element {
   return (
     <>
-<<<<<<< HEAD
-      <Hero />
-      {/* <Wrapper>
-=======
-      <Navbar />
-      <RegisterForm />
       <Wrapper>
-<<<<<<< HEAD
+        <Hero />
+        <Navbar />
+        <RegisterForm />
         <AboutUs />
-=======
-<<<<<<< HEAD
-        <RegisterForm />
->>>>>>> master
+        <Footer />
       </Wrapper>
-=======
->>>>>>> master
-        <RegisterForm />
-      </Wrapper> */}
->>>>>>> master
-      <Footer />
     </>
   );
 }
