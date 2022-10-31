@@ -68,7 +68,7 @@ const BgImageRight = styled(BgImage)`
 
 const Text = styled.div`
   position: absolute;
-  top: 300px;
+  top: 315px;
   left: 20%;
   h1 {
     font-size: 18px;
