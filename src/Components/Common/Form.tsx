@@ -81,7 +81,14 @@ function useForm({
   };
 
   const renderButton = ({ label = "string" }) => {
-    return <Button type="submit" disabled={validate()} label={label}></Button>;
+    return (
+      <Button
+        primary={true}
+        type="submit"
+        disabled={validate()}
+        label={label}
+      ></Button>
+    );
   };
 
   return {
