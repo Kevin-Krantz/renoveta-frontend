@@ -6,19 +6,19 @@ function Navbar(): JSX.Element {
       <img alt="Logo" src="./images/Renovetalogo.png" />
       <ul>
         <li>
-          <a href="about">Om Renoveta</a>
+          <a href="/aboutus">Om Renoveta</a>
         </li>
         <li>
           <a href="/">Varför Renoveta?</a>
         </li>
         <li>
-          <a href="kalkylen">Kalkylen</a>
+          <a href="/kalkylen">Kalkylen</a>
         </li>
         <li>
-          <a href="loginform">Logga in</a>
+          <a href="/login">Logga in</a>
         </li>
         <button>
-          <a href="registerform">Bli medlem</a>
+          <a href="/register">Bli medlem</a>
         </button>
       </ul>
     </Nav>

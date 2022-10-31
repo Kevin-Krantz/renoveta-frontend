@@ -1,12 +1,20 @@
 import styled from "styled-components";
-import FirstAboutUs from "./FirstAboutUs";
-import SecondAboutUs from "./SecondAboutUs";
+import Elin from "./Elin";
+import Maximillian from "./Maximillian";
+import Linus from "./Linus";
+import Sofia from "./Sofia";
+import End from "./End";
+import Intro from "./Intro";
 
 function AboutUs() {
   return (
     <Wrapper>
-      <FirstAboutUs />
-      <SecondAboutUs />
+      <Intro />
+      <Linus />
+      <Elin />
+      <Maximillian />
+      <Sofia />
+      <End />
     </Wrapper>
   );
 }
@@ -15,5 +23,7 @@ export default AboutUs;
 
 const Wrapper = styled.div`
   display: grid;
-  background-color: var(--bg-secondary);
+  grid-template-rows: 200px 300px 300px 300px 300px 600px;
+  color: var(--text-secondary);
+  position: relative;
 `;
