@@ -44,7 +44,7 @@ function RegisterForm() {
         //vart ska user sen? inloggad page?
       } catch (error) {
         if (error.response.status === 400) {
-          const formErrors = { name: error.response.data };
+          const formErrors = { email: error.response.data };
           setFormErrors(formErrors);
         }
       }
@@ -75,14 +75,15 @@ const Wrapper = styled.form`
   border: 5px solid var(--bg-primary);
   color: var(--text-primary);
   border-radius: 45px;
-  padding-top: 40px;
-  padding-bottom: 60px;
+  padding-top: 20px;
+  padding-bottom: 40px;
   padding-left: 60px;
   padding-right: 20px;
-  width: 45%;
-  margin-left: 25%;
-  top: 10%;
-  left: 25%;
+  width: 30%;
+  height: auto;
+  position: absolute;
+  top: 5%;
+  left: 30%;
 `;
 
 const Title = styled.span`

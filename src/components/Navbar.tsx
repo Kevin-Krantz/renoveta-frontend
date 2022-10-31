@@ -37,6 +37,10 @@ const Nav = styled.nav`
   background-color: #ffffff;
   z-index: 9999;
 
+  @media all and (max-width: 1280px) {
+    margin-left: -40px;
+  }
+
   a {
     text-decoration: inherit;
     color: unset;
@@ -63,14 +67,21 @@ const Nav = styled.nav`
   button {
     background-color: #e34356;
     border: none;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 170px;
     font-size: 25px;
     font-weight: bold;
     color: white;
-    border-radius: 5px;
-    margin: 20;
+    border-radius: 10px;
     cursor: pointer;
+
+    @media all and (max-width: 1280px) {
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-bottom: 10px;
+      padding-top: 10px;
+    }
   }
 
   button:hover {

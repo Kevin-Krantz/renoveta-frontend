@@ -21,7 +21,7 @@ function Input<T>({ error, name, label, value, onChange, type }: Props<T>) {
         value={value}
         type={type}
       />
-      {error && <div>{error}</div>}
+      {error && <Error>{error}</Error>}
     </Container>
   );
 }
@@ -49,5 +49,12 @@ const Container = styled.div`
 `;
 
 const Label = styled.label`
-  padding: 8px;
+  padding: 4px;
+`;
+
+const Error = styled.div`
+  border: 0 !important;
+  color: red;
+  margin: 0 !important;
+  padding: 0 !important;
 `;

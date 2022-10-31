@@ -44,8 +44,8 @@ const Wrapper = styled.div`
 `;
 
 const Image = styled.img`
-  height: 200px;
-  width: 150px;
+  height: 300px;
+  width: 225px;
   position: absolute;
   top: 8px;
   left: 20%;
@@ -57,7 +57,9 @@ const ImageRight = styled(Image)`
 
 const BgImage = styled.img`
   position: absolute;
-  top: 200px;
+  top: 250px;
+  width: 470px;
+  height: 277px;
 `;
 
 const BgImageRight = styled(BgImage)`
@@ -66,7 +68,7 @@ const BgImageRight = styled(BgImage)`
 
 const Text = styled.div`
   position: absolute;
-  top: 250px;
+  top: 300px;
   left: 20%;
   h1 {
     font-size: 18px;
