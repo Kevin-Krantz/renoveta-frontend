@@ -7,11 +7,11 @@ const authApi = config.apiEndpoint + "/auth";
 
 http.setAuthHeader(getJwt());
 
-async function login({ user }: any) {
+async function login({ formData }: any) {
   const data = {
-    email: user.username,
+    email: formData.email,
 
-    password: user.password,
+    password: formData.password,
   };
   const { data: jwt } = await http.post(authApi, data);
   localStorage.setItem(tokenKey, jwt);

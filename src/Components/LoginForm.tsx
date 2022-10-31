@@ -2,6 +2,7 @@ import Joi from "joi";
 import styled from "styled-components";
 import { useState } from "react";
 import useForm from "../components/common/Form";
+import auth from "../services/authService";
 
 interface LoginFormData {
   email: string;
@@ -33,8 +34,16 @@ function LoginForm() {
       password: Joi.string().required().label("Password"),
     }),
 
-    doSubmit: () => {
-      console.log("log in");
+    doSubmit: async () => {
+      try {
+        await auth.login({ formData });
+        console.log("sucess");
+      } catch (error) {
+        if (error.response?.status === 400) {
+          const formErrors = { email: error.response.data };
+          setFormErrors(formErrors);
+        }
+      }
     },
     formData,
     setFormData,
