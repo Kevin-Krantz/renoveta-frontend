@@ -52,7 +52,7 @@ const Image = styled.img`
 `;
 
 const ImageRight = styled(Image)`
-  left: 70%;
+  left: 60%;
 `;
 
 const BgImage = styled.img`
