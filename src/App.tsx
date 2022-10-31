@@ -9,7 +9,7 @@ import RegisterForm from "./components/RegisterForm";
 
 function App(): JSX.Element {
   return (
-    <Container>
+    <Wrapper>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -18,12 +18,12 @@ function App(): JSX.Element {
         <Route path="/register" element={<RegisterForm />} />
       </Routes>
       <Footer />
-    </Container>
+    </Wrapper>
   );
 }
 
 export default App;
 
-const Container = styled.div`
-  display: grid;
+const Wrapper = styled.div`
+  min-height: 45vmax;
 `;
