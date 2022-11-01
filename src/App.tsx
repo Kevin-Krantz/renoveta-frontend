@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import AboutUs from "./components/aboutUs/AboutUs";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
+import FAQ from "./components/FAQ";
 
 function App(): JSX.Element {
   return (
@@ -16,6 +17,7 @@ function App(): JSX.Element {
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />
+        <Route path="/faq" element={<FAQ />} />
       </Routes>
       <Footer />
     </Wrapper>
