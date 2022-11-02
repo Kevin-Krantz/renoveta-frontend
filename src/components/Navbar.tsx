@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Button from "./common/Button";
 
 function Navbar(): JSX.Element {
   return (
@@ -6,20 +8,23 @@ function Navbar(): JSX.Element {
       <img alt="Logo" src="./images/Renovetalogo.png" />
       <ul>
         <li>
-          <a href="/aboutus">Om Renoveta</a>
+          <Link to="/abouts">Varför Renoveta?</Link>
         </li>
         <li>
-          <a href="/">Varför Renoveta?</a>
+          <Link to="/">Tjänsten</Link>
         </li>
         <li>
-          <a href="/kalkylen">Kalkylen</a>
+          <Link to="/kalkylen">Om oss</Link>
         </li>
         <li>
-          <a href="/login">Logga in</a>
+          <Link to="/faq">Q&A</Link>
         </li>
-        <button>
-          <a href="/register">Bli medlem</a>
-        </button>
+        <li>
+          <Link to="/login">Logga in</Link>
+        </li>
+        <Link to="/register" style={{ all: "unset" }}>
+          <Button label="Börja Renoveta" primary={false} type={onsubmit} />
+        </Link>
       </ul>
     </Nav>
   );
@@ -35,7 +40,6 @@ const Nav = styled.nav`
   position: sticky;
   top: 0;
   background-color: #ffffff;
-  z-index: 9999;
 
   @media all and (max-width: 1280px) {
     margin-left: -40px;
@@ -67,21 +71,10 @@ const Nav = styled.nav`
   button {
     background-color: #e34356;
     border: none;
-    padding-left: 15px;
-    padding-right: 15px;
-    width: 170px;
     font-size: 25px;
     font-weight: bold;
     color: white;
-    border-radius: 10px;
-    cursor: pointer;
-
-    @media all and (max-width: 1280px) {
-      padding-left: 20px;
-      padding-right: 20px;
-      padding-bottom: 10px;
-      padding-top: 10px;
-    }
+    margin-top: 15px;
   }
 
   button:hover {
@@ -94,5 +87,9 @@ const Nav = styled.nav`
 
   a:hover {
     transform: scale(1.03);
+  }
+
+  a:active {
+    transform: scale(1);
   }
 `;
