@@ -24,16 +24,16 @@ const Container = styled.div`
 
   img {
     position: absolute;
-    bottom: 8;
-    width: 60%;
+    bottom: 8px;
+    width: 800px;
     height: 650px;
     padding-top: 200px;
   }
 
   p {
     position: absolute;
-    width: 50%;
-    top: 50%;
+    width: 600px;
+    top: 300px;
     left: 16px;
     text-align: left;
   }
