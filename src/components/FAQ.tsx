@@ -1,33 +1,34 @@
 import { createClient } from "contentful";
+import { useState, useEffect } from "react";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
-export async function getStaticProps() {
-  const client = createClient({
-    space: process.env.CONTENTFUL_SPACE_ID as string,
-    accessToken: process.env.CONTENTFUL_ACCESS_KEY as string,
-  });
+const client = createClient({
+  space: "dd2qfg19yu3v",
+  accessToken: "LHKZjOWJdq1rRmZEdTIRsJG-vfukKGVV2sUfWjYt9zo",
+});
 
-  const res = await client.getEntries({ content_type: "faq" });
+function FAQ() {
+  const [faqs, setFaqs] = useState<any>([]);
 
-  return {
-    props: {
-      faqs: res.items,
-    },
-  };
-}
-
-function FAQ({ res }: any) {
-  console.log(res);
+  useEffect(() => {
+    // setFaqs();
+    async function loadEntries() {
+      const { items } = await client.getEntries({ content_type: "faq" });
+      setFaqs(items as any);
+      console.log(items);
+    }
+    loadEntries();
+  }, []);
 
   return (
     <div>
-      {/* {faqs.map((faq: any) => (
+      {/* @ts-disable */}
+      {faqs.map((faq: any) => (
         <div key={faq.sys.id}>
-          <div>
-            <h3>{faq.fields.title}</h3>
-            <h3>{faq.fields.text}</h3>
-          </div>
+          <h3>{faq.fields.title}</h3>
+          <h3>{documentToReactComponents(faq.fields.text)}</h3>
         </div>
-      ))} */}
+      ))}
     </div>
   );
 }
