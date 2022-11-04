@@ -8,7 +8,7 @@ function Navbar(): JSX.Element {
       <img alt="Logo" src="./images/Renovetalogo.png" />
       <ul>
         <li>
-          <Link to="/abouts">Varför Renoveta?</Link>
+          <Link to="/aboutus">Varför Renoveta?</Link>
         </li>
         <li>
           <Link to="/">Tjänsten</Link>
