@@ -58,31 +58,65 @@ width: 100vw;
 height: 80vh;
 position: relative;
 
+
+
 ` 
 
 const LeftContainer = styled.div `
 position: absolute;
-
 width: 50vw;
 img {
-    width: 45vw;
+    width: 55vw;
     margin-left: 10vw;
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    img {
+        width: 70vw;
+        margin-left:0;
+        
+    }
+}
+@media screen and (max-width: 767px) {
+    img {
+        width: 80vw;
+        margin-left: 0px;
+
+    }
 }
 
 `
 
 const RightContainer = styled.div `
-right: 0;
-position: absolute;
-float: right;
 display: flex;
 flex-direction: column;
 align-content: center;
 justify-content: center;
+right: 0;
+position: absolute;
+float: right;
+
 width: 55vw;
+height: 40vh;
 background-color: #FBEDEA;
-height: 48vh;
 border-radius: 500px 0 0 500px;
+margin-top: 10vh;
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 70vw;
+    height: 30vh;
+    margin-top: 3vh;
+    align-self: flex-end;
+ 
+ 
+ }
+ @media screen and (max-width: 767px) {
+     width: 80vw;
+     height: 30vh;
+    align-self: center;
+    
+     
+     
+ }
 
 ` 
 const StarContainer = styled.div `
@@ -91,12 +125,30 @@ align-self: center;
 img {
     width: 35px;
 }
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    img {
+        width: 25px;
+    }
+     
+     
+     }
+     @media screen and (max-width: 767px) {
+    
+        img {
+            width: 20px;
+        }
+        
+         
+         
+     }
+    
 
 ` 
 const TextContainer = styled.div `
 display: flex;
 align-self: center;
 text-align: center;
+
 
 
 p{
@@ -106,5 +158,24 @@ p{
     color: var(--text-secondary);
     margin-top: 10px;
 }
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+p {
+    font-size: 16px;
+    width: 60vw;
+}
+ 
+ 
+ }
+ @media screen and (max-width: 767px) {
+
+    p{
+        font-size: 14px; 
+        width: 70vw;
+    }
+    
+     
+     
+ }
+
 
 `

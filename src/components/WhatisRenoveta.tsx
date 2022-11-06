@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import Button from './common/Button';
+
 
 function WhatisRenoveta() {
     return (
         <Container>
             <MainContainer>
-            <HeadingText>Vad är Renoveta?</HeadingText>
             <ContentContainer>
                 <LeftContainer> 
                 <img
@@ -14,6 +13,9 @@ function WhatisRenoveta() {
                 </LeftContainer>
                 <RightContainer>
                     <TextContainer> 
+                        
+           
+                        <HeadingText>Vad är Renoveta?</HeadingText>
                         <p>När vi köper en bostad så tillkommer underhåll och renovering - exteriört som 
                             interiört. Renoveringar kan bli en krånglig, tidskrävande och kostsam historia om 
                             det inte går rätt till. Det vill vi förändra.
@@ -28,11 +30,8 @@ function WhatisRenoveta() {
                             Vår erfarenhet är din trygghet.</p>
                             
                     </TextContainer>
-                    <Button 
-                   label={"Jag vill veta mer"}
-                   primary = {true}
-                   type = "submit"
-                    />
+
+                    
                     </RightContainer>
             </ContentContainer>
         </MainContainer>
@@ -46,63 +45,117 @@ export default WhatisRenoveta;
 
 
 const Container = styled.div`
-heigh: 100vh;`
+heigh: 100vh;
+`
 
 const MainContainer = styled.div `
 padding: 20px 0 20px 0 ;
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    padding: 10px;
+    }
+}
+@media screen and (max-width: 767px) {
+    padding: 10px;
+    }
+}
 `
 
 const HeadingText = styled.h2 `
-text-align: center;
+display: block;
+text-align: left;
 font-size: 30px;
 font-weight: 900;
 color: var(--text-secondary);
+
 `
 
 const ContentContainer = styled.div `
 position: relative;
 display: flex;
-padding: 40px;
 width: 100vw;
 height: 80vh;
 position: relative;
+margin-top: 10vh;
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+   padding: 15px;
+}
+@media screen and (max-width: 767px) {
+    padding: 15px;
+}
 
 ` 
 
 const LeftContainer = styled.div `
 position: absolute;
-
 width: 50vw;
+
 img {
-    width: 45vw;
+    width: 55vw;
     margin-left: 10vw;
 }
 
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    img {
+        width: 80vw;
+        margin-left:0;
+        
+        
+    }
+}
+@media screen and (max-width: 767px) {
+    img {
+        width: 80vw;
+        margin-left: 0px;
+    }
+}
 `
 
 const RightContainer = styled.div `
 right: 0;
+
 position: absolute;
-float: right;
 display: flex;
 flex-direction: column;
 align-content: center;
 justify-content: center;
 width: 55vw;
 background-color: #FBEDEA;
-height: 48vh;
+height: 40vh;
 border-radius: 500px 0 0 500px;
+margin-top: 10vh;
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+   width: 70vw;
+   height: 30vh;
+   margin-top: 8vh;
+   align-self: flex-end;
+  
+
+
+}
+@media screen and (max-width: 767px) {
+    width: 80vw;
+    height: 30vh;
+    margin-top: 3vh;
+    align-self: center;
+
+    
+    
+}
+
 
 ` 
 
 const TextContainer = styled.div `
 display: flex;
+flex-direction: column;
 align-self: center;
 text-align: left;
-padding-left: 7vw;
+
 
 p{
-    font-size: 16px;
+    font-size: 15px;
     width: 35vw;
     font-weight: 700;
     color: var(--text-secondary);
@@ -110,5 +163,26 @@ p{
 }
 
 
+ @media screen and (max-width: 767px) {
+    align-self: right;
+
+  p {
+    font-size: 11px;
+    width: 70vw;
+    padding-left: 20px;
+  }
+
+     
+ }
+ @media screen and (min-width: 768px) and (max-width: 1023px) {
+    align-self: right;
+    
+    p{
+        width: 60vw;
+        padding-left: 20px;
+        font-size: 13px;
+    }
+    
+ }
 
 `
