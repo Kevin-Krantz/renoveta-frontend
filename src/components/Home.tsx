@@ -1,4 +1,5 @@
 import Hero from "./hero/Hero";
+import RenovetaForm from "./renovetaForm/RenovetaForm";
 import Review from "./Review";
 import WhatisRenoveta from "./WhatisRenoveta";
 
@@ -8,6 +9,7 @@ function Home() {
       <Hero />
       <WhatisRenoveta/>
       <Review/> 
+      <RenovetaForm/>
     </div>
   );
 }
