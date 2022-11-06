@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 function Review() {
     return (
+        <Container>
         <MainContainer>
             <HeadingText>Vad säger våra kunder</HeadingText>
             <ContentContainer>
@@ -27,26 +28,31 @@ function Review() {
                 </RightContainer>
             </ContentContainer>
         </MainContainer>
+        </Container>
     );
 }
 
 export default Review;
 
+
+
+const Container = styled.div`
+heigh: 100vh;`
+
 const MainContainer = styled.div `
-height: 100vh;
 padding: 20px 0 20px 0 ;
 `
 
 const HeadingText = styled.h2 `
 text-align: center;
-font-size: 40px;
+font-size: 30px;
 font-weight: 900;
 color: var(--text-secondary);
 `
 
 const ContentContainer = styled.div `
-display: flex; 
-flex-direction: row;
+position: relative;
+display: flex;
 padding: 40px;
 width: 100vw;
 height: 80vh;
@@ -55,24 +61,30 @@ position: relative;
 ` 
 
 const LeftContainer = styled.div `
+position: absolute;
+
 width: 50vw;
+img {
+    width: 45vw;
+    margin-left: 10vw;
+}
 
 `
 
 const RightContainer = styled.div `
-
+right: 0;
+position: absolute;
+float: right;
 display: flex;
 flex-direction: column;
 align-content: center;
 justify-content: center;
-width: 50vw;
+width: 55vw;
 background-color: #FBEDEA;
-height: 50vh;
+height: 48vh;
 border-radius: 500px 0 0 500px;
-margin: 15vh 0 0 0;
 
 ` 
-
 const StarContainer = styled.div `
 display: flex;
 align-self: center;
@@ -86,13 +98,13 @@ display: flex;
 align-self: center;
 text-align: center;
 
+
 p{
-    font-size: 25px;
+    font-size: 20px;
     width: 35vw;
     font-weight: 700;
     color: var(--text-secondary);
     margin-top: 10px;
 }
-
 
 `
