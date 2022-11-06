@@ -1,10 +1,11 @@
+import { x } from 'joi';
 import styled from 'styled-components'; 
  
 
 function Review() {
     return (
-        <div>
-            <h2>Vad säger våra kunder</h2>
+        <MainContainer>
+            <HeadingText>Vad säger våra kunder</HeadingText>
             <ContentContainer>
                 <LeftContainer> 
                 <img
@@ -25,11 +26,23 @@ function Review() {
                     </TextContainer>
                 </RightContainer>
             </ContentContainer>
-        </div>
+        </MainContainer>
     );
 }
 
 export default Review;
+
+const MainContainer = styled.div `
+height: 100vh;
+padding: 20px 0 20px 0 ;
+`
+
+const HeadingText = styled.h2 `
+text-align: center;
+font-size: 40px;
+font-weight: 900;
+color: var(--text-secondary);
+`
 
 const ContentContainer = styled.div `
 display: flex; 
