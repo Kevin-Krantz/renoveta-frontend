@@ -1,20 +1,16 @@
 import styled from "styled-components";
-import Contentful, { createClient } from "contentful";
+import { createClient } from "contentful";
 import { useState, useEffect } from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { IFaq } from "../types/contenful";
 
 const client = createClient({
   space: process.env.REACT_APP_CONTENTFUL_SPACE_ID || "",
   accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_KEY || "",
 });
 
-interface IFAQ {
-  title: Contentful.EntryFields.Text;
-  text: Contentful.EntryFields.Text;
-}
-
 function FAQ() {
-  const [faqs, setFaqs] = useState<any[]>([]);
+  const [faqs, setFaqs] = useState<IFaq[]>([]);
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
@@ -47,7 +43,7 @@ function FAQ() {
             <div>
               {selected === item ? (
                 <AnswerShow>
-                  {documentToReactComponents(faq.fields.text)}
+                  {documentToReactComponents(faq.fields.text!)}
                 </AnswerShow>
               ) : (
                 <AnswerHidden />
