@@ -50,7 +50,7 @@ const BgImage = styled.img<RightSide>`
   height: 346px;
   background-image: url("images/pink-rectangle-right.png");
   background-repeat: no-repeat;
-  outline: 0;
+
   ${(props) =>
     props.right &&
     css`
