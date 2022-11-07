@@ -74,6 +74,7 @@ const Container = styled.div`
   p {
     margin-top: 50px;
     margin-bottom: 50px;
+    margin-right: 15px;
   }
 `;
 
