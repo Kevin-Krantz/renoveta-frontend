@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { createClient } from "contentful";
+import Contentful, { createClient } from "contentful";
 import { useState, useEffect } from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
@@ -7,6 +7,11 @@ const client = createClient({
   space: process.env.REACT_APP_CONTENTFUL_SPACE_ID || "",
   accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_KEY || "",
 });
+
+interface IFAQ {
+  title: Contentful.EntryFields.Text;
+  text: Contentful.EntryFields.Text;
+}
 
 function FAQ() {
   const [faqs, setFaqs] = useState<any[]>([]);
@@ -86,8 +91,8 @@ const IconContainer = styled.div`
   align-items: center;
   cursor: pointer;
   padding: 0px 24px;
-  width: 100%;
-  height: 100%;
+  width: 50px;
+  height: 50px;
   user-select: none;
 `;
 
@@ -96,7 +101,7 @@ const Icon = styled.span`
   place-items: center;
   width: 24px;
   height: 24px;
-  border-radius: 50%;
+  border-radius: 80px;
   background-color: rgb(170, 170, 170);
   color: white;
   font-family: MyriadPro-Bold;
