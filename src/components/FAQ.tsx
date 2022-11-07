@@ -26,26 +26,26 @@ function FAQ() {
     loadEntries();
   }, []);
 
-  const toggle = (i: any) => {
-    if (selected === i) {
+  const toggle = (item: any) => {
+    if (selected === item) {
       return setSelected(null);
     }
 
-    setSelected(i);
+    setSelected(item);
   };
 
   return (
     <Container>
       <h1>Vanliga frågor</h1>
-      {faqs.map((faq, i) => (
+      {faqs.map((faq, item) => (
         <FAQSection key={faq.sys.id}>
-          <IconContainer onClick={() => toggle(i)}>
-            <Icon>{selected === i ? "-" : "+"}</Icon>
+          <IconContainer onClick={() => toggle(item)}>
+            <Icon>{selected === item ? "-" : "+"}</Icon>
           </IconContainer>
           <div>
             <H3Question>{faq.fields.title}</H3Question>
             <div>
-              {selected === i ? (
+              {selected === item ? (
                 <AnswerShow>
                   {documentToReactComponents(faq.fields.text)}
                 </AnswerShow>
