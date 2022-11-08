@@ -8,6 +8,7 @@ import { PersonalInfoForm } from "./PersonalInfoForm";
 import BoxLeft from "../calculator/BoxLeft";
 
 
+
 type FormData ={
     typeOfRenovation: string
     changeApperance: string
@@ -119,6 +120,9 @@ display: grid;
 justify-content: space-between;
 align-items: center;
 
+input{
+    border-radius: 25px;
+}
 
 `
 const Box = styled.span`
