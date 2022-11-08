@@ -1,6 +1,6 @@
-import { IHowRenovetaWorks } from "./IHowRenovetaWorks";
+import { IList } from "./IList";
 
-const listHowRenovetaWorks: IHowRenovetaWorks[] = [
+const listHowRenovetaWorks: IList[] = [
   {
     imgUrl: "/images/roof.png",
     title: "1. Information om din renovering.",
