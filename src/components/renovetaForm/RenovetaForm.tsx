@@ -1,78 +1,144 @@
-import styled from 'styled-components';
-import Button from "../common/Button";
-import RFForm from './RFForm';
+import { useMultistepForm} from "./useMultistepForm";
+import styled from "styled-components";
+import { RenovationForm } from "./RenovationForm";
+import {FormEvent, useState} from 'react';
+import { PropertyForm } from "./PropertyForm";
+import { QuestionForm } from "./QuestionForm";
+import { PersonalInfoForm } from "./PersonalInfoForm";
+import BoxLeft from "../calculator/BoxLeft";
+
+
+type FormData ={
+    typeOfRenovation: string
+    changeApperance: string
+    roofType: string
+    materialType: string
+    roofAngle: string
+    propertyWidth: string
+    propertyLength: string
+    anyQuestions: string
+    addImg: string
+    email: string
+    phone: string
+    firstName: string
+    lastName: string
+    address: string
+    propertyName: string
+    city: string
+}
+
+const INITIAL_DATA: FormData = {
+    typeOfRenovation: "",
+    changeApperance: "",
+    roofType: "",
+    materialType: "",
+    roofAngle: "",
+    propertyWidth: "",
+    propertyLength: "",
+    anyQuestions: "",
+    addImg: "",
+    email: "",
+    phone: "",
+    firstName: "",
+    lastName: "",
+    address: "",
+    propertyName: "",
+    city: "",
+}
 
 function RenovetaForm() {
+
+const [data,setData] = useState(INITIAL_DATA);
+
+function updateFields(fields: Partial<FormData>){
+    setData( prev => {
+        return {...prev, ...fields}
+    })
+}
+const {
+    step,
+    steps, 
+    currentStepIndex, 
+    isFirstStep,
+    isLastStep, 
+    previousStep,  
+    nextStep} 
+    = useMultistepForm([
+        <RenovationForm {...data} updateFields={updateFields} />,
+        <PropertyForm {...data} updateFields={updateFields} />,
+        <QuestionForm {...data} updateFields={updateFields} />,
+        <PersonalInfoForm {...data} updateFields={updateFields} />
+
+    ]);
+
+    function onSubmit( e: FormEvent) {
+        e.preventDefault();
+        if(!isLastStep) return nextStep();
+
+    }
+
+
     return (
-        <Wrapper>
-            <Container> 
-                <LeftContainer> 
-                <Logo src="logo\renoveta-logo--mint-symbol-2160.png" />
-                    <h1>Vad Kommer din renovering att kosta?</h1>
-                    <p>
-                        Med vår kalkyl får du en uppskattning på kostnaden av ditt projekt.
-                        Önskar du få fler uppgifter vad som gäller?
-                        <br />
-                        <br />
-                        Registrera dina uppgifter, och få tillgång till hela vår tjänst.
-                    </p>
-                    <ul>
-                        <li>Prisindikation </li>
-                        <li>Skräddarsytt avtal </li>
-                        <li>Regel-koll</li>
-                    </ul>
-                        <Button primary={true} type="submit" label={"Registrera dig"} />
-                </LeftContainer>
-                
-                <RightContainer>
-                     <RFForm/>
-                </RightContainer>
-            </Container>
-        </Wrapper>
+        <Container>
+            <Box>
+                <BoxLeft></BoxLeft>
+              <Right>
+                <Form onSubmit={onSubmit}>
+                <div>{currentStepIndex + 1}/ {steps.length}</div>
+                {step}
+                <div>
+                    {!isFirstStep && 
+                    <button type="button" onClick={previousStep}>
+                        Tillbaka
+                        </button>}
+
+                    <button type="button" onClick={nextStep}>
+                        {isLastStep ? "Skicka" : "Nästa"}
+                        </button>
+                </div>
+            </Form>
+            
+            </Right>
+            </Box>
+        </Container>
     );
 }
 
 export default RenovetaForm;
-const Wrapper = styled.div `
-width: 100vw; 
-height: 100vh;
-display: flex;
-align-content: center;
-justify-content: center;
 
-` 
 const Container = styled.div`
-width: 70vw;
-height: 60vh;
+  display: grid;
+  color: var(--text-secondary);
+  text-align: center;
+`;
+
+const Form = styled.form `
+height: 70vh;
+width: 80%;
 display: grid;
-grid-template-columns: 1fr 2fr;
+justify-content: space-between;
+align-items: center;
 
-
-` 
-const LeftContainer = styled.div `
-grid-column: 1/2;
-background-color: var(--bg-secondary);
-padding: 45px;
-border-radius: 45px 0 0 45px;
 
 `
-const Logo = styled.img`
-  position: absolute;
-  width: 10%;
-  top: 8px;
-  left: 48px;
-`
-
-const RightContainer = styled.div `
-grid-column: 2/3;
-background: red;
-border-radius: 0 45px 45px 0;
-position: relative;
-
-`
-const ButtonContainer = styled.div `
-position: absolute;
-bottom: 0;
-right: 0;
-margin: 40px;
-`
+const Box = styled.span`
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  width: 80%;
+  left: 10%;
+  position: relative;
+  padding-bottom: 32px;
+  font-size: 18px;
+`;
+const Right = styled.span `
+width: 55%;
+  display: grid;
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
+  border-top-right-radius: 45px;
+  border-bottom-right-radius: 45px;
+  border: 5px solid var(--bg-secondary);
+  padding-left: 72px;
+  line-height: 28px;
+  `
