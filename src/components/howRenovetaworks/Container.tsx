@@ -7,21 +7,48 @@ interface Props {
 
 function HowRenovetaWorks({ list }: Props) {
   return (
-    <div>
-      <h1>Så här fungerar Renoveta</h1>
-      {list.map((item: any) => (
-        <div key={item.imgUrl}>
-          <img src={item.imgUrl} />
-          <h3>{item.title}</h3>
-          <p>{item.text}</p>
-        </div>
-      ))}
-    </div>
+    <>
+      <Title>Så här fungerar Renoveta</Title>
+      <Container>
+        {list.map((item: any) => (
+          <Item key={item.imgUrl}>
+            <img src={item.imgUrl} />
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </Item>
+        ))}
+      </Container>
+    </>
   );
 }
 
 export default HowRenovetaWorks;
 
+const Title = styled.h1`
+  text-align: center;
+  font-size: 45px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 50px;
+`;
 const Container = styled.div`
-  display: flexbox;
+  display: flex;
+  text-align: center;
+  font-size: 25px;
+
+  h3 {
+    margin-top: 50px;
+    font-weight: 700;
+    color: var(--text-secondary);
+  }
+
+  @media screen and (max-width: 880px) {
+    font-size: 14px;
+  }
+`;
+
+const Item = styled.div`
+  width: 350px;
+  height: 350px;
+  margin: 30px;
 `;
