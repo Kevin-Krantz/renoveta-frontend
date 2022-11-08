@@ -37,4 +37,16 @@ const Container = styled.div`
     left: 16px;
     text-align: left;
   }
+
+  @media screen and (max-width: 1000px) {
+    img {
+      display: none;
+    }
+
+    p {
+      top: 100px;
+      font-size: 16px;
+      text-align: center;
+    }
+  }
 `;

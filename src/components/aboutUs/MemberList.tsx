@@ -24,6 +24,14 @@ const Container = styled.div`
   color: var(--text-secondary);
   margin: none;
   padding: none;
+
+  @media screen and (max-width: 1000px) {
+    img {
+      top: 100px;
+      height: 150px;
+      width: 110px;
+    }
+  }
 `;
 
 interface RightSide {
@@ -41,9 +49,13 @@ const Image = styled.img<RightSide>`
     css`
       left: 780px;
     `};
+
+  @media screen and (max-width: 1000px) {
+    left: 200px;
+  }
 `;
 
-const BgImage = styled.img<RightSide>`
+const BgImage = styled.div<RightSide>`
   position: absolute;
   top: 250px;
   width: 500px;
@@ -57,6 +69,10 @@ const BgImage = styled.img<RightSide>`
       background-image: url("images/pink-rectangle-left.png");
       right: 0;
     `};
+
+  @media screen and (max-width: 1000px) {
+    background-image: none;
+  }
 `;
 
 const Text = styled.div<RightSide>`
@@ -77,5 +93,15 @@ const Text = styled.div<RightSide>`
   p {
     font-size: 16px;
     font-weight: bold;
+  }
+  @media screen and (max-width: 1000px) {
+    left: 200px;
+    top: 250px;
+    h1 {
+      font-size: 16px;
+    }
+    p {
+      font-size: 12px;
+    }
   }
 `;

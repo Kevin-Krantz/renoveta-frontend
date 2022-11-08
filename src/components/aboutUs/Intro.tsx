@@ -23,4 +23,8 @@ const StyledIntro = styled.p`
   margin: 0 !important;
   display: inline-block;
   padding: 24px;
+
+  @media only screen and (max-width: 880px) {
+    font-size: 14px;
+  }
 `;

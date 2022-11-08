@@ -29,4 +29,8 @@ const Container = styled.div`
   grid-template-rows: 200px 350px 350px 350px 350px 600px;
   color: var(--text-secondary);
   position: relative;
+
+  @media screen and (max-width: 1000px) {
+    grid-template-rows: 150px 250px 250px 250px 250px 350px;
+  }
 `;
