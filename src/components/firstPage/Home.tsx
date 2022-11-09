@@ -5,6 +5,7 @@ import { getList } from "./howRenovetaworks/Sections";
 import { IList } from "./howRenovetaworks/IList";
 import Review from "./Review";
 import WhatisRenoveta from "./WhatisRenoveta";
+import Compilation from "./Compilation";
 
 function Home() {
   const [list, setList] = useState<IList[]>([]);
@@ -18,6 +19,7 @@ function Home() {
       <WhatisRenoveta />
       <HowRenovetaWorks list={list} />
       <Review />
+      <Compilation />
     </div>
   );
 }
