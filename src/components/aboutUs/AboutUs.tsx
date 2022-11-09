@@ -1,29 +1,36 @@
 import styled from "styled-components";
-import Elin from "./Elin";
-import Maximillian from "./Maximillian";
-import Linus from "./Linus";
-import Sofia from "./Sofia";
 import End from "./End";
 import Intro from "./Intro";
+import { IMember } from "../../types/Member";
+import MemberList from "./MemberList";
 
-function AboutUs() {
+interface Props {
+  members: IMember[];
+}
+
+function AboutUs({ members }: Props) {
   return (
-    <Wrapper>
+    <Container>
       <Intro />
-      <Linus />
-      <Elin />
-      <Maximillian />
-      <Sofia />
+      {members.map((member) => (
+        <div key={member.imgUrl}>
+          <MemberList {...member} />
+        </div>
+      ))}
       <End />
-    </Wrapper>
+    </Container>
   );
 }
 
 export default AboutUs;
 
-const Wrapper = styled.div`
+const Container = styled.div`
   display: grid;
-  grid-template-rows: 200px 300px 300px 300px 300px 600px;
+  grid-template-rows: 200px 350px 350px 350px 350px 600px;
   color: var(--text-secondary);
   position: relative;
+
+  @media screen and (max-width: 1000px) {
+    grid-template-rows: 150px 250px 250px 250px 250px 350px;
+  }
 `;
