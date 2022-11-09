@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Button from "../common/Button";
 
 function Compilation() {
   return (
@@ -15,6 +16,11 @@ function Compilation() {
           hur du undviker vanliga misstag. Det ska vara lätt att göra rätt. Låt
           oss hjälpa dig.
         </p>
+        <Button
+          primary={true}
+          type="register"
+          label={"Registrera dig"}
+        ></Button>
       </Text>
     </Container>
   );
@@ -64,6 +70,7 @@ const Text = styled.div`
 
   p {
     margin-top: 50px;
+    margin-bottom: 25px;
     font-weight: bold;
   }
 
