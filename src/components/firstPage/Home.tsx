@@ -15,8 +15,8 @@ function Home() {
   return (
     <div>
       <Hero />
-      <HowRenovetaWorks list={list} />
       <WhatisRenoveta />
+      <HowRenovetaWorks list={list} />
       <Review />
     </div>
   );
