@@ -9,6 +9,7 @@ import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 import { IMember } from "./types/Member";
 import { getMembers } from "./components/aboutUs/Team";
+import FAQ from "./components/FAQ";
 
 function App(): JSX.Element {
   const [members, setMembers] = useState<IMember[]>([]);
@@ -24,6 +25,7 @@ function App(): JSX.Element {
         <Route path="/aboutus" element={<AboutUs members={members} />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />
+        <Route path="/faq" element={<FAQ />} />
       </Routes>
       <Footer />
     </Wrapper>
