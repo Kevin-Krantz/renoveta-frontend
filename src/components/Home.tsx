@@ -1,5 +1,5 @@
 import Hero from "./hero/Hero";
-import RenovetaForm from "./RenovetaForm/RenovetaForm";
+import RenovetaForm from "./renovetaForm/RenovetaForm";
 import Review from "./Review";
 import WhatisRenoveta from "./WhatisRenoveta";
 
