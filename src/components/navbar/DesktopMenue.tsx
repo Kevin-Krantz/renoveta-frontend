@@ -1,27 +1,42 @@
 import { Link } from "react-router-dom";
 import Button from "../common/Button";
 import styled from "styled-components";
+import { ScrollToTop } from "../common/ScrollToTop";
+
+const handleClick = () => {
+  ScrollToTop();
+};
 
 function DesktopMenue() {
   return (
     <Container>
       <ul>
         <li>
-          <Link to="/aboutus">Varför Renoveta?</Link>
+          <Link onClick={handleClick} to="/">
+            Varför Renoveta?
+          </Link>
         </li>
         <li>
-          <Link to="/">Tjänsten</Link>
+          <Link onClick={handleClick} to="/">
+            Tjänsten
+          </Link>
         </li>
         <li>
-          <Link to="/kalkylen">Om oss</Link>
+          <Link onClick={handleClick} to="/aboutus">
+            Om oss
+          </Link>
         </li>
         <li>
-          <Link to="/faq">Q&A</Link>
+          <Link onClick={handleClick} to="/faq">
+            Q&A
+          </Link>
         </li>
         <li>
-          <Link to="/login">Logga in</Link>
+          <Link onClick={handleClick} to="/login">
+            Logga in
+          </Link>
         </li>
-        <Link to="/register" style={{ all: "unset" }}>
+        <Link onClick={handleClick} to="/register" style={{ all: "unset" }}>
           <Button label="Börja Renoveta" primary={false} type={onsubmit} />
         </Link>
       </ul>

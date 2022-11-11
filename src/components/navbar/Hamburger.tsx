@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useState } from "react";
 import Button from "../common/Button";
+import { ScrollToTop } from "../common/ScrollToTop";
 
 interface Props {
   hamburgerOpen: boolean;
@@ -13,6 +14,10 @@ function Hamburger() {
     setHamburgerOpen(!hamburgerOpen);
   };
 
+  const handleClick = () => {
+    ScrollToTop();
+  };
+
   return (
     <Container onClick={toggleHamburger}>
       {hamburgerOpen ? (
@@ -21,21 +26,31 @@ function Hamburger() {
         <Burger>
           <i className="fa-solid fa-bars" />
           <div>
-            <Link to="/aboutus">Varför Renoveta?</Link>
+            <Link onClick={handleClick} to="/">
+              Varför Renoveta?
+            </Link>
           </div>
           <div>
-            <Link to="/">Tjänsten</Link>
+            <Link onClick={handleClick} to="/">
+              Tjänsten
+            </Link>
           </div>
           <div>
-            <Link to="/kalkylen">Om oss</Link>
+            <Link onClick={handleClick} to="/aboutus">
+              Om oss
+            </Link>
           </div>
           <div>
-            <Link to="/faq">Q&A</Link>
+            <Link onClick={handleClick} to="/faq">
+              Q&A
+            </Link>
           </div>
           <div>
-            <Link to="/login">Logga in</Link>
+            <Link onClick={handleClick} to="/login">
+              Logga in
+            </Link>
           </div>
-          <Link to="/register" style={{ all: "unset" }}>
+          <Link onClick={handleClick} to="/register" style={{ all: "unset" }}>
             <Button label="Börja Renoveta" primary={false} type={onsubmit} />
           </Link>
         </Burger>

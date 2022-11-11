@@ -33,6 +33,7 @@ const Container = styled.div`
   position: sticky;
   top: 0;
   background-color: #ffffff;
+  z-index: 10000;
 
   a {
     text-decoration: inherit;
@@ -74,6 +75,5 @@ const Burger = styled.div`
     display: fixed;
     padding-top: 10px;
     margin-left: 10px;
-    z-index: 10;
   }
 `;
