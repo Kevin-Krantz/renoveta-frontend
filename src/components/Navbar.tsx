@@ -4,7 +4,7 @@ import Button from "./common/Button";
 
 function Navbar(): JSX.Element {
   return (
-    <Nav>
+    <Container>
       <img alt="Logo" src="./images/Renovetalogo.png" />
       <ul>
         <li>
@@ -26,24 +26,18 @@ function Navbar(): JSX.Element {
           <Button label="Börja Renoveta" primary={false} type={onsubmit} />
         </Link>
       </ul>
-    </Nav>
+    </Container>
   );
 }
 
 export default Navbar;
 
-const Nav = styled.nav`
+const Container = styled.div`
   display: flex;
-  justify-content: space-between;
-  padding: 0 1rem;
   white-space: nowrap;
   position: sticky;
   top: 0;
   background-color: #ffffff;
-
-  @media all and (max-width: 1280px) {
-    margin-left: -40px;
-  }
 
   a {
     text-decoration: inherit;
@@ -65,16 +59,15 @@ const Nav = styled.nav`
     display: flex;
     align-items: center;
     font-weight: 600;
-    font-size: 25px;
+    font-size: 24px;
   }
 
   button {
-    background-color: #e34356;
-    border: none;
-    font-size: 25px;
+    background-color: var(--bg-color);
+    font-size: 24px;
     font-weight: bold;
     color: white;
-    margin-top: 15px;
+    margin-top: 20px;
   }
 
   button:hover {
@@ -91,5 +84,33 @@ const Nav = styled.nav`
 
   a:active {
     transform: scale(1);
+  }
+
+  @media screen and (max-width: 880px) {
+    display: grid;
+    padding-left: 15px;
+
+    ul {
+      display: grid;
+      grid-template-rows: repeat(7, 1px);
+      padding-left: 30px;
+      padding-bottom: 5px;
+      gap: 1.5rem;
+    }
+
+    li {
+      font-size: 16px;
+      margin: 0px !important;
+    }
+
+    button {
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      margin: 0;
+      width: 130px;
+      height: 30px;
+      border-radius: 8px;
+    }
   }
 `;
