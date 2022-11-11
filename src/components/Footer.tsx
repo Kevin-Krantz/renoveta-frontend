@@ -1,10 +1,15 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { ScrollToTop } from "./common/ScrollToTop";
+
+const handleClick = () => {
+  ScrollToTop();
+};
 
 function Footer(): JSX.Element {
   return (
     <Container>
-      <img alt="" src="/images/Renovetalogo.png" />
+      <img src="/images/Renovetalogo.png" />
       <Row>
         <Heading>
           <h1>Ditt digitala verktyg för att planera din renovering</h1>
@@ -13,28 +18,28 @@ function Footer(): JSX.Element {
         <Column>
           <FooterLink>
             <h2>
-              <Link className="Link" to="">
+              <Link onClick={handleClick} className="Link" to="/">
                 Varför Renoveta?
               </Link>
             </h2>
           </FooterLink>
           <FooterLink>
             <h2>
-              <Link className="Link" to="">
+              <Link onClick={handleClick} className="Link" to="/">
                 Tjänsten
               </Link>
             </h2>
           </FooterLink>
           <FooterLink>
             <h2>
-              <Link className="Link" to="/aboutus">
+              <Link onClick={handleClick} className="Link" to="/aboutus">
                 Om oss
               </Link>
             </h2>
           </FooterLink>
           <FooterLink>
             <h2>
-              <Link className="Link" to="/faq">
+              <Link onClick={handleClick} className="Link" to="/faq">
                 Q&A
               </Link>
             </h2>
