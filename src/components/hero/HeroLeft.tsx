@@ -24,18 +24,29 @@ export default HeroLeft;
 
 const Container = styled.div`
   display: grid;
-  margin-left: 10%;
-  margin-top: 15%;
+  margin-left: 25px;
+  margin-top: 40px;
 
   h1 {
     font-size: 32px;
-    margin: 0%;
   }
 
   p {
     font-size: 24px;
     font-weight: bold;
-    margin: 0%;
+  }
+
+  @media screen and (max-width: 880px) {
+    display: grid;
+    grid-template-rows: 100px 80px;
+    margin-top: 20px;
+    h1 {
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 16px;
+    }
   }
 `;
 
@@ -54,5 +65,11 @@ const Button = styled.button`
   }
   .buttonright {
     align-items: right;
+  }
+
+  @media screen and (max-width: 880px) {
+    width: 100px;
+    height: 40px;
+    top: 5px;
   }
 `;
