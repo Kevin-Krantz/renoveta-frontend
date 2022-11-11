@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar/Nav";
 import AboutUs from "./components/aboutUs/AboutUs";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
