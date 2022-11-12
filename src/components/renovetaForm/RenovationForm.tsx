@@ -55,8 +55,10 @@ const handleCheck=(event:any) =>{
    
     return (
       <>
+     
       <CheckboxContainer>
-        {type.map((type)=>{
+      <label>Vad för typ av renovering planerar du på att utföra?</label>
+        {type.map((type)=>{ 
             return (
                 <li key={type.id}>
                     <Checkbox
@@ -70,15 +72,6 @@ const handleCheck=(event:any) =>{
         })}
       </CheckboxContainer>
 
-
-
-
-      <label>Vad för typ av renovering planerar du på att utföra?</label>
-        <input
-          type="text"
-          value={typeOfRenovation}
-          onChange={e => updateFields({ typeOfRenovation: e.target.value })}
-        />
         <label>Planerar du på att ändra - färg, material eller form?</label>
         <input
           placeholder="Beskriv vad du ska ändra på din bostad"
