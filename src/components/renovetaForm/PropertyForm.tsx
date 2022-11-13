@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import Checkbox from '../common/Checkbox';
 import {useState} from 'react';
 import {CheckboxContainer, CheckboxBg} from './RenovationForm';
-import {InputLeft} from './PersonalInfoForm';
+import {InputLeft,Container} from './PersonalInfoForm';
+
 
 type PropertyData = {
     roofType: string
@@ -48,9 +49,10 @@ setOptions(selectedOption);
    }
 
      return (
-       <>
+       <Container>
        <label>Vilken typ av tak har du idag?</label>
          <input
+         className='form-input-small'
            type="text"
            value={roofType}
            onChange={e => updateFields({ roofType: e.target.value })}
@@ -100,14 +102,14 @@ setOptions(selectedOption);
          />
          </LeftInput>
          </InputContainer>
-   </>
+   </Container>
      )
    }
 
    const InputContainer = styled.div `
    display: flex;
    flex-direction: column;
-   margin-top: 30px;
+   
 
    label{
     margin: 10px 0 5px 0; 
@@ -133,6 +135,7 @@ setOptions(selectedOption);
    `
    const LeftInput = styled(InputLeft) `
    margin-left: 0;
+   
    input {
     margin-left: 5px;
 

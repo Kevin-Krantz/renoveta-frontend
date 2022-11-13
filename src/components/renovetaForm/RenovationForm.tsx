@@ -46,6 +46,7 @@ const handleChange =(item:any) => {
    
     return (
       <>
+     
     <label>Vad för typ av renovering planerar du på att utföra?</label>
     <CheckboxContainer>
         {data.map((option)=>{ 
@@ -75,6 +76,7 @@ const handleChange =(item:any) => {
           value={changeApperance}
           onChange={e => updateFields({ changeApperance: e.target.value })}
         />
+      
 </>
     )
  
@@ -101,6 +103,7 @@ const handleChange =(item:any) => {
   border-radius: 5px;
 
   `
+
 
  
 

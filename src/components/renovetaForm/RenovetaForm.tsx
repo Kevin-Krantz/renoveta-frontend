@@ -9,6 +9,7 @@ import BoxLeft from "../calculator/BoxLeft";
 
 
 
+
 type FormData ={
     typeOfRenovation: string
     changeApperance: string
@@ -82,7 +83,8 @@ const {
     return (
         <Container>
             <Box>
-                <BoxLeft></BoxLeft>
+            <BoxLeft></BoxLeft>
+               
               <Right>
                 <Form onSubmit={onSubmit}>
                 <div>{currentStepIndex + 1}/ {steps.length}</div>
@@ -98,8 +100,8 @@ const {
                         </Button>
                 </ButtonContainer>
             </Form>
-            
             </Right>
+            
             </Box>
         </Container>
     );
@@ -155,6 +157,7 @@ const Box = styled.span`
 `;
 export const Right = styled.span `
   width: 100%;
+  padding-top: 40px;
   display: grid;
   background-color: var(--bg-primary);
   color: var(--text-secondary);
@@ -167,8 +170,8 @@ export const Right = styled.span `
   `
 const ButtonContainer = styled.div `
 position: absolute;
-bottom: 100px;
-right: 100px;
+bottom: 30px;
+right: 30px;
 
 
   `
@@ -199,6 +202,4 @@ right: 100px;
     :active {
       transform: scale(1);
     }
-
-    
 `

@@ -97,14 +97,15 @@ type PersonalData = {
     )
   }
 
-const Container = styled.div`
-width: 100%;
-  height: 75%;
+export const Container = styled.div`
+  width: 100%;
   position: relative;
   font-size: 18px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: 55px;
+  
   
 
   label {
@@ -153,7 +154,4 @@ margin: 10px 10px 10px 65px;
   margin-top: 15px;
 
 }
-`
-const LeftInput = styled(InputLeft) `
-margin-left: 20px;
 `
