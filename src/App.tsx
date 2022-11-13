@@ -10,6 +10,7 @@ import RegisterForm from "./components/RegisterForm";
 import { IMember } from "./types/Member";
 import { getMembers } from "./components/aboutUs/Team";
 import FAQ from "./components/FAQ";
+import RenovetaForm from "./components/renovetaForm/RenovetaForm";
 
 function App(): JSX.Element {
   const [members, setMembers] = useState<IMember[]>([]);
@@ -24,7 +25,8 @@ function App(): JSX.Element {
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs members={members} />} />
         <Route path="/login" element={<LoginForm />} />
-        <Route path="/register" element={<RegisterForm />} />
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/kalkylen" element={<RenovetaForm />} />
         <Route path="/faq" element={<FAQ />} />
       </Routes>
       <Footer />
