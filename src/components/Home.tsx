@@ -1,15 +1,23 @@
+import { useEffect, useState } from "react";
 import Hero from "./hero/Hero";
-import RenovetaForm from "./renovetaForm/RenovetaForm";
+import HowRenovetaWorks from "./howRenovetaworks/Container";
+import { getList } from "./howRenovetaworks/Sections";
+import { IList } from "./howRenovetaworks/IList";
 import Review from "./Review";
 import WhatisRenoveta from "./WhatisRenoveta";
 
 function Home() {
+  const [list, setList] = useState<IList[]>([]);
+
+  useEffect(() => {
+    setList(getList());
+  }, []);
   return (
     <div>
       <Hero />
-      <WhatisRenoveta/>
-      <Review/> 
-      <RenovetaForm/>
+      <HowRenovetaWorks list={list} />
+      <WhatisRenoveta />
+      <Review />
     </div>
   );
 }
