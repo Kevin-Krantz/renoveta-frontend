@@ -87,16 +87,16 @@ const {
                 <Form onSubmit={onSubmit}>
                 <div>{currentStepIndex + 1}/ {steps.length}</div>
                 {step}
-                <div>
+                <ButtonContainer>
                     {!isFirstStep && 
-                    <button type="button" onClick={previousStep}>
+                    <Button className="secondary"  type="button" onClick={previousStep}>
                         Tillbaka
-                        </button>}
+                        </Button>}
 
-                    <button type="button" onClick={nextStep}>
+                    <Button type="submit" >
                         {isLastStep ? "Skicka" : "Nästa"}
-                        </button>
-                </div>
+                        </Button>
+                </ButtonContainer>
             </Form>
             
             </Right>
@@ -111,32 +111,50 @@ const Container = styled.div`
   display: grid;
   color: var(--text-secondary);
   text-align: center;
+  width: 100vw;
+  height: 90vh;
+  font-weight: 900;
+
 `;
 
 const Form = styled.form `
-height: 70vh;
-width: 80%;
-display: grid;
-justify-content: space-between;
-align-items: center;
 
-input{
-    border-radius: 25px;
+display: flex;
+flex-direction: column;
+height: 100%;
+width: 60%;
+
+
+
+.form-input{
+    border-radius: 10px;
+    height: 45px;
+    border: 3px solid;
+    border-color: var(--text-secondary);
+    margin-top: 20px;
+ 
+}
+.form-input-small {
+    height: 35px;
+    width: 250px;
+    border-radius: 10px;
 }
 
 `
 const Box = styled.span`
   display: flex;
   justify-content: center;
+  align-self: center;
   text-align: left;
-  width: 80%;
-  left: 10%;
+  width: 60%;
+  height: 75%;
   position: relative;
   padding-bottom: 32px;
   font-size: 18px;
+  margin: 0 auto;
 `;
-const Right = styled.span `
-width: 55%;
+export const Right = styled.span `
+  width: 100%;
   display: grid;
   background-color: var(--bg-primary);
   color: var(--text-secondary);
@@ -145,4 +163,42 @@ width: 55%;
   border: 5px solid var(--bg-secondary);
   padding-left: 72px;
   line-height: 28px;
+  position: relative;
   `
+const ButtonContainer = styled.div `
+position: absolute;
+bottom: 100px;
+right: 100px;
+
+
+  `
+   const Button = styled.button `
+   font-weight: 600;
+   font-family: 'Catamaran';
+    width: 150px;
+    height: 40px;
+    margin-left: 15px;
+    border-radius: 45px;
+    border: 2px solid var(--bg-color);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    cursor: pointer;
+
+    &.secondary {
+        background-color: #ffffff ;
+        border: 3px solid var(--bg-color);
+        color: var(--bg-color);
+        
+    }
+}
+  
+    :hover {
+      transform: scale(1.03);
+    }
+  
+    :active {
+      transform: scale(1);
+    }
+
+    
+`

@@ -2,6 +2,10 @@ import React, { ChangeEvent } from 'react';
 import styled from 'styled-components';
 import Checkbox from '../common/Checkbox';
 import {useState} from 'react';
+import Right from './RenovetaForm';
+
+
+
 
 type RenovationData = {
    typeOfRenovation: string
@@ -11,81 +15,93 @@ type RenovationData = {
   type RenovationFormProps = RenovationData & {
     updateFields: (fields: Partial<RenovationData>) => void
   }
-/*
-  const renovationTypes = [
-    {id: 1, value: "Plåtarbete", iChecked: false },
-    {id: 2, value: "Takomläggning", isChecked: false },
-    {id: 3, value: "Takrenovering", isChecked: false },
-    {id: 4, value: "Takbyte", isChecked: false },
-    {id: 5, value: "Taktvätt", isChecked: false },
-    {id: 6, value: "Annat", isChecked: false },
 
-  ]
-  */
 export function RenovationForm({
     typeOfRenovation,
     changeApperance,
     updateFields,
   }: RenovationFormProps) {
 
+  const data = [
+        {id: 1, name: "Plåtarbete" },
+        {id: 2, name: "Takomläggning"},
+        {id: 3, name: "Takrenovering"},
+        {id: 4, name: "Takbyte"},
+        {id: 5, name: "Taktvätt" },
+        {id: 6, name: "Annat" },
+];
 
-const [type, setTypes] = useState([
-{id: 1, value: "Plåtarbete", iChecked: false },
-{id: 2, value: "Takomläggning", isChecked: false },
-{id: 3, value: "Takrenovering", isChecked: false },
-{id: 4, value: "Takbyte", isChecked: false },
-{id: 5, value: "Taktvätt", isChecked: false },
-{id: 6, value: "Annat", isChecked: false },
-
-]);
-    
-const handleCheck=(event:any) =>{
-        let renovationTypes = [...type];
-        
-        renovationTypes.map(type => {
-            if(type.value === event.currentTarget.value) {
-                type.isChecked = event.currentTarget.checked;
-                
-            }
-        })
-        setTypes(renovationTypes)
-        
-    }
-    
+const [options, setOptions] = useState([]); 
+//@ts-ignore
+const handleChange =(item:any) => {
+  let selectedOption = options;
+  if(selectedOption.some((option:any) => option.id === item.id)) {
+    selectedOption = selectedOption.filter((option:any) => option.id !== item.id);
+  } else {
+    //@ts-ignore
+    selectedOption.push(item);
+  }
+  setOptions(selectedOption);
+     }
    
     return (
       <>
-     
-      <CheckboxContainer>
-      <label>Vad för typ av renovering planerar du på att utföra?</label>
-        {type.map((type)=>{ 
+    <label>Vad för typ av renovering planerar du på att utföra?</label>
+    <CheckboxContainer>
+        {data.map((option)=>{ 
             return (
-                <li key={type.id}>
+             <CheckboxBg> 
                     <Checkbox
-                    id={type.id}
-                    handleCheck = {handleCheck}
-                    isChecked={type.isChecked}
-                    value={type.value}
+                    className='checkbox-input'
+                    key={option.id}
+                    id={option.id}
+                    //@ts-ignore
+                    handleCheck = {() => { 
+                      handleChange(option) 
+                    }}
+                    name={option.name}
                     />
-                </li>
+                    </CheckboxBg>
             )
         })}
-      </CheckboxContainer>
+      
+  </CheckboxContainer>
 
         <label>Planerar du på att ändra - färg, material eller form?</label>
         <input
+          className='form-input'
           placeholder="Beskriv vad du ska ändra på din bostad"
           type="text"
           value={changeApperance}
           onChange={e => updateFields({ changeApperance: e.target.value })}
         />
-        
-  </>
+</>
     )
+ 
   }
-  const CheckboxContainer = styled.ul `
+
+
+
+  export const CheckboxContainer = styled.ul `
   list-style: none;
-  display: grid;
+  column-count: 2;
+  column-fill: balance;
+
+
+  input {
+    margin: 9px;
+    z-index: 10;
+    border: 1px solid var(--bg-secondary);
+}
   `
+  
+  export const CheckboxBg = styled.div `
+  background-color: #D4EDE4;
+  margin-bottom: 5px;
+  border-radius: 5px;
+
+  `
+
+ 
 
 

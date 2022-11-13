@@ -5,6 +5,8 @@ id?: number
 handleCheck?(event:React.ChangeEvent<HTMLInputElement>): void
 isChecked?: boolean
 value?:string
+className?: string
+name: string;
 }
 function Checkbox(props: CheckboxProps) {
     return (
@@ -15,9 +17,10 @@ function Checkbox(props: CheckboxProps) {
             type="checkbox"
             checked={props.isChecked}
             value={props.value}
-            
+            className={props.className}
+            name={props.name}
             />
-            {props.value}
+            {props.name}
         </li>
             
         
