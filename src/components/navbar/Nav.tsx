@@ -13,10 +13,9 @@ function Navbar(): JSX.Element {
 
   return (
     <Container>
-      <img alt="Logo" src="./images/Renovetalogo.png" />
       {width < breakpoint ? (
         <Burger>
-          <Hamburger />
+          <Hamburger /> <img alt="Logo" src="./images/Renovetalogo.png" />
         </Burger>
       ) : (
         <DesktopMenue />

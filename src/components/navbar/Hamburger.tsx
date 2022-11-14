@@ -65,11 +65,10 @@ const Container = styled.div`
   white-space: nowrap;
   position: sticky;
   background-color: #ffffff;
-  width: 400px;
+  width: 50px;
   display: flex;
   justify-content: space-around;
   flex-flow: column nowrap;
-
   cursor: pointer;
 
   button {
@@ -91,7 +90,7 @@ const Container = styled.div`
 `;
 
 const Icon = styled.i`
-  margin-top: -10px;
+  margin-top: -5px;
 `;
 
 const Burger = styled.div`
@@ -99,5 +98,10 @@ const Burger = styled.div`
   margin-top: 30px;
   justify-content: space-around;
   flex-flow: column wrap;
-  height: 200px;
+  height: 250px;
+
+  i {
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
 `;
