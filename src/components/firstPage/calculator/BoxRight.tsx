@@ -3,16 +3,17 @@ import styled from "styled-components";
 import Button from "../../common/Button";
 import Checkbox from "../../common/Checkbox";
 import Input from "../../common/Input";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function BoxRight() {
   const [input, setInput] = useState("kvm");
   const [options, setOptions] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const data = [
-    { id: 1, name: "Takomläggning" },
-    { id: 2, name: "Takrenovering" },
-    { id: 3, name: "Takbyte" },
+    { id: 1, name: "Omläggning" },
+    { id: 2, name: "Målning" },
+    { id: 3, name: "Tvätt" },
   ];
 
   const takData = [
@@ -35,10 +36,12 @@ function BoxRight() {
     setOptions(selectedOption);
   };
 
+  // const handlePrice
+
   return (
     <Right>
       <div>
-        <a>1. Vad är det för typ av renovering?</a>
+        <a>1. Vad är det för typ av takrenovering?</a>
         <span>
           {data.map((option) => {
             return (
@@ -91,12 +94,11 @@ function BoxRight() {
           />
         </a>
       </div>
+      <a> {totalPrice}kr</a>
       <End>
-        <Button
-          primary={false}
-          type="submit"
-          label={"Jag vill veta mer om renoveta"}
-        />
+        <Link to="/renovetaform">
+          <Button primary={false} type="submit" label={"Börja Renoveta"} />
+        </Link>
       </End>
     </Right>
   );
