@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Header from "./Header";
 import BoxLeft from "./BoxLeft";
 import BoxRight from "./BoxRight";
 
@@ -7,7 +6,6 @@ function Calculator() {
   return (
     <Image>
       <Container>
-        <Header />
         <Box>
           <BoxLeft />
           <BoxRight />
@@ -38,6 +36,8 @@ const Box = styled.span`
   width: 80%;
   left: 10%;
   position: relative;
+  margin-top: 100px;
+  margin-bottom: 100px;
   padding-bottom: 32px;
   font-size: 18px;
 `;
