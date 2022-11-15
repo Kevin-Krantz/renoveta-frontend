@@ -18,6 +18,7 @@ function App(): JSX.Element {
   useEffect(() => {
     setMembers(getMembers());
   }, []);
+
   return (
     <Wrapper>
       <Navbar />

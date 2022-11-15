@@ -25,7 +25,9 @@ enum MaterialType {
 
 function BoxRight() {
   const [input, setInput] = useState<number>(0);
-  const [checked, setChecked] = useState<Checked<RenovationType>>({});
+  const [checked, setChecked] = useState<{ [key in RenovationType]?: boolean }>(
+    {}
+  );
 
   const data = [
     {
