@@ -1,9 +1,9 @@
 import React from "react";
 
 interface CheckboxProps {
-  id?: number;
+  id?: string;
   handleCheck?(event: React.ChangeEvent<HTMLInputElement>): void;
-  isChecked?: boolean;
+  checked?: boolean;
   value?: string;
   className?: string;
   name: string;
@@ -13,9 +13,10 @@ function Checkbox(props: CheckboxProps) {
     <>
       <input
         key={props.id}
+        id={props.id}
         onChange={props.handleCheck}
-        type="checkbox"
-        checked={props.isChecked}
+        type="radio"
+        checked={props.checked}
         value={props.value}
         className={props.className}
         name={props.name}

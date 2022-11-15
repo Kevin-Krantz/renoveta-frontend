@@ -5,56 +5,93 @@ import Checkbox from "../../common/Checkbox";
 import Input from "../../common/Input";
 import { Link } from "react-router-dom";
 
+type Checked<T> = {
+  [Property in keyof T]?: boolean;
+};
+
+enum RenovationType {
+  REROOFING = "Takomläggning",
+  PAINTING = "Målning",
+  CLEANING = "Tvätt",
+}
+
+enum MaterialType {
+  SHEET_METAL = "Plåt",
+  PAPER = "Papp/Shingel",
+  ETHERNITE = "Eternit",
+  BRICK_SHEETS = "Tegelpannor",
+  CONCRETE_SHEETS = "Betongpannor",
+}
+
 function BoxRight() {
-  const [input, setInput] = useState("kvm");
-  const [options, setOptions] = useState([]);
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [input, setInput] = useState<number>(0);
+  const [checked, setChecked] = useState<Checked<RenovationType>>({});
 
   const data = [
-    { id: 1, name: "Omläggning" },
-    { id: 2, name: "Målning" },
-    { id: 3, name: "Tvätt" },
+    {
+      id: "1",
+      name: MaterialType.SHEET_METAL,
+      [RenovationType.REROOFING]: 1150,
+      [RenovationType.PAINTING]: 100,
+      [RenovationType.CLEANING]: 100,
+    },
+    {
+      id: "2",
+      name: MaterialType.PAPER,
+      [RenovationType.REROOFING]: 750,
+      [RenovationType.PAINTING]: 100,
+      [RenovationType.CLEANING]: 100,
+    },
+    {
+      id: "3",
+      name: MaterialType.ETHERNITE,
+      [RenovationType.REROOFING]: 1850,
+      [RenovationType.PAINTING]: 100,
+      [RenovationType.CLEANING]: 100,
+    },
+    {
+      id: "4",
+      name: MaterialType.BRICK_SHEETS,
+      [RenovationType.REROOFING]: 1500,
+      [RenovationType.PAINTING]: 100,
+      [RenovationType.CLEANING]: 100,
+    },
+    {
+      id: "5",
+      name: MaterialType.CONCRETE_SHEETS,
+      [RenovationType.REROOFING]: 1200,
+      [RenovationType.PAINTING]: 100,
+      [RenovationType.CLEANING]: 100,
+    },
   ];
 
-  const takData = [
-    { id: 1, name: "Plåt" },
-    { id: 2, name: "Papp" },
-    { id: 3, name: "Eternit" },
-    { id: 4, name: "Tegelpannor" },
-  ];
-
-  const handleChange = (item: any) => {
-    let selectedOption = options;
-    if (selectedOption.some((option: any) => option.id === item.id)) {
-      selectedOption = selectedOption.filter(
-        (option: any) => option.id !== item.id
-      );
-    } else {
-      //@ts-ignore
-      selectedOption.push(item);
-    }
-    setOptions(selectedOption);
+  const handleCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // var updatedList = [...checked];
+    // if (e.target.checked) {
+    //   updatedList = [...checked, e.target.value];
+    // } else {
+    //   updatedList.splice(checked.indexOf(e.target.value), 1);
+    // }
+    // setChecked(updatedList);
   };
 
-  // const handlePrice
+  const totalCount = () => {};
 
   return (
     <Right>
       <div>
         <a>1. Vad är det för typ av takrenovering?</a>
         <span>
-          {data.map((option) => {
+          {Object.values(RenovationType).map((option, i) => {
             return (
-              <StyledCheckBox>
+              <StyledCheckBox key={i}>
                 <Checkbox
                   className="checkbox-input"
-                  key={option.id}
-                  id={option.id}
+                  key={i}
+                  id={i.toString()}
                   //@ts-ignore
-                  handleCheck={() => {
-                    handleChange(option);
-                  }}
-                  name={option.name}
+                  // handleCheck={handleCheck}
+                  name={option}
                 />
               </StyledCheckBox>
             );
@@ -64,17 +101,16 @@ function BoxRight() {
       <div>
         <a>2. Vilket material består ditt tak av?</a>
         <span>
-          {takData.map((option) => {
+          {data.map((option) => {
             return (
-              <StyledCheckBox>
+              <StyledCheckBox key={option.id}>
                 <Checkbox
                   className="checkbox-input"
                   key={option.id}
                   id={option.id}
+                  checked={}
                   //@ts-ignore
-                  handleCheck={() => {
-                    handleChange(option);
-                  }}
+                  // handleCheck={handleCheck}
                   name={option.name}
                 />
               </StyledCheckBox>
@@ -90,11 +126,11 @@ function BoxRight() {
             value={input}
             name="kvm"
             type="text"
-            onChange={(event) => setInput(event.target.value)}
+            onChange={(e) => setInput(Number(e.target.value))}
           />
         </a>
       </div>
-      <a> {totalPrice}kr</a>
+      <TotalaPris>{totalPrice}kr</TotalaPris>
       <End>
         <Link to="/renovetaform">
           <Button primary={false} type="submit" label={"Börja Renoveta"} />
@@ -144,6 +180,10 @@ const StyledCheckBox = styled.div`
   .checkbox-input {
     margin-right: 5px;
   }
+`;
+
+const TotalaPris = styled.a`
+  text-align: center !important;
 `;
 
 const End = styled.div`
