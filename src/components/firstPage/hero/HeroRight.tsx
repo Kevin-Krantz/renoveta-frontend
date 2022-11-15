@@ -11,10 +11,19 @@ function HeroRight() {
 export default HeroRight;
 
 const Container = styled.div`
-  margin-right: 10%;
+  margin-left: 100px;
 
   img {
-    width: 140%;
-    height: 100%;
+    width: 500px;
+    height: 550px;
+  }
+
+  @media screen and (max-width: 880px) {
+    margin-left: 10px;
+
+    img {
+      width: 300px;
+      height: 350px;
+    }
   }
 `;
