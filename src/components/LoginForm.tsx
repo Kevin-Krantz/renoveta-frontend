@@ -37,7 +37,7 @@ function LoginForm() {
     doSubmit: async () => {
       try {
         await auth.login({ formData });
-        console.log("sucess");
+        window.location.replace("/");
       } catch (error) {
         if (error.response?.status === 400) {
           const formErrors = { email: error.response.data };
@@ -75,7 +75,6 @@ const Wrapper = styled.form`
   padding-right: 20px;
   width: 30%;
   height: auto;
-  position: absolute;
   top: 5%;
   left: 30%;
 `;
