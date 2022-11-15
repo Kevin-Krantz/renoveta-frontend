@@ -10,22 +10,29 @@ import RegisterForm from "./components/RegisterForm";
 import { IMember } from "./types/Member";
 import { getMembers } from "./components/aboutUs/Team";
 import FAQ from "./components/FAQ";
+import auth from "./services/authService";
+import Logout from "./components/Logout";
+import MyPage from "./components/MyPage";
 
 function App(): JSX.Element {
   const [members, setMembers] = useState<IMember[]>([]);
+  const [user, setUser] = useState(auth.getCurrentUser());
 
   useEffect(() => {
     setMembers(getMembers());
+    setUser(auth.getCurrentUser());
   }, []);
   return (
     <Wrapper>
-      <Navbar />
+      <Navbar user={user} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs members={members} />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/faq" element={<FAQ />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/me" element={<MyPage />} />
       </Routes>
       <Footer />
     </Wrapper>
