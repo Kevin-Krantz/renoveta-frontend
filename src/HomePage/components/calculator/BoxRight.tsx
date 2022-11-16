@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Button from "../../../common/Button";
-import Input from "../../../AllPages/common/Input";
+import Input from "../../../common/Input";
 // import { Link } from "react-router-dom";
 
 function BoxRight() {
@@ -19,7 +19,7 @@ function BoxRight() {
             value={input}
             name="kvm"
             type="text"
-            onChange={(event) => setInput(event.target.value)}
+            onChange={(event: any) => setInput(event.target.value)}
           />
         </p>
       </div>
