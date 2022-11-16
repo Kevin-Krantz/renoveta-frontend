@@ -19,7 +19,7 @@ export default Calculator;
 
 const Image = styled.div`
   background-image: url("images/bg-photo-paint.png");
-  background-size: auto;
+  background-size: 1350px;
   background-repeat: none;
 `;
 
@@ -41,10 +41,9 @@ const Box = styled.span`
   padding-bottom: 32px;
   font-size: 18px;
 
-  @media screen and (max-width: 880) {
-    width: 500px;
-    right: 50px;
-
-    font-size: 14px !important;
+  @media screen and (max-width: 1000px) {
+    width: 800px;
+    left: -5px;
+    font-size: 12px;
   }
 `;

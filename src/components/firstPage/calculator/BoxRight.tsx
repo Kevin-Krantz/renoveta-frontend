@@ -1,9 +1,10 @@
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import Button from "../../common/Button";
 import Checkbox from "../../common/Checkbox";
 import Input from "../../common/Input";
 import { Link } from "react-router-dom";
+import Questionmark from "../../common/Questionmark";
 
 enum RenovationType {
   REROOFING = "Takomläggning",
@@ -85,10 +86,27 @@ function BoxRight() {
     return total;
   }
 
+  interface TextQuestions {
+    questionOne: string;
+    questionTwo: string;
+    questionThree: string;
+  }
+
+  const text: TextQuestions = {
+    questionOne:
+      "Takrenovering är ...Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    questionTwo: "Material till ditt tak ...",
+    questionThree: "Räkna ut ditt tak area..",
+  };
+
   return (
     <Right>
       <div>
-        <a>1. Vad är det för typ av takrenovering?</a>
+        <QuestionContainer>
+          <a>1. Vad är det för typ av takrenovering?</a>
+          <Questionmark text={text.questionOne} />
+        </QuestionContainer>
+
         <span>
           {Object.values(RenovationType).map((option, i) => {
             return (
@@ -110,7 +128,11 @@ function BoxRight() {
         </span>
       </div>
       <div>
-        <a>2. Vilket material består ditt tak av?</a>
+        <QuestionContainer>
+          <a>2. Vilket material består ditt tak av?</a>
+          <Questionmark text={text.questionTwo} />
+        </QuestionContainer>
+
         <span>
           {data.map((option) => {
             return (
@@ -132,23 +154,29 @@ function BoxRight() {
         </span>
       </div>
       <div>
-        <a>
-          3. Hur stort är ditt tak i kvm?
-          <Input
-            className="input"
-            value={input}
-            name="kvm"
-            type="text"
-            onChange={(e) => setInput(Number(e.target.value))}
-          />
-        </a>
-      </div>
+        <QuestionContainer>
+          <a>3. Hur stort är ditt tak i kvm?</a>
+          <Questionmark text={text.questionThree} />
+        </QuestionContainer>
 
+        <Input
+          className="input"
+          value={input}
+          name="kvm"
+          type="text"
+          onChange={(e) => setInput(Number(e.target.value))}
+        />
+      </div>
       <End>
         <a>{getTotalPrice()}kr</a>
         <p>Prisindikation redovisas med arbete och material</p>
         <Link to="/renovetaform">
-          <Button primary={false} type="submit" label={"Börja Renoveta"} />
+          <Button
+            className="button"
+            primary={false}
+            type="submit"
+            label={"Börja Renoveta"}
+          />
         </Link>
       </End>
     </Right>
@@ -158,7 +186,7 @@ function BoxRight() {
 export default BoxRight;
 
 const Right = styled.span`
-  width: 600px;
+  width: 650px;
   display: grid;
   background-color: var(--bg-primary);
   color: var(--text-secondary);
@@ -186,11 +214,27 @@ const Right = styled.span`
     margin: 10px;
   }
 
-  @media screen and (max-width: 880) {
-    width: 300px;
-    right: 50px;
+  @media screen and (max-width: 1000px) {
+    width: 450px;
+    font-size: 12px;
+    padding-top: 20px;
+    padding-left: 32px;
 
-    font-size: 16px !important;
+    a {
+      font-size: 16px;
+    }
+
+    .button {
+      width: 120px;
+      height: 30px;
+    }
+  }
+`;
+
+const QuestionContainer = styled.div`
+  display: flex;
+  @media screen and (max-width: 1000px) {
+    font-size: 14px;
   }
 `;
 
