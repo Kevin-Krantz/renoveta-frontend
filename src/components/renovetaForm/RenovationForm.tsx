@@ -82,7 +82,9 @@ const handleChange =(event) => {
           value={changeApperance}
           onChange={e => updateFields({ changeApperance: e.target.value })}
         />
+    
 </>
+
     )
  
   }
@@ -100,6 +102,7 @@ const handleChange =(event) => {
     z-index: 10;
     border: 1px solid var(--bg-secondary);
 }
+
   `
   
   export const CheckboxBg = styled.div `
@@ -108,7 +111,8 @@ const handleChange =(event) => {
   border-radius: 5px;
 
   `
-
+  
+  
 
  
 

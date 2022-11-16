@@ -132,12 +132,14 @@ width: 60%;
     border: 3px solid;
     border-color: var(--text-secondary);
     margin-top: 20px;
+    padding-left: 10px;
  
 }
 .form-input-small {
     height: 35px;
     width: 250px;
     border-radius: 10px;
+    padding-left: 10px;
 }
 
 `

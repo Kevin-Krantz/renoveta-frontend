@@ -137,11 +137,10 @@ setOptions(selectedOption);
    
 
    label{
-    margin: 10px 0 5px 0; 
+    margin: 5px 0 5px 0; 
    }
    
    input { 
-    
     width: 100px;
     height: 25px;
     background-color: #D4EDE4;
