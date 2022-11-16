@@ -18,7 +18,6 @@ type PropertyData = {
    }
    
    export function PropertyForm({
-    roofType,
     materialType,
     roofAngle,
     propertyWidth,
@@ -35,6 +34,16 @@ type PropertyData = {
       {id: 5, name: "Shingel" },
       {id: 6, name: "Annat" },
 ];
+const roofType = [
+  {id:1, name: "Sadeltak", img:"images/roofstyles/sadeltak.png"},
+  {id:2, name: "Pulpettak", img:"images/roofstyles/pulpettak.png"},
+  {id:3, name: "Valmat tak", img:"images/roofstyles/valmat.png"},
+  {id:4, name: "Mansardtak", img:"images/roofstyles/mansard.png"},
+  {id:5, name: "Motfallstak", img:"images/roofstyles/motfalls.png"},
+  {id:6, name: "Platt tak", img:"images/roofstyles/platt.png"},
+  {id:7, name: "Annat", img:"images/roofstyles/annat.png"},
+]
+
    const [options, setOptions] = useState([]); 
 
 const handleChange =(item:any) => {
@@ -51,12 +60,28 @@ setOptions(selectedOption);
      return (
        <Container>
        <label>Vilken typ av tak har du idag?</label>
-         <input
-         className='form-input-small'
-           type="text"
-           value={roofType}
-           onChange={e => updateFields({ roofType: e.target.value })}
-         />
+       
+       <CheckboxWrapper> 
+         {roofType.map((roof) => {
+        return ( 
+  <>
+          <CheckboxBg>
+          <Image src={roof.img}></Image>
+          
+           <Checkbox
+           className='checkbox-input'
+           key={roof.id}
+           id={roof.id}
+           //@ts-ignore
+           handleCheck = {() => { 
+             handleChange(roof) 
+           }}
+           name={roof.name}
+          />
+         </CheckboxBg>
+         </>)}
+         )}
+          </CheckboxWrapper>
          
           <label>Vilket material består ditt tak av idag?</label>
          <CheckboxContainer> 
@@ -140,5 +165,15 @@ setOptions(selectedOption);
     margin-left: 5px;
 
    }
-   
    `
+   
+   const Image= styled.img`
+   width: 140px;
+   margin: 0 auto;
+   `
+  const CheckboxWrapper = styled(CheckboxContainer) `
+  display: grid; 
+  grid-template-columns: 150px 150px 150px 150px;
+  grid-template-rows: 2;
+grid-gap: 5px;
+  `

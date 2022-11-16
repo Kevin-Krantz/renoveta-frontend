@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 type QuestionData = {
     anyQuestions: string
-    addImg: string
+   
    }
    
    type QuestionFormProps = QuestionData & {
@@ -12,7 +12,6 @@ type QuestionData = {
    
    export function QuestionForm({
     anyQuestions,
-    addImg,
      updateFields,
    }: QuestionFormProps) {
      return (

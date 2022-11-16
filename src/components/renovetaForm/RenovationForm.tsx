@@ -23,25 +23,30 @@ export function RenovationForm({
   }: RenovationFormProps) {
 
   const data = [
-        {id: 1, name: "Plåtarbete" },
-        {id: 2, name: "Takomläggning"},
-        {id: 3, name: "Takrenovering"},
-        {id: 4, name: "Takbyte"},
-        {id: 5, name: "Taktvätt" },
-        {id: 6, name: "Annat" },
+        {id: 1, name: "Takomläggning", isChecked: false},
+        {id: 2, name: "Måla", isChecked: false},
+        {id: 3, name: "Tvätt", isChecked: false},
 ];
 
 const [options, setOptions] = useState([]); 
 //@ts-ignore
-const handleChange =(item:any) => {
+const handleChange =(event) => {
+/*
   let selectedOption = options;
-  if(selectedOption.some((option:any) => option.id === item.id)) {
+  if(selectedOption.some((option) => option.id === item.id)) {
     selectedOption = selectedOption.filter((option:any) => option.id !== item.id);
   } else {
-    //@ts-ignore
+   
     selectedOption.push(item);
   }
   setOptions(selectedOption);
+  */
+
+//@ts-ignore
+  const selected = [...options];
+  //@ts-ignore
+  selected[index]={...selected[index], isChecked: event.target.checked}
+  setOptions([...selected])
      }
    
     return (
@@ -49,16 +54,17 @@ const handleChange =(item:any) => {
      
     <label>Vad för typ av renovering planerar du på att utföra?</label>
     <CheckboxContainer>
-        {data.map((option)=>{ 
+        {data.map((option,index)=>{ 
             return (
              <CheckboxBg> 
                     <Checkbox
                     className='checkbox-input'
                     key={option.id}
                     id={option.id}
+                    isChecked={option.isChecked}
                     //@ts-ignore
-                    handleCheck = {() => { 
-                      handleChange(option) 
+                    handleCheck = {(event) => { 
+                      handleChange(event) 
                     }}
                     name={option.name}
                     />
@@ -71,12 +77,11 @@ const handleChange =(item:any) => {
         <label>Planerar du på att ändra - färg, material eller form?</label>
         <input
           className='form-input'
-          placeholder="Beskriv vad du ska ändra på din bostad"
+          placeholder="Om Ja, beskriv vad du ska ändra på din bostad"
           type="text"
           value={changeApperance}
           onChange={e => updateFields({ changeApperance: e.target.value })}
         />
-      
 </>
     )
  
