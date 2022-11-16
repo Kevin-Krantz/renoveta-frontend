@@ -29,7 +29,7 @@ type QuestionData = {
      )
    }
 
-   const Container = styled.div`
+  const Container = styled.div`
   width: 100%;
   height: 75%;
   position: relative;

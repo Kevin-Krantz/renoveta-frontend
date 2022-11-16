@@ -113,8 +113,6 @@ const Container = styled.div`
   display: grid;
   color: var(--text-secondary);
   text-align: center;
-  width: 100vw;
-  height: 90vh;
   font-weight: 900;
 
 `;
@@ -130,7 +128,7 @@ width: 60%;
 
 .form-input{
     border-radius: 10px;
-    height: 45px;
+    height: 40px;
     border: 3px solid;
     border-color: var(--text-secondary);
     margin-top: 20px;
@@ -147,9 +145,9 @@ const Box = styled.span`
   display: flex;
   justify-content: center;
   align-self: center;
+  width: 75vw;
+  height: 80vh;
   text-align: left;
-  width: 60%;
-  height: 75%;
   position: relative;
   padding-bottom: 32px;
   font-size: 18px;
@@ -157,7 +155,7 @@ const Box = styled.span`
 `;
 export const Right = styled.span `
   width: 100%;
-  padding-top: 40px;
+  padding-top: 10px;
   display: grid;
   background-color: var(--bg-primary);
   color: var(--text-secondary);

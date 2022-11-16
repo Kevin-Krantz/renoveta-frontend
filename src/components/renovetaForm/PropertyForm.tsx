@@ -168,12 +168,12 @@ setOptions(selectedOption);
    `
    
    const Image= styled.img`
-   width: 140px;
+   width: 110px;
    margin: 0 auto;
    `
   const CheckboxWrapper = styled(CheckboxContainer) `
   display: grid; 
-  grid-template-columns: 150px 150px 150px 150px;
+  grid-template-columns: 130px 130px 130px 130px;
   grid-template-rows: 2;
-grid-gap: 5px;
+  grid-gap: 5px;
   `
