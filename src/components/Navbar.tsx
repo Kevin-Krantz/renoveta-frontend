@@ -64,6 +64,7 @@ const Nav = styled.nav`
   position: sticky;
   top: 0;
   background-color: #ffffff;
+  z-index: 10000;
 
   @media all and (max-width: 1280px) {
     margin-left: -40px;

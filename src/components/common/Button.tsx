@@ -10,9 +10,14 @@ interface Props {
 
 function Button({ type, disabled, label, primary, className }: Props) {
   return (
-    <B primary={primary} type={type} disabled={disabled} className={className}>
+    <StyledButton
+      primary={primary}
+      type={type}
+      disabled={disabled}
+      className={className}
+    >
       {label}
-    </B>
+    </StyledButton>
   );
 }
 
@@ -22,7 +27,7 @@ interface ButtonProps {
   primary: boolean;
 }
 
-const B = styled.button<ButtonProps>`
+const StyledButton = styled.button<ButtonProps>`
   width: 209px;
   height: 57px;
   border-radius: 45px;
