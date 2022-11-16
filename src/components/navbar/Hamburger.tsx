@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useState } from "react";
-import Button from "../common/Button";
-import { ScrollToTop } from "../common/ScrollToTop";
+import Button from "../../common/Button";
+import { ScrollToTop } from "../../common/ScrollToTop";
 
 interface IHamburger {
   hamburgerOpen: boolean;
@@ -37,7 +37,6 @@ function Hamburger({ user }: Props) {
                 Varför Renoveta?
               </Link>
             </div>
-
             <div>
               <Link onClick={handleClick} to="/aboutus">
                 Om oss

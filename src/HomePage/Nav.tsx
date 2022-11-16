@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import DesktopMenue from "./DesktopMenue";
-import Hamburger from "./Hamburger";
+import DesktopMenue from "../components/navbar/DesktopMenue";
+import Hamburger from "../components/navbar/Hamburger";
 
 interface Props {
   user: unknown;
@@ -18,7 +18,7 @@ function Navbar({ user }: Props): JSX.Element {
     <Container>
       {width < breakpoint ? (
         <Burger>
-          <Hamburger user={user} />{" "}
+          <Hamburger user={user} />
           <img alt="Logo" src="./images/Renovetalogo.png" />
         </Burger>
       ) : (

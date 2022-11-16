@@ -1,21 +1,18 @@
 import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-
-import Home from "./components/firstPage/Home";
-import Footer from "./AllPages/Footer";
-import Navbar from "./AllPages/navbar/Nav";
-
-import AboutUs from "./components/aboutUs/AboutUs";
-import LoginForm from "./components/LoginForm";
-
+import Home from "./HomePage/components/firstpage/Home";
+import Footer from "./components/Footer";
+import Navbar from "./HomePage/Nav";
+import AboutUs from "./HomePage/components/aboutUs/AboutUs";
+import LoginForm from "./HomePage/LoginForm";
 import { IMember } from "./types/Member";
-import { getMembers } from "./components/aboutUs/Team";
-import FAQ from "./components/FAQ";
+import { getMembers } from "./HomePage/components/aboutUs/Team";
+import FAQ from "./HomePage/FAQ";
 import auth from "./services/authService";
-import Logout from "./components/Logout";
-import MyPage from "./components/MyPage";
-import RenovetaForm from "./AllPages/renovetaForm/RenovetaForm";
+import Logout from "./MyPages/Logout";
+import MyPage from "./MyPages/MyPage";
+import RenovetaForm from "./components/renovetaForm/RenovetaForm";
 
 function App(): JSX.Element {
   const [members, setMembers] = useState<IMember[]>([]);

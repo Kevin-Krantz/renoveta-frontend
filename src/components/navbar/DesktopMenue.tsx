@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import Button from "../common/Button";
+import Button from "../../common/Button";
 import styled from "styled-components";
-import { ScrollToTop } from "../common/ScrollToTop";
+import { ScrollToTop } from "../../common/ScrollToTop";
 
 interface Props {
   user: unknown;

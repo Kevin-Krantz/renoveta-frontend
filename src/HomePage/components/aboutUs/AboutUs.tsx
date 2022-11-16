@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import End from "./End";
 import Intro from "./Intro";
-import { IMember } from "../../types/Member";
+import { IMember } from "../../../types/Member";
 import MemberList from "./MemberList";
 
 interface Props {

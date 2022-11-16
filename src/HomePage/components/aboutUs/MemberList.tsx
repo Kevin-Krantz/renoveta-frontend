@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { IMember } from "../../types/Member";
+import { IMember } from "../../../types/Member";
 
 function MemberList({ imgUrl, name, position, job, right }: IMember) {
   return (

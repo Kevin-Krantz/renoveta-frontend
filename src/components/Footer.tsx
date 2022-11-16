@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { ScrollToTop } from "./common/ScrollToTop";
+import { ScrollToTop } from "../common/ScrollToTop";
 
 const handleClick = () => {
   ScrollToTop();
