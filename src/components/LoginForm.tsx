@@ -1,7 +1,7 @@
 import Joi from "joi";
 import styled from "styled-components";
 import { useState } from "react";
-import useForm from "../components/common/Form";
+import useForm from "../AllPages/common/Form";
 import auth from "../services/authService";
 
 interface LoginFormData {

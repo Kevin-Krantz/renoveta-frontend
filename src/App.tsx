@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import Home from "./components/firstPage/Home";
-import Footer from "./components/firstPage/Footer";
-import Navbar from "./components/Navbar";
+import Footer from "./AllPages/Footer";
+import Navbar from "./AllPages/navbar/Nav";
 
 import AboutUs from "./components/aboutUs/AboutUs";
 import LoginForm from "./components/LoginForm";
@@ -15,7 +15,7 @@ import FAQ from "./components/FAQ";
 import auth from "./services/authService";
 import Logout from "./components/Logout";
 import MyPage from "./components/MyPage";
-import RenovetaForm from "./components/renovetaForm/RenovetaForm";
+import RenovetaForm from "./AllPages/renovetaForm/RenovetaForm";
 
 function App(): JSX.Element {
   const [members, setMembers] = useState<IMember[]>([]);

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
-import Button from "../common/Button";
-import Input from "../common/Input";
+import Button from "../../AllPages/common/Button";
+import Input from "../../AllPages/common/Input";
 // import { Link } from "react-router-dom";
 
 function BoxRight() {
