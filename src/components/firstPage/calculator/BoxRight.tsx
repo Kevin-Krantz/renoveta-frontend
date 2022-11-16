@@ -1,13 +1,9 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import styled from "styled-components";
 import Button from "../../common/Button";
 import Checkbox from "../../common/Checkbox";
 import Input from "../../common/Input";
 import { Link } from "react-router-dom";
-
-type Checked<T> = {
-  [Property in keyof T]?: boolean;
-};
 
 enum RenovationType {
   REROOFING = "Takomläggning",
@@ -16,6 +12,7 @@ enum RenovationType {
 }
 
 enum MaterialType {
+  DEFAULT = "",
   SHEET_METAL = "Plåt",
   PAPER = "Papp/Shingel",
   ETHERNITE = "Eternit",
@@ -25,14 +22,20 @@ enum MaterialType {
 
 function BoxRight() {
   const [input, setInput] = useState<number>(0);
-  const [checked, setChecked] = useState<{ [key in RenovationType]?: boolean }>(
-    {}
+  const [selectedType, setSelectedType] = useState<RenovationType | "">("");
+  const [selectedMaterial, setSelectedMaterial] = useState<MaterialType | "">(
+    ""
   );
-  const [isChecked, setIsChecked] = useState<{
-    [key in MaterialType]?: false;
-  }>({});
 
-  const data = [
+  interface Data {
+    id: string;
+    name: MaterialType;
+    [RenovationType.REROOFING]: number;
+    [RenovationType.PAINTING]: number;
+    [RenovationType.CLEANING]: number;
+  }
+
+  const data: Data[] = [
     {
       id: "1",
       name: MaterialType.SHEET_METAL,
@@ -70,20 +73,16 @@ function BoxRight() {
     },
   ];
 
-  const handleChecked = (item: any) => {
-    if (item === Object.values(RenovationType)) return (item = true);
-    setChecked(item);
-  };
-
-  const handleCheck = (item: any) => {
-    if (item === Object.values(MaterialType)) return (item = true);
-    setIsChecked(item);
-  };
-
   function getTotalPrice() {
-    // let total = 0;
-    // const formData = data;
-    // return total;
+    let total = 0;
+
+    const material = data.find((item) => item.name === selectedMaterial);
+
+    if (!material) return total;
+
+    total += material[selectedType as RenovationType] * input;
+
+    return total;
   }
 
   return (
@@ -98,10 +97,12 @@ function BoxRight() {
                   className="checkbox-input"
                   key={i}
                   id={i.toString()}
-                  // checked={checked}
-                  //@ts-ignore
-                  handleCheck={handleChecked}
+                  checked={option === selectedType}
+                  handleCheck={(e) =>
+                    setSelectedType(e.target.name as RenovationType)
+                  }
                   name={option}
+                  type="radio"
                 />
               </StyledCheckBox>
             );
@@ -117,11 +118,13 @@ function BoxRight() {
                 <Checkbox
                   className="checkbox-input"
                   key={option.id}
-                  id={option.id}
-                  // checked={isChecked}
-                  //@ts-ignore
-                  handleCheck={handleCheck}
+                  id={option.id.toString()}
+                  checked={option.name === selectedMaterial}
+                  handleCheck={(e) =>
+                    setSelectedMaterial(e.target.name as MaterialType)
+                  }
                   name={option.name}
+                  type="radio"
                 />
               </StyledCheckBox>
             );
@@ -140,8 +143,10 @@ function BoxRight() {
           />
         </a>
       </div>
-      <TotalaPris>{}kr</TotalaPris>
+
       <End>
+        <a>{getTotalPrice()}kr</a>
+        <p>Prisindikation redovisas med arbete och material</p>
         <Link to="/renovetaform">
           <Button primary={false} type="submit" label={"Börja Renoveta"} />
         </Link>
@@ -153,7 +158,7 @@ function BoxRight() {
 export default BoxRight;
 
 const Right = styled.span`
-  width: 55%;
+  width: 600px;
   display: grid;
   background-color: var(--bg-primary);
   color: var(--text-secondary);
@@ -180,6 +185,13 @@ const Right = styled.span`
     grid-template-columns: auto auto;
     margin: 10px;
   }
+
+  @media screen and (max-width: 880) {
+    width: 300px;
+    right: 50px;
+
+    font-size: 16px !important;
+  }
 `;
 
 const StyledCheckBox = styled.div`
@@ -192,17 +204,6 @@ const StyledCheckBox = styled.div`
   }
 `;
 
-const TotalaPris = styled.a`
-  text-align: center !important;
-`;
-
 const End = styled.div`
-  padding-left: 20%;
-
-  p {
-    font-style: bold;
-    font-weight: 700;
-    font-size: 14;
-    padding-left: 21;
-  }
+  text-align: center;
 `;

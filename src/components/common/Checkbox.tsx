@@ -7,6 +7,7 @@ interface CheckboxProps {
   value?: string;
   className?: string;
   name: string;
+  type: string;
 }
 function Checkbox(props: CheckboxProps) {
   return (
@@ -15,7 +16,7 @@ function Checkbox(props: CheckboxProps) {
         key={props.id}
         id={props.id}
         onChange={props.handleCheck}
-        type="radio"
+        type={props.type}
         checked={props.checked}
         value={props.value}
         className={props.className}
