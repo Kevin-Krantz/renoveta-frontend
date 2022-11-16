@@ -40,10 +40,10 @@ function RegisterForm() {
     doSubmit: async () => {
       try {
         await user.register(formData);
-        console.log("submitted");
-        //vart ska user sen? inloggad page?
+        console.log(formData);
+        window.location.replace("/login");
       } catch (error) {
-        if (error.response.status === 400) {
+        if (error.response?.status === 400) {
           const formErrors = { email: error.response.data };
           setFormErrors(formErrors);
         }
@@ -81,7 +81,6 @@ const Wrapper = styled.form`
   padding-right: 20px;
   width: 30%;
   height: auto;
-  position: absolute;
   top: 5%;
   left: 30%;
 `;

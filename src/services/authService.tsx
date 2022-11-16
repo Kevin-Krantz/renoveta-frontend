@@ -31,13 +31,14 @@ function getJwt() {
 
 function getCurrentUser() {
   try {
-    const { token }: any = getJwt();
+    const token: any = getJwt();
     const user = jwtDecode(token);
     return user;
   } catch (error) {
     return null;
   }
 }
+
 export default {
   login,
   loginWithJwt,

@@ -2,29 +2,53 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "./common/Button";
 
-function Navbar(): JSX.Element {
+interface Props {
+  user: unknown;
+}
+
+function Navbar({ user }: Props): JSX.Element {
   return (
     <Nav>
       <img alt="Logo" src="./images/Renovetalogo.png" />
       <ul>
-        <li>
-          <Link to="/aboutus">Varför Renoveta?</Link>
-        </li>
-        <li>
-          <Link to="/">Tjänsten</Link>
-        </li>
-        <li>
-          <Link to="/kalkylen">Om oss</Link>
-        </li>
-        <li>
-          <Link to="/faq">Q&A</Link>
-        </li>
-        <li>
-          <Link to="/login">Logga in</Link>
-        </li>
-        <Link to="/register" style={{ all: "unset" }}>
-          <Button label="Börja Renoveta" primary={false} type={onsubmit} />
-        </Link>
+        <>
+          <li>
+            <Link to="/aboutus">Varför Renoveta?</Link>
+          </li>
+          <li>
+            <Link to="/">Tjänsten</Link>
+          </li>
+          <li>
+            <Link to="/kalkylen">Om oss</Link>
+          </li>
+          <li>
+            <Link to="/faq">Q&A</Link>
+          </li>
+          {user && (
+            <>
+              <li>
+                <Link to="/me">Mina Sidor</Link>
+              </li>
+              <Link to="/logout" style={{ all: "unset" }}>
+                <Button label="Logga ut" primary={false} type={onsubmit} />
+              </Link>
+            </>
+          )}
+          {!user && (
+            <>
+              <li>
+                <Link to="/login">Logga in</Link>
+              </li>
+              <Link to="/register" style={{ all: "unset" }}>
+                <Button
+                  label="Börja Renoveta"
+                  primary={false}
+                  type={onsubmit}
+                />
+              </Link>
+            </>
+          )}
+        </>
       </ul>
     </Nav>
   );
