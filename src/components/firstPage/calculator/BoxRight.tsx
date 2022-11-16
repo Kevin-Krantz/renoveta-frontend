@@ -28,6 +28,9 @@ function BoxRight() {
   const [checked, setChecked] = useState<{ [key in RenovationType]?: boolean }>(
     {}
   );
+  const [isChecked, setIsChecked] = useState<{
+    [key in MaterialType]?: false;
+  }>({});
 
   const data = [
     {
@@ -67,17 +70,21 @@ function BoxRight() {
     },
   ];
 
-  const handleCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // var updatedList = [...checked];
-    // if (e.target.checked) {
-    //   updatedList = [...checked, e.target.value];
-    // } else {
-    //   updatedList.splice(checked.indexOf(e.target.value), 1);
-    // }
-    // setChecked(updatedList);
+  const handleChecked = (item: any) => {
+    if (item === Object.values(RenovationType)) return (item = true);
+    setChecked(item);
   };
 
-  const totalCount = () => {};
+  const handleCheck = (item: any) => {
+    if (item === Object.values(MaterialType)) return (item = true);
+    setIsChecked(item);
+  };
+
+  function getTotalPrice() {
+    // let total = 0;
+    // const formData = data;
+    // return total;
+  }
 
   return (
     <Right>
@@ -91,8 +98,9 @@ function BoxRight() {
                   className="checkbox-input"
                   key={i}
                   id={i.toString()}
+                  // checked={checked}
                   //@ts-ignore
-                  // handleCheck={handleCheck}
+                  handleCheck={handleChecked}
                   name={option}
                 />
               </StyledCheckBox>
@@ -110,9 +118,9 @@ function BoxRight() {
                   className="checkbox-input"
                   key={option.id}
                   id={option.id}
-                  checked={}
+                  // checked={isChecked}
                   //@ts-ignore
-                  // handleCheck={handleCheck}
+                  handleCheck={handleCheck}
                   name={option.name}
                 />
               </StyledCheckBox>
@@ -132,7 +140,7 @@ function BoxRight() {
           />
         </a>
       </div>
-      <TotalaPris>{totalPrice}kr</TotalaPris>
+      <TotalaPris>{}kr</TotalaPris>
       <End>
         <Link to="/renovetaform">
           <Button primary={false} type="submit" label={"Börja Renoveta"} />
