@@ -6,11 +6,13 @@ handleCheck?(event:React.ChangeEvent<HTMLInputElement>): void
 isChecked?: boolean
 value?:string
 className?: string
-name: string;
+name: string
+img?: string
 }
 function Checkbox(props: CheckboxProps) {
     return (
         <li>
+            <img src={props.img}/>
             <input
             key={props.id}
             onChange ={props.handleCheck}
