@@ -11,7 +11,7 @@ import { getMembers } from "./HomePage/components/aboutUs/Team";
 import FAQ from "./HomePage/FAQ";
 import auth from "./services/authService";
 import Logout from "./MyPages/Logout";
-import MyPage from "./MyPages/MyPage";
+import MyPage from "./MyPages/customerPages/MyPage";
 import RenovetaForm from "./components/renovetaForm/RenovetaForm";
 
 function App(): JSX.Element {

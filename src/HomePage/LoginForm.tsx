@@ -74,10 +74,11 @@ const Container = styled.form`
   padding-bottom: 40px;
   padding-left: 60px;
   padding-right: 20px;
-  width: 30%;
+  width: 500px;
   height: auto;
-  top: 5%;
-  left: 30%;
+  margin-top: 20px;
+  margin-bottom: 100px;
+  margin-left: 400px;
 `;
 
 const Title = styled.span`
