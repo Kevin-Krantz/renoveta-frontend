@@ -5,7 +5,11 @@ import { FormEvent, useState } from "react";
 import { PropertyForm } from "./PropertyForm";
 import { QuestionForm } from "./QuestionForm";
 import { PersonalInfoForm } from "./PersonalInfoForm";
+<<<<<<< HEAD
 import BoxLeft from "../../HomePage/components/calculator/BoxLeft";
+=======
+import BoxLeft from "../firstPage/calculator/BoxLeft";
+>>>>>>> master
 
 type FormData = {
   typeOfRenovation: string;
@@ -111,7 +115,7 @@ const Container = styled.div`
   color: var(--text-secondary);
   text-align: center;
   width: 100vw;
-  height: 90vh;
+  height: 180vh;
   font-weight: 900;
 `;
 
@@ -165,6 +169,7 @@ const ButtonContainer = styled.div`
   right: 30px;
 `;
 const Button = styled.button`
+<<<<<<< HEAD
   font-weight: 600;
   font-family: "Catamaran";
   width: 150px;
@@ -189,4 +194,32 @@ const Button = styled.button`
   :active {
     transform: scale(1);
   }
+=======
+   font-weight: 600;
+   font-family: 'Catamaran';
+    width: 150px;
+    height: 40px;
+    margin-left: 15px;
+    border-radius: 45px;
+    border: 2px solid var(--bg-color);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    cursor: pointer;
+
+    &.secondary {
+        background-color: #ffffff ;
+        border: 3px solid var(--bg-color);
+        color: var(--bg-color);
+        
+    }
+}
+  
+    :hover {
+      transform: scale(1.03);
+    }
+  
+    :active {
+      transform: scale(1);
+    }
+>>>>>>> master
 `;
