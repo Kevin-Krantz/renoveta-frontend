@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Button from "../../../common/Button";
+import Button from "../../common/Button";
 
 function BoxLeft() {
   return (

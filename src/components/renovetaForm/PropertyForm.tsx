@@ -70,7 +70,7 @@ export function PropertyForm({
                 handleChange(option);
               }}
               name={option.name}
-              // type="checkbox"
+              type="checkbox"
             />
           </CheckboxBg>
         ))}
