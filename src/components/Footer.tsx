@@ -65,7 +65,7 @@ const Container = styled.div`
   position: relative;
   color: var(--text-secondary) !important;
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 880px) {
     img {
       height: 100px;
       width: 300px;
@@ -140,4 +140,8 @@ const VerticalLine = styled.div`
   height: 350px;
   position: absolute;
   top: 70px;
+
+  @media screen and (max-width: 880px) {
+    left: 350px;
+  }
 `;
