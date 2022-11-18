@@ -97,7 +97,7 @@ const Container = styled.div`
   white-space: nowrap;
   position: sticky;
   background-color: #ffffff;
-  width: 50px;
+  width: 100px;
   display: flex;
   justify-content: space-around;
   flex-flow: column nowrap;
@@ -107,9 +107,10 @@ const Container = styled.div`
     background-color: var(--bg-color);
     font-size: 14px;
     font-weight: bold;
-    height: 40px;
-    width: 130px;
+    height: 35px;
+    width: 120px;
     color: white;
+    margin-top: 10px;
   }
 
   button:hover {
@@ -134,6 +135,6 @@ const Burger = styled.div`
 
   i {
     margin-top: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
   }
 `;

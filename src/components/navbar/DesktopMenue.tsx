@@ -5,7 +5,7 @@ import { ScrollToTop } from "../../common/ScrollToTop";
 import { IUser } from "../../types/User";
 
 interface Props {
-  user: IUser;
+  user?: IUser;
 }
 
 const handleClick = () => {
