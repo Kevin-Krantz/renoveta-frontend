@@ -8,10 +8,6 @@ interface Props {
   user?: IUser;
 }
 
-const handleClick = () => {
-  ScrollToTop();
-};
-
 function DesktopMenue({ user }: Props): JSX.Element {
   return (
     <Container>
@@ -19,29 +15,29 @@ function DesktopMenue({ user }: Props): JSX.Element {
         <img alt="Logo" src="./images/Renovetalogo.png" />
         <>
           <li>
-            <Link onClick={handleClick} to="/">
+            <Link onClick={ScrollToTop} to="/">
               Varför Renoveta?
             </Link>
           </li>
 
           <li>
-            <Link onClick={handleClick} to="/aboutus">
+            <Link onClick={ScrollToTop} to="/aboutus">
               Om oss
             </Link>
           </li>
           <li>
-            <Link onClick={handleClick} to="/faq">
+            <Link onClick={ScrollToTop} to="/faq">
               Q&A
             </Link>
           </li>
           {user && (
             <>
               <li>
-                <Link onClick={handleClick} to="/me">
+                <Link onClick={ScrollToTop} to="/me">
                   Mina Sidor
                 </Link>
               </li>
-              <Link onClick={handleClick} to="/logout" style={{ all: "unset" }}>
+              <Link onClick={ScrollToTop} to="/logout" style={{ all: "unset" }}>
                 <Button label="Logga ut" primary={false} type={onsubmit} />
               </Link>
             </>
@@ -49,12 +45,12 @@ function DesktopMenue({ user }: Props): JSX.Element {
           {!user && (
             <>
               <li>
-                <Link onClick={handleClick} to="/login">
+                <Link onClick={ScrollToTop} to="/login">
                   Logga in
                 </Link>
               </li>
               <Link
-                onClick={handleClick}
+                onClick={ScrollToTop}
                 to="/renovetaform"
                 style={{ all: "unset" }}
               >

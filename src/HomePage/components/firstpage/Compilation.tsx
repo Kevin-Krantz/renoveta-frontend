@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../../common/Button";
+import { ScrollToTop } from "../../../common/ScrollToTop";
 
 function Compilation() {
   return (
@@ -16,11 +18,13 @@ function Compilation() {
           hur du undviker vanliga misstag. Det ska vara lätt att göra rätt. Låt
           oss hjälpa dig.
         </p>
-        <Button
-          primary={true}
-          type="register"
-          label={"Registrera dig"}
-        ></Button>
+        <Link onClick={ScrollToTop} to="/register">
+          <Button
+            primary={true}
+            type="register"
+            label={"Registrera dig"}
+          ></Button>
+        </Link>
       </Text>
     </Container>
   );

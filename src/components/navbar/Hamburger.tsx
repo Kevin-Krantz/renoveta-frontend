@@ -21,10 +21,6 @@ function Hamburger({ user }: Props) {
     setHamburgerOpen(!hamburgerOpen);
   };
 
-  const handleClick = () => {
-    ScrollToTop();
-  };
-
   return (
     <Container onClick={toggleHamburger}>
       {hamburgerOpen ? (
@@ -34,29 +30,29 @@ function Hamburger({ user }: Props) {
           <>
             <i className="fa-solid fa-bars" />
             <div>
-              <Link onClick={handleClick} to="/">
+              <Link onClick={ScrollToTop} to="/">
                 Varför Renoveta?
               </Link>
             </div>
             <div>
-              <Link onClick={handleClick} to="/aboutus">
+              <Link onClick={ScrollToTop} to="/aboutus">
                 Om oss
               </Link>
             </div>
             <div>
-              <Link onClick={handleClick} to="/faq">
+              <Link onClick={ScrollToTop} to="/faq">
                 Q&A
               </Link>
             </div>
             {user && (
               <>
                 <div>
-                  <Link onClick={handleClick} to="/me">
+                  <Link onClick={ScrollToTop} to="/me">
                     Mina Sidor
                   </Link>
                 </div>
                 <Link
-                  onClick={handleClick}
+                  onClick={ScrollToTop}
                   to="/logout"
                   style={{ all: "unset" }}
                 >
@@ -67,12 +63,12 @@ function Hamburger({ user }: Props) {
             {!user && (
               <>
                 <div>
-                  <Link onClick={handleClick} to="/login">
+                  <Link onClick={ScrollToTop} to="/login">
                     Logga in
                   </Link>
                 </div>
                 <Link
-                  onClick={handleClick}
+                  onClick={ScrollToTop}
                   to="/renovetaform"
                   style={{ all: "unset" }}
                 >
