@@ -3,12 +3,13 @@ import styled from "styled-components";
 import { useState } from "react";
 import Button from "../../common/Button";
 import { ScrollToTop } from "../../common/ScrollToTop";
+import { IUser } from "../../types/User";
 
 interface IHamburger {
   hamburgerOpen: boolean;
 }
 interface Props {
-  user: unknown;
+  user?: IUser;
 }
 
 function Hamburger({ user }: Props) {

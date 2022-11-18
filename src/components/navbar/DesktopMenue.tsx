@@ -2,9 +2,10 @@ import { Link } from "react-router-dom";
 import Button from "../../common/Button";
 import styled from "styled-components";
 import { ScrollToTop } from "../../common/ScrollToTop";
+import { IUser } from "../../types/User";
 
 interface Props {
-  user: unknown;
+  user: IUser;
 }
 
 const handleClick = () => {

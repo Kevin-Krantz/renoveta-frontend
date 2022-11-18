@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import DesktopMenue from "../components/navbar/DesktopMenue";
 import Hamburger from "../components/navbar/Hamburger";
+import { IUser } from "../types/User";
 
 interface Props {
-  user: unknown;
+  user?: IUser;
 }
 function Navbar({ user }: Props): JSX.Element {
   const [width, setWidth] = useState(window.innerWidth);
