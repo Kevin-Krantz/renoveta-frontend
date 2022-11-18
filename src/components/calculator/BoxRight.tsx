@@ -250,4 +250,5 @@ const StyledCheckBox = styled.div`
 
 const End = styled.div`
   text-align: center;
+  margin-bottom: 20px;
 `;

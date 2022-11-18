@@ -42,7 +42,7 @@ const Box = styled.span`
   font-size: 18px;
 
   @media screen and (max-width: 1000px) {
-    width: 800px;
+    width: 600px;
     left: -5px;
     font-size: 12px;
   }
