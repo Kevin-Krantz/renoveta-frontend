@@ -1,18 +1,23 @@
 import { useEffect, useState } from "react";
-import { getForm } from "../services/formService";
+import styled from "styled-components";
+import { getUserForm } from "../services/formService";
 
 function Form() {
   const [form, setForm] = useState([]);
 
   useEffect(() => {
+    populateFormData();
+  }, []);
+
+  function populateFormData() {
     const fetchForm = async () => {
-      const form = await getForm();
+      const form = await getUserForm();
       setForm(form);
     };
     fetchForm();
-  });
-
-  return <div>{form}</div>;
+    console.log("form", form);
+  }
+  return <div>The form is here!</div>;
 }
 
 export default Form;

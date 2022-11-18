@@ -6,6 +6,7 @@ interface Props {
   label: string;
   primary: boolean;
   className?: string;
+  onClick?(e: React.MouseEvent<HTMLElement>): void;
 }
 
 function Button({ type, disabled, label, primary, className }: Props) {

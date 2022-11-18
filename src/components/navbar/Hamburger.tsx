@@ -50,9 +50,15 @@ function Hamburger({ user }: Props) {
             {user && (
               <>
                 <div>
-                  <Link to="/me">Mina Sidor</Link>
+                  <Link onClick={handleClick} to="/me">
+                    Mina Sidor
+                  </Link>
                 </div>
-                <Link to="/logout" style={{ all: "unset" }}>
+                <Link
+                  onClick={handleClick}
+                  to="/logout"
+                  style={{ all: "unset" }}
+                >
                   <Button label="Logga ut" primary={false} type={onsubmit} />
                 </Link>
               </>
@@ -66,7 +72,7 @@ function Hamburger({ user }: Props) {
                 </div>
                 <Link
                   onClick={handleClick}
-                  to="/register"
+                  to="/renovetaform"
                   style={{ all: "unset" }}
                 >
                   <Button
