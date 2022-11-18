@@ -4,6 +4,9 @@ import { useState } from "react";
 import useForm from "../common/Form";
 import user from "../services/userService";
 
+interface Window {
+  location: Location | string;
+}
 interface RegisterFormData {
   name: string;
   email: string;
@@ -40,8 +43,7 @@ function RegisterForm() {
     doSubmit: async () => {
       try {
         await user.register(formData);
-        console.log(formData);
-        window.location.replace("/login"); //funkar ej
+        window.location.replace("/login");
       } catch (error) {
         if (error.response?.status === 400) {
           const formErrors = { email: error.response.data };
@@ -84,6 +86,10 @@ const Wrapper = styled.form`
   margin-top: 20px;
   margin-left: 400px;
   margin-bottom: 100px;
+
+  @media screen and (max-width: 880px) {
+    margin-left: 50px;
+  }
 `;
 
 const Title = styled.span`

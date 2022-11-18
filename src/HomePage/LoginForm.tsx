@@ -79,6 +79,10 @@ const Container = styled.form`
   margin-top: 20px;
   margin-bottom: 100px;
   margin-left: 400px;
+
+  @media screen and (max-width: 880px) {
+    margin-left: 50px;
+  }
 `;
 
 const Title = styled.span`
