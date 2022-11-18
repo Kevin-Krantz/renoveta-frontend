@@ -76,12 +76,11 @@ function RenovetaForm() {
   return (
     <Container>
       <Box>
-        <BoxLeft></BoxLeft>
-
+        <BoxLeft />
         <Right>
           <Form onSubmit={onSubmit}>
             <div>
-              {currentStepIndex + 1}/ {steps.length}
+              {currentStepIndex + 1} / {steps.length}
             </div>
             {step}
             <ButtonContainer>
@@ -111,7 +110,6 @@ const Container = styled.div`
   color: var(--text-secondary);
   text-align: center;
   width: 100vw;
-  height: 180vh;
   font-weight: 900;
 `;
 
@@ -140,12 +138,20 @@ const Box = styled.span`
   align-self: center;
   text-align: left;
   width: 60%;
-  height: 75%;
   position: relative;
   padding-bottom: 32px;
   font-size: 18px;
   margin: 0 auto;
+
+  @media screen and (max-width: 880px) {
+    margin-top: 0px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 1100px;
+  }
 `;
+
 export const Right = styled.span`
   width: 100%;
   padding-top: 40px;
@@ -158,6 +164,14 @@ export const Right = styled.span`
   padding-left: 72px;
   line-height: 28px;
   position: relative;
+
+  @media screen and (max-width: 880px) {
+    position: relative;
+    width: 550px;
+    border-bottom-left-radius: 45px;
+    border-top-right-radius: 0px;
+    padding-bottom: 24px;
+  }
 `;
 const ButtonContainer = styled.div`
   position: absolute;

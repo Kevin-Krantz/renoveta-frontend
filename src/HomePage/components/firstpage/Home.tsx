@@ -14,6 +14,7 @@ function Home() {
   useEffect(() => {
     setList(getList());
   }, []);
+
   return (
     <div>
       <Hero />

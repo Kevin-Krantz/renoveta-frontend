@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../../../common/Button";
+import { ScrollToView } from "../../../../common/ScrollToView";
 
 function HeroLeft() {
   return (
@@ -21,14 +21,14 @@ function HeroLeft() {
           type="button"
           className="buttonleft"
         />
-        <Link to="/kalkylen">
-          <Button
-            label="Prova kalkylen"
-            primary={true}
-            type="button"
-            className="buttonright"
-          />
-        </Link>
+
+        <Button
+          label="Prova kalkylen"
+          primary={true}
+          type="button"
+          className="buttonright"
+          onClick={ScrollToView}
+        />
       </StyledButton>
     </Container>
   );

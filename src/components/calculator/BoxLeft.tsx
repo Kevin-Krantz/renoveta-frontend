@@ -77,6 +77,6 @@ const Logo = styled.img`
   @media screen and (max-width: 880px) {
     width: 120px;
     top: -10px;
-    left: 25px;
+    left: -20px;
   }
 `;

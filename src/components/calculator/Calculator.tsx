@@ -1,11 +1,13 @@
+import { useRef } from "react";
 import styled from "styled-components";
 import BoxLeft from "./BoxLeft";
 import BoxRight from "./BoxRight";
 
 function Calculator() {
+  const ref = useRef(null);
   return (
     <Image>
-      <Container>
+      <Container ref={ref}>
         <Box>
           <BoxLeft />
           <BoxRight />
