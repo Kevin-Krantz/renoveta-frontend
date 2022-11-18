@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Button from "../../common/Button";
 
 function HeroLeft() {
   return (
@@ -12,10 +14,22 @@ function HeroLeft() {
         renoveringsprojekt. <br />
         Prova idag - enkelt, smidigt och kostnadsfritt.
       </p>
-      <div>
-        <Button className="buttonleft">Om tjänsten</Button>
-        <Button className="buttonright">Prova kalkylen</Button>
-      </div>
+      <StyledButton>
+        <Button
+          label=" Om tjänsten"
+          primary={false}
+          type="button"
+          className="buttonleft"
+        />
+        <Link to="/kalkylen">
+          <Button
+            label="Prova kalkylen"
+            primary={true}
+            type="button"
+            className="buttonright"
+          />
+        </Link>
+      </StyledButton>
     </Container>
   );
 }
@@ -50,26 +64,33 @@ const Container = styled.div`
   }
 `;
 
-const Button = styled.button`
-  width: 120px;
-  height: 50px;
-  border-radius: 8px;
-  border: 2px solid var(--bg-secondary);
-  color: var(--text-primary);
-  background-color: var(--bg-color);
-  margin-right: 32px;
-  margin-left: 32px;
+const StyledButton = styled.div`
+  display: flex;
+  width: 400px;
+  height: 100px;
 
   .buttonleft {
+    width: 185px;
     align-items: left;
+    margin-right: 80px;
   }
   .buttonright {
+    width: 185px;
+    background-color: var(--bg-color);
     align-items: right;
+    color: var(--text-primary);
   }
 
   @media screen and (max-width: 880px) {
-    width: 100px;
-    height: 40px;
-    top: 5px;
+    .buttonleft {
+      width: 100px;
+      height: 40px;
+      top: 5px;
+    }
+    .buttonright {
+      width: 100px;
+      height: 40px;
+      top: 5px;
+    }
   }
 `;

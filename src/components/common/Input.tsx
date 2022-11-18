@@ -3,20 +3,30 @@ import styled from "styled-components";
 interface Props<T> {
   name: keyof T;
   label?: string;
-  value: string;
+  value: string | number;
   error?: string;
   type: string;
   onChange(e: React.ChangeEvent<HTMLInputElement>): void;
+  onInput?(e: React.ChangeEvent<HTMLInputElement>): void;
   className?: string;
 }
 
-function Input<T>({ error, name, label, value, onChange, type }: Props<T>) {
+function Input<T>({
+  error,
+  name,
+  label,
+  value,
+  onChange,
+  onInput,
+  type,
+}: Props<T>) {
   return (
     <Container>
       <Label htmlFor={name as string}>{label}</Label>
       <input
         className="form-input"
         onChange={onChange}
+        onInput={onInput}
         id={name as string}
         name={name as string}
         value={value}

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Header from "./Header";
 import BoxLeft from "./BoxLeft";
 import BoxRight from "./BoxRight";
 
@@ -7,7 +6,6 @@ function Calculator() {
   return (
     <Image>
       <Container>
-        <Header />
         <Box>
           <BoxLeft />
           <BoxRight />
@@ -21,8 +19,8 @@ export default Calculator;
 
 const Image = styled.div`
   background-image: url("images/bg-photo-paint.png");
-  background-size: 180%;
-  width: 100%;
+  background-size: 1350px;
+  background-repeat: none;
 `;
 
 const Container = styled.div`
@@ -35,9 +33,17 @@ const Box = styled.span`
   display: flex;
   justify-content: center;
   text-align: left;
-  width: 80%;
-  left: 10%;
+  width: 1100px;
+  left: 100px;
   position: relative;
+  margin-top: 100px;
+  margin-bottom: 100px;
   padding-bottom: 32px;
   font-size: 18px;
+
+  @media screen and (max-width: 1000px) {
+    width: 800px;
+    left: -5px;
+    font-size: 12px;
+  }
 `;

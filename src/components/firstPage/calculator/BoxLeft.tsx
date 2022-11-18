@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Button from "../common/Button";
+import Button from "../../common/Button";
 
 function BoxLeft() {
   return (
@@ -18,7 +18,12 @@ function BoxLeft() {
         <li>Skräddarsytt avtal </li>
         <li>Regel-koll</li>
       </ul>
-      <Button primary={true} type="submit" label={"Registrera dig"} />
+      <Button
+        className="button"
+        primary={true}
+        type="submit"
+        label={"Registrera dig"}
+      />
     </Left>
   );
 }
@@ -26,14 +31,14 @@ function BoxLeft() {
 export default BoxLeft;
 
 const Left = styled.span`
-  width: 45%;
+  width: 450px;
   background-color: var(--bg-secondary);
   color: var(--text-primary);
   border: 5px solid var(--bg-secondary);
   border-top-left-radius: 45px;
   border-bottom-left-radius: 45px;
   padding-left: 72px;
-  padding-top: 72px;
+  padding-top: 100px;
   padding-bottom: 72px;
 
   h1 {
@@ -45,11 +50,33 @@ const Left = styled.span`
   }
   ul {
     font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  @media screen and (max-width: 880px) {
+    width: 400px;
+
+    padding-left: 16px;
+
+    h1 {
+      font-size: 18px;
+    }
+
+    .button {
+      width: 120px;
+      height: 30px;
+    }
   }
 `;
 const Logo = styled.img`
   position: absolute;
-  width: 10%;
-  top: 8px;
-  left: 48px;
+  width: 150px;
+  top: 2px;
+  left: -10px;
+
+  @media screen and (max-width: 880px) {
+    width: 120px;
+    top: -10px;
+    left: 25px;
+  }
 `;
