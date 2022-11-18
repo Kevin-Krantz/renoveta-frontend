@@ -37,7 +37,7 @@ function LoginForm() {
     doSubmit: async () => {
       try {
         await auth.login({ formData });
-        console.log("sucess");
+        window.location.replace("/");
       } catch (error) {
         if (error.response?.status === 400) {
           const formErrors = { email: error.response.data };
@@ -54,17 +54,18 @@ function LoginForm() {
   const { renderInput, renderButton, handleSubmit } = useForm(rule);
 
   return (
-    <Wrapper onSubmit={handleSubmit}>
+    <Container onSubmit={handleSubmit}>
       <Title>Login Form</Title>
       {renderInput({ label: "E-mail", name: "email" })}
       {renderInput({ label: "Password", name: "password", type: "password" })}
       {renderButton({ label: "Log in" })}
-    </Wrapper>
+    </Container>
   );
 }
 
 export default LoginForm;
-const Wrapper = styled.form`
+
+const Container = styled.form`
   background-color: var(--bg-secondary);
   border: 5px solid var(--bg-primary);
   border-radius: 45px;
@@ -75,7 +76,6 @@ const Wrapper = styled.form`
   padding-right: 20px;
   width: 30%;
   height: auto;
-  position: absolute;
   top: 5%;
   left: 30%;
 `;

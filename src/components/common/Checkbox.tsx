@@ -1,7 +1,7 @@
 import React from "react";
 
 interface CheckboxProps {
-  id?: string;
+  id?: string | number;
   handleCheck?(event: React.ChangeEvent<HTMLInputElement>): void;
   checked?: boolean;
   value?: string;
@@ -14,7 +14,7 @@ function Checkbox(props: CheckboxProps) {
     <>
       <input
         key={props.id}
-        id={props.id}
+        id={props.id?.toString()}
         onChange={props.handleCheck}
         type={props.type}
         checked={props.checked}

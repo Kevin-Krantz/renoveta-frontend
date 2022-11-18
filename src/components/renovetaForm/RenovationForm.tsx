@@ -52,7 +52,7 @@ export function RenovationForm({
               <Checkbox
                 className="checkbox-input"
                 key={option.id}
-                id={option.id.toString()}
+                id={option.id}
                 //@ts-ignore
                 handleCheck={() => {
                   handleChange(option);

@@ -61,17 +61,16 @@ export function PropertyForm({
       <label>Vilket material består ditt tak av idag?</label>
       <CheckboxContainer>
         {data.map((option) => (
-          <CheckboxBg>
+          <CheckboxBg key={option.id}>
             <Checkbox
               className="checkbox-input"
               key={option.id}
-              id={option.id.toString()}
-              //@ts-ignore
+              id={option.id}
               handleCheck={() => {
                 handleChange(option);
               }}
               name={option.name}
-              type="checkbox"
+              // type="checkbox"
             />
           </CheckboxBg>
         ))}
