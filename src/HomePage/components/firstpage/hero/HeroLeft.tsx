@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Button from "../../common/Button";
+import Button from "../../../../common/Button";
 
 function HeroLeft() {
   return (

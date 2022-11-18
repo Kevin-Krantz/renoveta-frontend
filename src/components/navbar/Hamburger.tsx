@@ -1,14 +1,20 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useState } from "react";
-import Button from "../common/Button";
-import { ScrollToTop } from "../common/ScrollToTop";
+import Button from "../../common/Button";
+import { ScrollToTop } from "../../common/ScrollToTop";
 
-interface Props {
+interface IHamburger {
   hamburgerOpen: boolean;
 }
-function Hamburger() {
-  const [hamburgerOpen, setHamburgerOpen] = useState<Props | boolean>(true);
+interface Props {
+  user: unknown;
+}
+
+function Hamburger({ user }: Props) {
+  const [hamburgerOpen, setHamburgerOpen] = useState<IHamburger | boolean>(
+    true
+  );
 
   const toggleHamburger = () => {
     setHamburgerOpen(!hamburgerOpen);
@@ -24,35 +30,60 @@ function Hamburger() {
         <Icon className="fa-solid fa-bars" />
       ) : (
         <Burger>
-          <i className="fa-solid fa-bars" />
-          <div>
-            <Link onClick={handleClick} to="/">
-              Varför Renoveta?
-            </Link>
-          </div>
-          <div>
-            <Link onClick={handleClick} to="/">
-              Tjänsten
-            </Link>
-          </div>
-          <div>
-            <Link onClick={handleClick} to="/aboutus">
-              Om oss
-            </Link>
-          </div>
-          <div>
-            <Link onClick={handleClick} to="/faq">
-              Q&A
-            </Link>
-          </div>
-          <div>
-            <Link onClick={handleClick} to="/login">
-              Logga in
-            </Link>
-          </div>
-          <Link onClick={handleClick} to="/register" style={{ all: "unset" }}>
-            <Button label="Börja Renoveta" primary={false} type={onsubmit} />
-          </Link>
+          <>
+            <i className="fa-solid fa-bars" />
+            <div>
+              <Link onClick={handleClick} to="/">
+                Varför Renoveta?
+              </Link>
+            </div>
+            <div>
+              <Link onClick={handleClick} to="/aboutus">
+                Om oss
+              </Link>
+            </div>
+            <div>
+              <Link onClick={handleClick} to="/faq">
+                Q&A
+              </Link>
+            </div>
+            {user && (
+              <>
+                <div>
+                  <Link onClick={handleClick} to="/me">
+                    Mina Sidor
+                  </Link>
+                </div>
+                <Link
+                  onClick={handleClick}
+                  to="/logout"
+                  style={{ all: "unset" }}
+                >
+                  <Button label="Logga ut" primary={false} type={onsubmit} />
+                </Link>
+              </>
+            )}
+            {!user && (
+              <>
+                <div>
+                  <Link onClick={handleClick} to="/login">
+                    Logga in
+                  </Link>
+                </div>
+                <Link
+                  onClick={handleClick}
+                  to="/renovetaform"
+                  style={{ all: "unset" }}
+                >
+                  <Button
+                    label="Börja Renoveta"
+                    primary={false}
+                    type={onsubmit}
+                  />
+                </Link>
+              </>
+            )}
+          </>
         </Burger>
       )}
     </Container>

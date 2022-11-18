@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import DesktopMenue from "./DesktopMenue";
-import Hamburger from "./Hamburger";
+import DesktopMenue from "../components/navbar/DesktopMenue";
+import Hamburger from "../components/navbar/Hamburger";
 
-function Navbar(): JSX.Element {
+interface Props {
+  user: unknown;
+}
+function Navbar({ user }: Props): JSX.Element {
   const [width, setWidth] = useState(window.innerWidth);
   const breakpoint = 880;
 
@@ -15,10 +18,11 @@ function Navbar(): JSX.Element {
     <Container>
       {width < breakpoint ? (
         <Burger>
-          <Hamburger /> <img alt="Logo" src="./images/Renovetalogo.png" />
+          <Hamburger user={user} />
+          <img alt="Logo" src="./images/Renovetalogo.png" />
         </Burger>
       ) : (
-        <DesktopMenue />
+        <DesktopMenue user={user} />
       )}
     </Container>
   );
