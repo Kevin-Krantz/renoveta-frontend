@@ -22,6 +22,12 @@ const Container = styled.div`
   text-align: left;
   color: var(--text-primary);
   margin-bottom: 5%;
+
+  @media screen and (max-width: 880px) {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+  }
 `;
 
 const Image = styled.div`
@@ -36,11 +42,4 @@ const Image = styled.div`
   width: 1100px;
   border-top-right-radius: 375px;
   border-bottom-right-radius: 375px;
-
-  @media screen and (max-width: 880px) {
-    display: grid;
-    grid-template-columns: 150px 180px;
-    grid-template-rows: 300px;
-    width: 800px;
-  }
 `;

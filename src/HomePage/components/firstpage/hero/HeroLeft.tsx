@@ -54,12 +54,13 @@ const Container = styled.div`
     display: grid;
     grid-template-rows: 100px 80px;
     margin-top: 20px;
+    width: 200px;
     h1 {
       font-size: 24px;
     }
 
     p {
-      font-size: 16px;
+      font-size: 18px;
     }
   }
 `;
@@ -85,12 +86,12 @@ const StyledButton = styled.div`
     .buttonleft {
       width: 100px;
       height: 40px;
-      top: 5px;
+      margin-top: 25px;
     }
     .buttonright {
       width: 100px;
       height: 40px;
-      top: 5px;
+      margin-top: 25px;
     }
   }
 `;
