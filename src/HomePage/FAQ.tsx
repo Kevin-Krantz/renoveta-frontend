@@ -72,6 +72,11 @@ const Container = styled.div`
     margin-bottom: 50px;
     margin-right: 15px;
   }
+
+  @media screen and (max-width: 880px) {
+    margin-left: 50px;
+    width: 600px;
+  }
 `;
 
 const FAQSection = styled.div`
@@ -109,6 +114,11 @@ const H3Question = styled.h3`
   margin: 16px 0px;
   padding-top: 4px;
   padding-right: 40px;
+
+  @media screen and (max-width: 880px) {
+    margin-left: 0px;
+    width: 300px;
+  }
 `;
 
 const AnswerHidden = styled.h3`
@@ -122,4 +132,9 @@ const AnswerShow = styled.h3`
   font-size: 16px;
   text-align: left;
   font-weight: lighter;
+
+  @media screen and (max-width: 880px) {
+    margin-left: 0px;
+    width: 300px;
+  }
 `;
