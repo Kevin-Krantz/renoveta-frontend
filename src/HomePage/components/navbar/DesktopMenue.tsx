@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import Button from "../../common/Button";
+import Button from "../../../common/Button";
 import styled from "styled-components";
-import { ScrollToTop } from "../../common/ScrollToTop";
-import { IUser } from "../../types/User";
+import { ScrollToTop } from "../../../common/ScrollToTop";
+import { IUser } from "../../../types/User";
 
 interface Props {
   user?: IUser;
@@ -12,7 +12,11 @@ function DesktopMenue({ user }: Props): JSX.Element {
   return (
     <Container>
       <ul>
-        <img alt="Logo" src="./images/Renovetalogo.png" />
+        <li>
+          <Link onClick={ScrollToTop} to="/">
+            <img alt="Logo" src="./images/Renovetalogo.png" />
+          </Link>
+        </li>
         <>
           <li>
             <Link onClick={ScrollToTop} to="/">

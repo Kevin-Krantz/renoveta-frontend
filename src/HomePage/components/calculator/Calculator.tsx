@@ -1,11 +1,13 @@
+import { useRef } from "react";
 import styled from "styled-components";
 import BoxLeft from "./BoxLeft";
 import BoxRight from "./BoxRight";
 
 function Calculator() {
+  const ref = useRef(null);
   return (
     <Image>
-      <Container>
+      <Container ref={ref}>
         <Box>
           <BoxLeft />
           <BoxRight />
@@ -42,7 +44,7 @@ const Box = styled.span`
   font-size: 18px;
 
   @media screen and (max-width: 1000px) {
-    width: 800px;
+    width: 600px;
     left: -5px;
     font-size: 12px;
   }

@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useState } from "react";
-import Button from "../../common/Button";
-import { ScrollToTop } from "../../common/ScrollToTop";
-import { IUser } from "../../types/User";
+import Button from "../../../common/Button";
+import { ScrollToTop } from "../../../common/ScrollToTop";
+import { IUser } from "../../../types/User";
 
 interface IHamburger {
   hamburgerOpen: boolean;

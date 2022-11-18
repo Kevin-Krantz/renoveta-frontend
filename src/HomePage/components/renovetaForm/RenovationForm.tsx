@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from "react";
 import styled from "styled-components";
-import Checkbox from "../../common/Checkbox";
+import Checkbox from "../../../common/Checkbox";
 import { useState } from "react";
 import Right from "./RenovetaForm";
 

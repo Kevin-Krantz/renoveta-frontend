@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import DesktopMenue from "../components/navbar/DesktopMenue";
-import Hamburger from "../components/navbar/Hamburger";
-import { IUser } from "../types/User";
+import DesktopMenue from "./DesktopMenue";
+import Hamburger from "./Hamburger";
+import { IUser } from "../../../types/User";
+import { ScrollToTop } from "../../../common/ScrollToTop";
+import { Link } from "react-router-dom";
 
 interface Props {
   user?: IUser;
@@ -20,7 +22,9 @@ function Navbar({ user }: Props): JSX.Element {
       {width < breakpoint ? (
         <Burger>
           <Hamburger user={user} />
-          <img alt="Logo" src="./images/Renovetalogo.png" />
+          <Link onClick={ScrollToTop} to="/">
+            <img alt="Logo" src="./images/Renovetalogo.png" />
+          </Link>
         </Burger>
       ) : (
         <DesktopMenue user={user} />

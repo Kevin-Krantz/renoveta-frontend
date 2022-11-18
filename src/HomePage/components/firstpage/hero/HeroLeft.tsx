@@ -21,13 +21,12 @@ function HeroLeft() {
           type="button"
           className="buttonleft"
         />
-
         <Button
           label="Prova kalkylen"
           primary={true}
           type="button"
           className="buttonright"
-          onClick={ScrollToView}
+          onClick={ScrollToView} //doesn't work yet
         />
       </StyledButton>
     </Container>

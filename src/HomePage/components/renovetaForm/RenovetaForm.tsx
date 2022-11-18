@@ -5,7 +5,7 @@ import { FormEvent, useState } from "react";
 import { PropertyForm } from "./PropertyForm";
 import { QuestionForm } from "./QuestionForm";
 import { PersonalInfoForm } from "./PersonalInfoForm";
-import BoxLeft from "../../HomePage/components/calculator/BoxLeft";
+import BoxLeft from "../calculator/BoxLeft";
 
 type FormData = {
   typeOfRenovation: string;

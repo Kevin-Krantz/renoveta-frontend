@@ -54,12 +54,10 @@ const Left = styled.span`
   }
 
   @media screen and (max-width: 880px) {
-    width: 550px;
-    border-bottom-left-radius: 0px;
-    border-top-right-radius: 45px;
-    padding-bottom: 12px;
-    padding-top: 50px;
-    margin-top: 0px;
+    width: 400px;
+
+    padding-left: 16px;
+
     h1 {
       font-size: 18px;
     }
@@ -78,7 +76,7 @@ const Logo = styled.img`
 
   @media screen and (max-width: 880px) {
     width: 120px;
-    top: 50px;
-    left: 0px;
+    top: -10px;
+    left: -20px;
   }
 `;
