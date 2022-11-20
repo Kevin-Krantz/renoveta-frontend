@@ -2,11 +2,15 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { ScrollToTop } from "../common/ScrollToTop";
 
-const handleClick = () => {
-  ScrollToTop();
-};
-
 function Footer(): JSX.Element {
+  const footermenue = [
+    {
+      title: "Varför Renoveta",
+      url: "/whyrenoveta",
+    },
+    { title: "Om oss", url: "/aboutus" },
+    { title: "FAQ", url: "/faq" },
+  ];
   return (
     <Container>
       <img src="/images/Renovetalogo.png" />
@@ -17,22 +21,13 @@ function Footer(): JSX.Element {
         <VerticalLine></VerticalLine>
         <Column>
           <FooterLink>
-            <h2>
-              <Link onClick={handleClick} className="Link" to="/whyrenoveta">
-                Varför Renoveta?
-              </Link>
-            </h2>
-            <h2>
-              <Link onClick={handleClick} className="Link" to="/aboutus">
-                Om oss
-              </Link>
-            </h2>
-
-            <h2>
-              <Link onClick={handleClick} className="Link" to="/faq">
-                Q&A
-              </Link>
-            </h2>
+            {footermenue.map((menue) => (
+              <h2 key={menue.url}>
+                <Link onClick={ScrollToTop} className="Link" to={menue.url}>
+                  {menue.title}
+                </Link>
+              </h2>
+            ))}
             <h2 className="end">Följ oss på sociala medier</h2>
           </FooterLink>
         </Column>
