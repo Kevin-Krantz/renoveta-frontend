@@ -7,14 +7,19 @@ import Review from "./Review";
 import WhatisRenoveta from "./WhatisRenoveta";
 import Compilation from "./Compilation";
 import Calculator from "../calculator/Calculator";
+import { useRef } from "react";
 
 function Home() {
   const [list, setList] = useState<IList[]>([]);
+  const ref = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     setList(getList());
   }, []);
 
+  const scrolLWithUseRef = () => {
+    ref.current?.scrollIntoView({ block: "center", behavior: "smooth" });
+  };
   return (
     <div>
       <Hero />

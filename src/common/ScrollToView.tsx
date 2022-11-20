@@ -1,7 +1,7 @@
-import { useRef } from "react";
-
-export function ScrollToView() {
-  const ref = useRef(null);
+interface Props {
+  ref: HTMLInputElement | null;
+}
+export function ScrollToView({ ref }: Props) {
   //@ts-ignore
-  ref.current?.scrollIntoView({ behavior: "smooth" });
+  ref?.current?.scrollIntoView({ block: "center", behavior: "smooth" });
 }

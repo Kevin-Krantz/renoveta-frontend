@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../../../common/Button";
 import { ScrollToTop } from "../../../../common/ScrollToTop";
-import { ScrollToView } from "../../../../common/ScrollToView";
 
 function HeroLeft() {
   return (
@@ -30,7 +29,7 @@ function HeroLeft() {
           primary={true}
           type="button"
           className="buttonright"
-          onClick={ScrollToView} //doesn't work yet
+          // onClick={}
         />
       </StyledButton>
     </Container>
@@ -76,7 +75,7 @@ const StyledButton = styled.div`
   .buttonleft {
     width: 185px;
     align-items: left;
-    margin-right: 80px;
+    margin-right: 30px;
     background-color: transparent;
     color: var(--text-primary);
   }

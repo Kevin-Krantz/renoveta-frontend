@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import useForm from "../common/Form";
 import user from "../services/userService";
+import { Link } from "react-router-dom";
 
 interface Window {
   location: Location | string;
@@ -43,13 +44,13 @@ function RegisterForm() {
     doSubmit: async () => {
       try {
         await user.register(formData);
-        window.location.href = "/login";
       } catch (error) {
         if (error.response?.status === 400) {
           const formErrors = { email: error.response.data };
           setFormErrors(formErrors);
         }
       }
+      window.location.replace("/login");
     },
     formData,
     setFormData,
