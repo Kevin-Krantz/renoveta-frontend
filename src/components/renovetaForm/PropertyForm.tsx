@@ -35,26 +35,37 @@ export function PropertyForm({
     { id: "6", name: "Annat" },
   ];
 
-  const roofType = [
-    { id: "1", name: "Sadeltak", img: },
-    { id: "2", name: "Plåt" },
-    { id: "3", name: "Papp" },
-    { id: "4", name: "Eternit" },
-    { id: "5", name: "Shingel" },
-    { id: "6", name: "Annat" },
+  const RoofType = [
+    {id:"1", name: "Sadeltak", img:"images/roofstyles/sadeltak.png"},
+    {id:"2", name: "Pulpettak", img:"images/roofstyles/pulpettak.png"},
+    {id:"3", name: "Valmat tak", img:"images/roofstyles/valmat.png"},
+    {id:"4", name: "Mansardtak", img:"images/roofstyles/mansard.png"},
+    {id:"5", name: "Motfallstak", img:"images/roofstyles/motfalls.png"},
+    {id:"6", name: "Platt tak", img:"images/roofstyles/platt.png"},
+    {id:"7", name: "Annat", img:"images/roofstyles/annat.png"},
   ]
   
   
   return (
     <Container>
-      <label>Vilken typ av tak har du idag?</label>
-      <input
-        className="form-input-small"
-        type="text"
-        value={roofType}
-        onChange={(e) => updateFields({ roofType: e.target.value })}
-      />
-
+       <CheckboxContainer>
+        {RoofType.map((option) => (
+          <CheckboxBg key={option.id}>
+            <Image src={option.img}/>
+            <Checkbox
+              className="checkbox-input"
+              key={option.id}
+              id={option.id}
+              handleCheck={(e) => {
+                updateFields({roofType: e.target.name});;
+              }}
+            
+              name={option.name}
+              type="checkbox"
+            />
+          </CheckboxBg>
+        ))}
+      </CheckboxContainer>
       <label>Vilket material består ditt tak av idag?</label>
       <CheckboxContainer>
         {MaterialType.map((option) => (
@@ -134,3 +145,7 @@ const LeftInput = styled(InputLeft)`
     margin-left: 5px;
   }
 `;
+const Image = styled.img `
+width: 75px;
+display: grid;
+`
