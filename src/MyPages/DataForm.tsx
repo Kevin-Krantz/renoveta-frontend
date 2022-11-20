@@ -1,7 +1,14 @@
 import { IForm } from "../types/Form";
+import { useState, useEffect } from "react";
+import { getUserForm } from "../services/formService";
+import { useParams } from "react-router-dom";
 
 interface Props {
   form: IForm;
+}
+
+interface IMapToViewModel {
+  id: string;
 }
 
 const form = {
@@ -18,6 +25,39 @@ const form = {
 };
 
 function DataTable({ form }: Props) {
+  const [formData, setFormData] = useState();
+  const params = useParams();
+
+  useEffect(() => {
+    populateForm();
+  });
+
+  async function populateForm() {
+    try {
+      const formId = params._id;
+      const { data: form } = await getUserForm(formId);
+
+      setFormData({ data: mapToViewModel(form) });
+    } catch (error) {
+      if (error.response && error.response.status === 404)
+        location.replace("/notfound");
+    }
+  }
+
+  function mapToViewModel<IMapToViewModel>(form: any) {
+    return {
+      _id: form._id,
+      renovationType: form.renovationType,
+      typeOfRoof: form.typeOfRoof,
+      roofMaterial: form.roofMaterial,
+      roofAngle: form.roofAngle,
+      houseMeasurements: form.houseMeasurements,
+      questions: form.houseMeasurements,
+      file: form.houseMeasurements,
+      userInfo: form.houseMeasurements,
+    };
+  }
+
   return (
     <div>
       {/* <div>{form.dateIssued}</div>

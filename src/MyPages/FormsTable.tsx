@@ -35,10 +35,6 @@ function Form({ user }: Props) {
     fetchAllForms();
   }
 
-  async function handleClick() {
-    <Link to={"/foods/:id"} />;
-  }
-
   function formatDate(date: Date) {
     const dt = Date();
     const newdate = new Date(dt);
@@ -77,7 +73,6 @@ function Form({ user }: Props) {
                   type="button"
                   label="Läs mer"
                   primary={true}
-                  onClick={handleClick}
                 />
               </Table>
             ))}
@@ -103,7 +98,6 @@ function Form({ user }: Props) {
                   type="button"
                   label="Svara"
                   primary={true}
-                  onClick={handleClick}
                 />
               </Table>
             ))}

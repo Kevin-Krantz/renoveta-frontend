@@ -15,8 +15,11 @@ export async function getAllForms() {
   return forms.data;
 }
 
+interface FormId {
+  id?: string | any;
+}
+
 // get one form
-export async function getUserForm() {
-  const userForms = await http.get(formApi + "/:id");
-  return userForms.data;
+export function getUserForm(formId: FormId) {
+  return http.get(formApi + "/" + formId);
 }
