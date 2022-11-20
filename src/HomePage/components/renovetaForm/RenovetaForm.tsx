@@ -1,7 +1,7 @@
 import { useMultistepForm } from "./useMultistepForm";
 import styled from "styled-components";
 import { RenovationForm } from "./RenovationForm";
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useEffect } from "react";
 import { PropertyForm } from "./PropertyForm";
 import { QuestionForm } from "./QuestionForm";
 import { PersonalInfoForm } from "./PersonalInfoForm";
@@ -47,6 +47,13 @@ const INITIAL_DATA: FormData = {
 
 function RenovetaForm() {
   const [data, setData] = useState(INITIAL_DATA);
+  // const [input, setInput] = useState("");
+  // localStorage.setItem("key", "value");
+
+  // useEffect(() => {
+  //   // storing input name
+  //   localStorage.setItem("input", JSON.stringify(input));
+  // }, [input]);
 
   function updateFields(fields: Partial<FormData>) {
     setData((prev) => {

@@ -44,13 +44,15 @@ function RegisterForm() {
     doSubmit: async () => {
       try {
         await user.register(formData);
+        window.location.replace("/login"); //funkar inte
       } catch (error) {
         if (error.response?.status === 400) {
           const formErrors = { email: error.response.data };
           setFormErrors(formErrors);
         }
+
+        //funkar här men då hinner inte kunden se att mail redan är registrerad.
       }
-      window.location.replace("/login");
     },
     formData,
     setFormData,

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Checkbox from "../../../common/Checkbox";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CheckboxContainer, CheckboxBg } from "./RenovationForm";
 import { InputLeft, Container } from "./PersonalInfoForm";
 

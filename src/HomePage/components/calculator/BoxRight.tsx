@@ -95,9 +95,10 @@ function BoxRight() {
 
   const text: TextQuestions = {
     questionOne:
-      "Takrenovering är ...Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    questionTwo: "Material till ditt tak ...",
-    questionThree: "Räkna ut ditt tak area..",
+      "Är ditt tak från 1950-1980 rekommenderas oftas en omläggning. Kontakta företag för kontroll av tak. Är taket från 1990 eller senare kan det räcka med en tvätt och målning",
+    questionTwo: "Vad är det för befintligt material på taket?",
+    questionThree:
+      "För att enklast få ut takets yta i kvm så tar ni längden på huset (längst med takfoten) och gångar det med måttet från takfot till nock. Det måttet får ni fram om ni tar antal pannor gånger 35) så har ni 15 pannrader på taket är måttet 5,25m.",
   };
 
   return (
