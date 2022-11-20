@@ -8,7 +8,7 @@ import AboutUs from "./HomePage/components/aboutUs/AboutUs";
 import LoginForm from "./HomePage/LoginForm";
 import { IMember } from "./types/Member";
 import { getMembers } from "./HomePage/components/aboutUs/Team";
-import FAQ from "./HomePage/FAQ";
+import FAQ from "./HomePage/components/FAQ/FAQ";
 import auth from "./services/authService";
 import Logout from "./MyPages/Logout";
 import MyPage from "./MyPages/MyPage";
