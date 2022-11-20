@@ -1,8 +1,9 @@
-import React, { ChangeEvent, FormEvent } from "react";
+import React, { ChangeEvent, FormEvent, useContext } from "react";
 import styled from "styled-components";
 import Checkbox from "../../common/Checkbox";
 import { useState } from "react";
 import Right from "./RenovetaForm";
+
 
 
 type RenovationData = {
@@ -20,11 +21,13 @@ export function RenovationForm({
   updateFields,
 }: RenovationFormProps) {
   const data = [
-    { id: 1, name: "Omläggning" },
-    { id: 2, name: "Tvätt" },
-    { id: 3, name: "Målning"}
+    { id: "1", name: "Omläggning" },
+    { id: "2", name: "Tvätt" },
+    { id: "3", name: "Målning"}
 
   ];
+  
+ 
 
 
  
@@ -40,12 +43,13 @@ export function RenovationForm({
                 className="checkbox-input"
                 key={option.id}
                 id={option.id}
-                
+                checked={option.name === typeOfRenovation}
                
-                handleCheck={(e: React.FormEvent<HTMLInputElement>): void => {
+                handleCheck={(e) => {
 
                   //@ts-ignore
                  updateFields({typeOfRenovation: e.target.name});
+                 
                 }}
                 name={option.name}
                 type="checkbox"

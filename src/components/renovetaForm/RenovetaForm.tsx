@@ -6,6 +6,8 @@ import { PropertyForm } from "./PropertyForm";
 import { QuestionForm } from "./QuestionForm";
 import { PersonalInfoForm } from "./PersonalInfoForm";
 import BoxLeft from "../../HomePage/components/calculator/BoxLeft";
+import RegisterForm from "../../HomePage/RegisterForm";
+import {postForm} from "../../services/formService";
 
 
 
@@ -47,6 +49,9 @@ const INITIAL_DATA: FormData = {
   city: "",
 };
 
+interface response {
+  response: string | "No response"
+}
 
 
 function RenovetaForm() {
@@ -72,16 +77,19 @@ function RenovetaForm() {
     <PropertyForm {...data} updateFields={updateFields} />,
     <QuestionForm {...data} updateFields={updateFields} />,
     <PersonalInfoForm {...data} updateFields={updateFields} />,
+    <RegisterForm/>
+    
   ]);
 
-  function onSubmit(e: FormEvent) {
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!isLastStep) return nextStep();
-    
-   
-
-
+    postForm(data);
   }
+
+
+
+  // Registerform - finns doSubmit - Link/path över till Reg.Form 
 
   return (
     <Container>
@@ -121,7 +129,7 @@ const Container = styled.div`
   color: var(--text-secondary);
   text-align: center;
   width: 100vw;
-  height: 180vh;
+  height: 100vh;
   font-weight: 900;
 `;
 

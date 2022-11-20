@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import Checkbox from "../../common/Checkbox";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CheckboxContainer, CheckboxBg } from "./RenovationForm";
 import { InputLeft, Container } from "./PersonalInfoForm";
+
 
 type PropertyData = {
   roofType: string;
@@ -45,7 +46,7 @@ export function PropertyForm({
     {id:"7", name: "Annat", img:"images/roofstyles/annat.png"},
   ]
   
-  
+
   return (
     <Container>
       
@@ -57,10 +58,12 @@ export function PropertyForm({
               className="checkbox-input"
               key={option.id}
               id={option.id}
+              checked={option.name === roofType}
               handleCheck={(e) => {
-                updateFields({roofType: e.target.name});;
+                updateFields({roofType: e.target.name});
               }}
-            
+              
+              value= {roofType}
               name={option.name}
               type="checkbox"
             />
@@ -76,9 +79,13 @@ export function PropertyForm({
               className="checkbox-input"
               key={option.id}
               id={option.id}
+              checked={option.name === materialType}
               handleCheck={(e) => {
-                updateFields({materialType: e.target.name});;
+                updateFields({materialType: e.target.name});
+                
               }}
+              
+              value={materialType}
               name={option.name}
               type="checkbox"
             />
