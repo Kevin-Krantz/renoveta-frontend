@@ -19,7 +19,7 @@ function DesktopMenue({ user }: Props): JSX.Element {
         </li>
         <>
           <li>
-            <Link onClick={ScrollToTop} to="/">
+            <Link onClick={ScrollToTop} to="/whyrenoveta">
               Varför Renoveta?
             </Link>
           </li>

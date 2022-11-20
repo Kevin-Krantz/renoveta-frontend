@@ -12,6 +12,7 @@ const client = createClient({
 function FAQSection() {
   const [faqs, setFaqs] = useState<IFaq[]>([]);
   const [selected, setSelected] = useState(null);
+
   useEffect(() => {
     async function loadEntries() {
       const { items } = await client.getEntries({ content_type: "faq" });

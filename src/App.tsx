@@ -16,6 +16,7 @@ import RenovetaForm from "./HomePage/components/renovetaForm/RenovetaForm";
 import RegisterForm from "./HomePage/RegisterForm";
 import Form from "./MyPages/Form";
 import { IUser } from "./types/User";
+import WhyRenoveta from "./HomePage/components/firstpage/WhyRenoveta";
 
 function App(): JSX.Element {
   const [members, setMembers] = useState<IMember[]>([]);
@@ -39,6 +40,7 @@ function App(): JSX.Element {
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs members={members} />} />
         <Route path="/login" element={<LoginForm />} />
+        <Route path="/whyrenoveta" element={<WhyRenoveta />} />
         <Route path="/renovetaform" element={<RenovetaForm />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/faq" element={<FAQ />} />

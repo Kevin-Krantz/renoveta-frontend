@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../../../common/Button";
+import { ScrollToTop } from "../../../../common/ScrollToTop";
 import { ScrollToView } from "../../../../common/ScrollToView";
 
 function HeroLeft() {
@@ -15,12 +17,14 @@ function HeroLeft() {
         Prova idag - enkelt, smidigt och kostnadsfritt.
       </p>
       <StyledButton>
-        <Button
-          label=" Om tjänsten"
-          primary={false}
-          type="button"
-          className="buttonleft"
-        />
+        <Link onClick={ScrollToTop} to="/whyrenoveta">
+          <Button
+            label=" Om tjänsten"
+            primary={false}
+            type="button"
+            className="buttonleft"
+          />
+        </Link>
         <Button
           label="Kom igång!"
           primary={true}

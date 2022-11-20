@@ -30,7 +30,7 @@ function Hamburger({ user }: Props) {
           <>
             <i className="fa-solid fa-bars" />
             <div>
-              <Link onClick={ScrollToTop} to="/">
+              <Link onClick={ScrollToTop} to="/whyrenoveta">
                 Varför Renoveta?
               </Link>
             </div>
