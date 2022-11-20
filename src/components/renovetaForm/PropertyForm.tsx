@@ -26,28 +26,14 @@ export function PropertyForm({
   updateFields,
 }: PropertyFormProps) {
   const data = [
-    { id: 1, name: "Tegelpannor" },
-    { id: 2, name: "Plåt" },
-    { id: 3, name: "Papp" },
-    { id: 4, name: "Eternit" },
-    { id: 5, name: "Shingel" },
-    { id: 6, name: "Annat" },
+    { id: "1", name: "Tegelpannor" },
+    { id: "2", name: "Plåt" },
+    { id: "3", name: "Papp" },
+    { id: "4", name: "Eternit" },
+    { id: "5", name: "Shingel" },
+    { id: "6", name: "Annat" },
   ];
-  const [options, setOptions] = useState([]);
-
-  const handleChange = (item: any) => {
-    let selectedOption = options;
-    if (selectedOption.some((option: any) => option.id === item.id)) {
-      selectedOption = selectedOption.filter(
-        (option: any) => option.id !== item.id
-      );
-    } else {
-      //@ts-ignore
-      selectedOption.push(item);
-    }
-    setOptions(selectedOption);
-  };
-
+  
   return (
     <Container>
       <label>Vilken typ av tak har du idag?</label>
@@ -66,8 +52,8 @@ export function PropertyForm({
               className="checkbox-input"
               key={option.id}
               id={option.id}
-              handleCheck={() => {
-                handleChange(option);
+              handleCheck={(e) => {
+                updateFields({materialType: e.target.name});;
               }}
               name={option.name}
               type="checkbox"
