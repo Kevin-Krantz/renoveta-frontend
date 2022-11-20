@@ -28,8 +28,6 @@ export function RenovationForm({
   ];
   
  
-
-
  
 
   return (
@@ -46,8 +44,6 @@ export function RenovationForm({
                 checked={option.name === typeOfRenovation}
                
                 handleCheck={(e) => {
-
-                  //@ts-ignore
                  updateFields({typeOfRenovation: e.target.name});
                  
                 }}
