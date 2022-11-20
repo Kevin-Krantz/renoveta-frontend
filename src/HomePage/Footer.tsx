@@ -54,7 +54,7 @@ const Container = styled.div`
   img {
     position: relative;
 
-    left: -45px;
+    left: 25px;
   }
 
   @media screen and (max-width: 1000px) {
