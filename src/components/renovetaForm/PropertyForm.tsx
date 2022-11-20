@@ -29,9 +29,9 @@ export function PropertyForm({
   const MaterialType = [
     { id: "1", name: "Tegelpannor" },
     { id: "2", name: "Plåt" },
-    { id: "3", name: "Papp" },
+    { id: "3", name: "Papp/Shingel" },
     { id: "4", name: "Eternit" },
-    { id: "5", name: "Shingel" },
+    { id: "5", name: "Betongpannor" },
     { id: "6", name: "Annat" },
   ];
 
@@ -48,7 +48,8 @@ export function PropertyForm({
   
   return (
     <Container>
-       <CheckboxContainer>
+      
+        <CheckboxWrapper>
         {RoofType.map((option) => (
           <CheckboxBg key={option.id}>
             <Image src={option.img}/>
@@ -65,7 +66,8 @@ export function PropertyForm({
             />
           </CheckboxBg>
         ))}
-      </CheckboxContainer>
+         </CheckboxWrapper>
+      
       <label>Vilket material består ditt tak av idag?</label>
       <CheckboxContainer>
         {MaterialType.map((option) => (
@@ -146,6 +148,14 @@ const LeftInput = styled(InputLeft)`
   }
 `;
 const Image = styled.img `
-width: 75px;
-display: grid;
+width: 115px;
+margin: 0 auto;
+
+
+`
+const CheckboxWrapper = styled(CheckboxContainer) `
+  display: grid; 
+  grid-template-columns: 130px 130px 130px 130px;
+  grid-template-rows: 2;
+  grid-gap: 5px;
 `

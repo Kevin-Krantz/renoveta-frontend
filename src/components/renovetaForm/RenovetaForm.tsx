@@ -6,6 +6,9 @@ import { PropertyForm } from "./PropertyForm";
 import { QuestionForm } from "./QuestionForm";
 import { PersonalInfoForm } from "./PersonalInfoForm";
 import BoxLeft from "../../HomePage/components/calculator/BoxLeft";
+import {http} from "../../services/httpService";
+import {url} from "../../config.json";
+
 
 type FormData = {
   typeOfRenovation: string;
@@ -45,7 +48,11 @@ const INITIAL_DATA: FormData = {
   city: "",
 };
 
+
+
 function RenovetaForm() {
+  const Url= url + "/";
+
   const [data, setData] = useState(INITIAL_DATA);
 
   function updateFields(fields: Partial<FormData>) {
@@ -71,6 +78,10 @@ function RenovetaForm() {
   function onSubmit(e: FormEvent) {
     e.preventDefault();
     if (!isLastStep) return nextStep();
+http.post (Url, {data})
+
+}
+
   }
 
   return (
@@ -190,3 +201,5 @@ const Button = styled.button`
     transform: scale(1);
   }
 `;
+
+
