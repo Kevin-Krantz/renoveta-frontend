@@ -43,7 +43,7 @@ function RegisterForm() {
     doSubmit: async () => {
       try {
         await user.register(formData);
-        window.location.replace("/login");
+        window.location.href = "/login";
       } catch (error) {
         if (error.response?.status === 400) {
           const formErrors = { email: error.response.data };

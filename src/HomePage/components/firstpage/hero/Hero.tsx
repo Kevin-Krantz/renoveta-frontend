@@ -34,8 +34,8 @@ const Container = styled.div`
 const Image = styled.div`
   background-image: linear-gradient(
       0deg,
-      rgba(130, 198, 173, 0.9),
-      rgba(130, 198, 173, 0.9)
+      rgba(183, 233, 214, 0.7),
+      rgba(147, 198, 179, 0.7)
     ),
     url("images/hero_renoveta.png");
   background-size: 1100px;

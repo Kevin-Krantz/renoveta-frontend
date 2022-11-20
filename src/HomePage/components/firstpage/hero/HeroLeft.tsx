@@ -22,7 +22,7 @@ function HeroLeft() {
           className="buttonleft"
         />
         <Button
-          label="Prova kalkylen"
+          label="Kom igång!"
           primary={true}
           type="button"
           className="buttonright"
@@ -73,6 +73,8 @@ const StyledButton = styled.div`
     width: 185px;
     align-items: left;
     margin-right: 80px;
+    background-color: transparent;
+    color: var(--text-primary);
   }
   .buttonright {
     width: 185px;

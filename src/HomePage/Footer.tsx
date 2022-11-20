@@ -65,10 +65,18 @@ const Container = styled.div`
   position: relative;
   color: var(--text-secondary) !important;
 
-  @media screen and (max-width: 880px) {
+  img {
+    position: relative;
+
+    left: -45px;
+  }
+
+  @media screen and (max-width: 1000px) {
     img {
+      position: relative;
       height: 100px;
       width: 300px;
+      left: -20px;
     }
   }
 `;
@@ -89,7 +97,7 @@ const Row = styled.div`
   }
 `;
 
-const FooterLink = styled.a`
+const FooterLink = styled.div`
   font-size: 18px;
   text-underline-offset: 5px;
   line-height: 2.5em;
@@ -107,7 +115,7 @@ const FooterLink = styled.a`
     transition: 50ms ease-in;
   }
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 880px) {
     font-size: 14px;
     h2 {
       margin-right: 25px;
@@ -124,12 +132,12 @@ const Heading = styled.div`
     width: 552px;
   }
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1000px) {
     font-size: 18px;
 
     h1 {
-      width: 350px;
-      margin-left: 10px;
+      width: 300px;
+
       margin-right: 25px;
     }
   }
@@ -141,7 +149,7 @@ const VerticalLine = styled.div`
   position: absolute;
   top: 70px;
 
-  @media screen and (max-width: 880px) {
+  @media screen and (max-width: 1000px) {
     left: 350px;
   }
 `;

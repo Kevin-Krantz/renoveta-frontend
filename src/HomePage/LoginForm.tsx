@@ -61,7 +61,6 @@ function LoginForm() {
       {renderInput({ label: "E-mail", name: "email" })}
       {renderInput({ label: "Password", name: "password", type: "password" })}
       {renderButton({ label: "Log in" })}
-
       <Link to="/register" onClick={ScrollToTop} className="link">
         Registrera dig här!
       </Link>
@@ -93,6 +92,8 @@ const Container = styled.form`
     margin: 24px;
     text-decoration: none;
     cursor: pointer;
+    color: var(--text-secondary);
+    font-weight: bold;
   }
 
   @media screen and (max-width: 880px) {

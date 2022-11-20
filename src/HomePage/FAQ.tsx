@@ -12,6 +12,8 @@ const client = createClient({
 function FAQ() {
   const [faqs, setFaqs] = useState<IFaq[]>([]);
   const [selected, setSelected] = useState(null);
+  const [width, setWidth] = useState(window.innerWidth);
+  const breakpoint = 880;
 
   useEffect(() => {
     async function loadEntries() {
@@ -20,6 +22,7 @@ function FAQ() {
       console.log(items);
     }
     loadEntries();
+    window.addEventListener("resize", () => setWidth(window.innerWidth));
   }, []);
 
   const toggle = (item: any) => {
@@ -32,27 +35,58 @@ function FAQ() {
 
   return (
     <Container>
-      <h1>Vanliga frågor</h1>
-      {faqs.map((faq, item) => (
-        <FAQSection key={faq.sys.id}>
-          <IconContainer onClick={() => toggle(item)}>
-            <Icon>{selected === item ? "-" : "+"}</Icon>
-          </IconContainer>
-          <div>
-            <H3Question>{faq.fields.title}</H3Question>
-            <div>
-              {selected === item ? (
-                <AnswerShow>
-                  {documentToReactComponents(faq.fields.text!)}
-                </AnswerShow>
-              ) : (
-                <AnswerHidden />
-              )}
-            </div>
-          </div>
-        </FAQSection>
-      ))}
-      <p>Hittade du inte det du sökte? Fråga Renoveta</p>
+      {width < breakpoint ? (
+        <StyledFAQ>
+          <h1>Vanliga frågor och svar</h1>
+          {faqs.map((faq, item) => (
+            <FAQSection key={faq.sys.id}>
+              <IconContainer onClick={() => toggle(item)}>
+                <Icon>{selected === item ? "-" : "+"}</Icon>
+              </IconContainer>
+              <div>
+                <H3Question>{faq.fields.title}</H3Question>
+                <div>
+                  {selected === item ? (
+                    <AnswerShow>
+                      {documentToReactComponents(faq.fields.text!)}
+                    </AnswerShow>
+                  ) : (
+                    <AnswerHidden />
+                  )}
+                </div>
+              </div>
+            </FAQSection>
+          ))}
+          <p>Hittade du inte det du sökte? Fråga Renoveta</p>
+        </StyledFAQ>
+      ) : (
+        <>
+          <Img />
+          <StyledFAQ>
+            <h1>Vanliga frågor och svar</h1>
+            {faqs.map((faq, item) => (
+              <FAQSection key={faq.sys.id}>
+                <IconContainer onClick={() => toggle(item)}>
+                  <Icon>{selected === item ? "-" : "+"}</Icon>
+                </IconContainer>
+                <div>
+                  <H3Question>{faq.fields.title}</H3Question>
+                  <div>
+                    {selected === item ? (
+                      <AnswerShow>
+                        {documentToReactComponents(faq.fields.text!)}
+                      </AnswerShow>
+                    ) : (
+                      <AnswerHidden />
+                    )}
+                  </div>
+                </div>
+              </FAQSection>
+            ))}
+            <p>Hittade du inte det du sökte? Fråga Renoveta</p>
+          </StyledFAQ>
+        </>
+      )}
     </Container>
   );
 }
@@ -61,11 +95,23 @@ export default FAQ;
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: 600px;
-  margin-left: 300px;
-  margin-bottom: 50px;
+  grid-template-columns: 3fr 2fr;
+
+  @media screen and (max-width: 880px) {
+    display: grid;
+    grid-template-columns: 600px;
+    margin-left: 20px;
+    width: 600px;
+  }
+`;
+
+const StyledFAQ = styled.div`
+  margin: 40px;
+  z-index: 0;
+  box-sizing: border-box;
   h1 {
     text-align: center;
+    font-size: 32px;
   }
   p {
     margin-top: 50px;
@@ -74,11 +120,20 @@ const Container = styled.div`
   }
 
   @media screen and (max-width: 880px) {
-    margin-left: 50px;
-    width: 600px;
+    margin-left: 0px !important;
   }
 `;
 
+const Img = styled.div`
+  background: url("images/bg-photo-paint.png") left center / contain no-repeat
+    fixed;
+  min-height: 100vh;
+  min-width: 60vw;
+
+  @media screen and (max-width: 880px) {
+    background-image: none;
+  }
+`;
 const FAQSection = styled.div`
   display: grid;
   grid-template-columns: 100px auto;
