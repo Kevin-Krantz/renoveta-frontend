@@ -25,7 +25,8 @@ export function PropertyForm({
 
   updateFields,
 }: PropertyFormProps) {
-  const data = [
+  
+  const MaterialType = [
     { id: "1", name: "Tegelpannor" },
     { id: "2", name: "Plåt" },
     { id: "3", name: "Papp" },
@@ -33,6 +34,16 @@ export function PropertyForm({
     { id: "5", name: "Shingel" },
     { id: "6", name: "Annat" },
   ];
+
+  const roofType = [
+    { id: "1", name: "Sadeltak", img: },
+    { id: "2", name: "Plåt" },
+    { id: "3", name: "Papp" },
+    { id: "4", name: "Eternit" },
+    { id: "5", name: "Shingel" },
+    { id: "6", name: "Annat" },
+  ]
+  
   
   return (
     <Container>
@@ -46,7 +57,7 @@ export function PropertyForm({
 
       <label>Vilket material består ditt tak av idag?</label>
       <CheckboxContainer>
-        {data.map((option) => (
+        {MaterialType.map((option) => (
           <CheckboxBg key={option.id}>
             <Checkbox
               className="checkbox-input"
