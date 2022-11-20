@@ -20,3 +20,8 @@ export async function getUserForm() {
   const userForms = await http.get(formApi + "/:id");
   return userForms.data;
 }
+
+export async function postForm(data:any) {
+  return await http.post(formApi + "/", data);
+
+}
