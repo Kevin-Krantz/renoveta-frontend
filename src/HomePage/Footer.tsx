@@ -18,36 +18,22 @@ function Footer(): JSX.Element {
         <Column>
           <FooterLink>
             <h2>
-              <Link onClick={handleClick} className="Link" to="/">
+              <Link onClick={handleClick} className="Link" to="/whyrenoveta">
                 Varför Renoveta?
               </Link>
             </h2>
-          </FooterLink>
-          <FooterLink>
-            <h2>
-              <Link onClick={handleClick} className="Link" to="/">
-                Tjänsten
-              </Link>
-            </h2>
-          </FooterLink>
-          <FooterLink>
             <h2>
               <Link onClick={handleClick} className="Link" to="/aboutus">
                 Om oss
               </Link>
             </h2>
-          </FooterLink>
-          <FooterLink>
+
             <h2>
               <Link onClick={handleClick} className="Link" to="/faq">
                 Q&A
               </Link>
             </h2>
-          </FooterLink>
-          <br />
-          <br />
-          <FooterLink className="nounderline">
-            <h2>Följ oss på sociala medier</h2>
+            <h2 className="end">Följ oss på sociala medier</h2>
           </FooterLink>
         </Column>
       </Row>
@@ -113,6 +99,10 @@ const FooterLink = styled.div`
 
   &:hover {
     transition: 50ms ease-in;
+  }
+
+  .end {
+    margin-top: 30px;
   }
 
   @media screen and (max-width: 880px) {
