@@ -3,12 +3,16 @@ import Button from "../../../common/Button";
 import styled from "styled-components";
 import { ScrollToTop } from "../../../common/ScrollToTop";
 import { IUser } from "../../../types/User";
+import { IMenue } from "../../../types/Menue";
+import ExtraUserMenue from "./ExtraUserMenue";
+import ExtraNotUserMenue from "./ExtraNotUserMenue";
 
 interface Props {
   user?: IUser;
+  menue: IMenue[];
 }
 
-function DesktopMenue({ user }: Props): JSX.Element {
+function DesktopMenue({ user, menue }: Props): JSX.Element {
   return (
     <Container>
       <ul>
@@ -17,56 +21,15 @@ function DesktopMenue({ user }: Props): JSX.Element {
             <img alt="Logo" src="./images/Renovetalogo.png" />
           </Link>
         </li>
-        <>
-          <li>
-            <Link onClick={ScrollToTop} to="/whyrenoveta">
-              Varför Renoveta?
+        {menue.map((menue) => (
+          <li key={menue.url}>
+            <Link onClick={ScrollToTop} to={menue.url}>
+              {menue.title}
             </Link>
           </li>
-
-          <li>
-            <Link onClick={ScrollToTop} to="/aboutus">
-              Om oss
-            </Link>
-          </li>
-          <li>
-            <Link onClick={ScrollToTop} to="/faq">
-              Q&A
-            </Link>
-          </li>
-          {user && (
-            <>
-              <li>
-                <Link onClick={ScrollToTop} to="/me">
-                  Mina Sidor
-                </Link>
-              </li>
-              <Link onClick={ScrollToTop} to="/logout" style={{ all: "unset" }}>
-                <Button label="Logga ut" primary={false} type={onsubmit} />
-              </Link>
-            </>
-          )}
-          {!user && (
-            <>
-              <li>
-                <Link onClick={ScrollToTop} to="/login">
-                  Logga in
-                </Link>
-              </li>
-              <Link
-                onClick={ScrollToTop}
-                to="/renovetaform"
-                style={{ all: "unset" }}
-              >
-                <Button
-                  label="Börja Renoveta"
-                  primary={false}
-                  type={onsubmit}
-                />
-              </Link>
-            </>
-          )}
-        </>
+        ))}
+        {user && <ExtraUserMenue />}
+        {!user && <ExtraNotUserMenue />}
       </ul>
     </Container>
   );
@@ -76,7 +39,6 @@ export default DesktopMenue;
 
 const Container = styled.div`
   margin-top: 25px;
-
   button {
     background-color: var(--bg-color);
     font-size: 24px;

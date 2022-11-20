@@ -5,11 +5,13 @@ import Hamburger from "./Hamburger";
 import { IUser } from "../../../types/User";
 import { ScrollToTop } from "../../../common/ScrollToTop";
 import { Link } from "react-router-dom";
+import { IMenue } from "../../../types/Menue";
 
 interface Props {
   user?: IUser;
+  menue: IMenue[];
 }
-function Navbar({ user }: Props): JSX.Element {
+function Navbar({ user, menue }: Props): JSX.Element {
   const [width, setWidth] = useState(window.innerWidth);
   const breakpoint = 880;
 
@@ -21,13 +23,13 @@ function Navbar({ user }: Props): JSX.Element {
     <Container>
       {width < breakpoint ? (
         <Burger>
-          <Hamburger user={user} />
+          <Hamburger menue={menue} user={user} />
           <Link onClick={ScrollToTop} to="/">
             <img alt="Logo" src="./images/Renovetalogo.png" />
           </Link>
         </Burger>
       ) : (
-        <DesktopMenue user={user} />
+        <DesktopMenue menue={menue} user={user} />
       )}
     </Container>
   );

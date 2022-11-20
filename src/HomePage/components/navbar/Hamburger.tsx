@@ -4,15 +4,19 @@ import { useState } from "react";
 import Button from "../../../common/Button";
 import { ScrollToTop } from "../../../common/ScrollToTop";
 import { IUser } from "../../../types/User";
+import { IMenue } from "../../../types/Menue";
+import ExtraUserMenue from "./ExtraUserMenue";
+import ExtraNotUserMenue from "./ExtraNotUserMenue";
 
 interface IHamburger {
   hamburgerOpen: boolean;
 }
 interface Props {
   user?: IUser;
+  menue: IMenue[];
 }
 
-function Hamburger({ user }: Props) {
+function Hamburger({ user, menue }: Props) {
   const [hamburgerOpen, setHamburgerOpen] = useState<IHamburger | boolean>(
     true
   );
@@ -29,57 +33,15 @@ function Hamburger({ user }: Props) {
         <Burger>
           <>
             <i className="fa-solid fa-bars" />
-            <div>
-              <Link onClick={ScrollToTop} to="/whyrenoveta">
-                Varför Renoveta?
-              </Link>
-            </div>
-            <div>
-              <Link onClick={ScrollToTop} to="/aboutus">
-                Om oss
-              </Link>
-            </div>
-            <div>
-              <Link onClick={ScrollToTop} to="/faq">
-                Q&A
-              </Link>
-            </div>
-            {user && (
-              <>
-                <div>
-                  <Link onClick={ScrollToTop} to="/me">
-                    Mina Sidor
-                  </Link>
-                </div>
-                <Link
-                  onClick={ScrollToTop}
-                  to="/logout"
-                  style={{ all: "unset" }}
-                >
-                  <Button label="Logga ut" primary={false} type={onsubmit} />
+            {menue.map((menue) => (
+              <li key={menue.url}>
+                <Link onClick={ScrollToTop} to={menue.url}>
+                  {menue.title}
                 </Link>
-              </>
-            )}
-            {!user && (
-              <>
-                <div>
-                  <Link onClick={ScrollToTop} to="/login">
-                    Logga in
-                  </Link>
-                </div>
-                <Link
-                  onClick={ScrollToTop}
-                  to="/renovetaform"
-                  style={{ all: "unset" }}
-                >
-                  <Button
-                    label="Börja Renoveta"
-                    primary={false}
-                    type={onsubmit}
-                  />
-                </Link>
-              </>
-            )}
+              </li>
+            ))}
+            {user && <ExtraUserMenue />}
+            {!user && <ExtraNotUserMenue />}
           </>
         </Burger>
       )}

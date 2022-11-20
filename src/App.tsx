@@ -17,13 +17,17 @@ import RegisterForm from "./HomePage/RegisterForm";
 import Form from "./MyPages/Form";
 import { IUser } from "./types/User";
 import WhyRenoveta from "./HomePage/components/firstpage/WhyRenoveta";
+import { IMenue } from "./types/Menue";
+import { getMenue } from "./HomePage/components/navbar/Menue";
 
 function App(): JSX.Element {
   const [members, setMembers] = useState<IMember[]>([]);
   const [users, setUsers] = useState<IUser>();
+  const [menue, setMenue] = useState<IMenue[]>([]);
 
   useEffect(() => {
     setMembers(getMembers());
+    setMenue(getMenue());
 
     const fetchUsers = async () => {
       const users = await auth.getCurrentUser();
@@ -35,7 +39,7 @@ function App(): JSX.Element {
 
   return (
     <Wrapper>
-      <Navbar user={users} />
+      <Navbar user={users} menue={menue} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs members={members} />} />
@@ -48,7 +52,7 @@ function App(): JSX.Element {
         <Route path="/me" element={<MyPage user={users} />} />
         <Route path="/form" element={<Form />} />
       </Routes>
-      <Footer />
+      <Footer menue={menue} />
     </Wrapper>
   );
 }

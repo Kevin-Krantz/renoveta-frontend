@@ -1,16 +1,12 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { ScrollToTop } from "../common/ScrollToTop";
+import { IMenue } from "../types/Menue";
 
-function Footer(): JSX.Element {
-  const footermenue = [
-    {
-      title: "Varför Renoveta",
-      url: "/whyrenoveta",
-    },
-    { title: "Om oss", url: "/aboutus" },
-    { title: "FAQ", url: "/faq" },
-  ];
+interface Props {
+  menue: IMenue[];
+}
+function Footer({ menue }: Props): JSX.Element {
   return (
     <Container>
       <img src="/images/Renovetalogo.png" />
@@ -21,7 +17,7 @@ function Footer(): JSX.Element {
         <VerticalLine></VerticalLine>
         <Column>
           <FooterLink>
-            {footermenue.map((menue) => (
+            {menue.map((menue) => (
               <h2 key={menue.url}>
                 <Link onClick={ScrollToTop} className="Link" to={menue.url}>
                   {menue.title}
