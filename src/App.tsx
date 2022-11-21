@@ -14,6 +14,7 @@ import Logout from "./MyPages/Logout";
 import MyPage from "./MyPages/MyPage";
 import RenovetaForm from "./components/renovetaForm/RenovetaForm";
 import RegisterForm from "./HomePage/RegisterForm";
+import FormsTable from "./MyPages/FormsTable";
 import Form from "./MyPages/Form";
 import { IUser } from "./types/User";
 
@@ -43,8 +44,8 @@ function App(): JSX.Element {
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/logout" element={<Logout />} />
-        <Route path="/me" element={<MyPage user={users} />} />
-        <Route path="/form" element={<Form />} />
+        <Route path="/forms" element={<MyPage user={users} />} />
+        <Route path="/forms/:userId" element={<Form />} />
       </Routes>
       <Footer />
     </Wrapper>
