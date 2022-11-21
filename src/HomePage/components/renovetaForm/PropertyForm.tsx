@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Checkbox from "../../../common/Checkbox";
+import Checkbox from "../../common/Checkbox";
 import { useState, useEffect } from "react";
 import { CheckboxContainer, CheckboxBg } from "./RenovationForm";
 import { InputLeft, Container } from "./PersonalInfoForm";
@@ -25,50 +25,60 @@ export function PropertyForm({
 
   updateFields,
 }: PropertyFormProps) {
-  const data = [
-    { id: 1, name: "Tegelpannor" },
-    { id: 2, name: "Plåt" },
-    { id: 3, name: "Papp" },
-    { id: 4, name: "Eternit" },
-    { id: 5, name: "Shingel" },
-    { id: 6, name: "Annat" },
+  const MaterialType = [
+    { id: "1", name: "Tegelpannor" },
+    { id: "2", name: "Plåt" },
+    { id: "3", name: "Papp/Shingel" },
+    { id: "4", name: "Eternit" },
+    { id: "5", name: "Betongpannor" },
+    { id: "6", name: "Annat" },
   ];
-  const [options, setOptions] = useState([]);
 
-  const handleChange = (item: any) => {
-    let selectedOption = options;
-    if (selectedOption.some((option: any) => option.id === item.id)) {
-      selectedOption = selectedOption.filter(
-        (option: any) => option.id !== item.id
-      );
-    } else {
-      //@ts-ignore
-      selectedOption.push(item);
-    }
-    setOptions(selectedOption);
-  };
+  const RoofType = [
+    { id: "1", name: "Sadeltak", img: "images/roofstyles/sadeltak.png" },
+    { id: "2", name: "Pulpettak", img: "images/roofstyles/pulpettak.png" },
+    { id: "3", name: "Valmat tak", img: "images/roofstyles/valmat.png" },
+    { id: "4", name: "Mansardtak", img: "images/roofstyles/mansard.png" },
+    { id: "5", name: "Motfallstak", img: "images/roofstyles/motfalls.png" },
+    { id: "6", name: "Platt tak", img: "images/roofstyles/platt.png" },
+    { id: "7", name: "Annat", img: "images/roofstyles/annat.png" },
+  ];
 
   return (
     <Container>
-      <label>Vilken typ av tak har du idag?</label>
-      <input
-        className="form-input-small"
-        type="text"
-        value={roofType}
-        onChange={(e) => updateFields({ roofType: e.target.value })}
-      />
+      <CheckboxWrapper>
+        {RoofType.map((option) => (
+          <CheckboxBg key={option.id}>
+            <Image src={option.img} />
+            <Checkbox
+              className="checkbox-input"
+              key={option.id}
+              id={option.id}
+              checked={option.name === roofType}
+              handleCheck={(e) => {
+                updateFields({ roofType: e.target.name });
+              }}
+              value={roofType}
+              name={option.name}
+              type="checkbox"
+            />
+          </CheckboxBg>
+        ))}
+      </CheckboxWrapper>
 
       <label>Vilket material består ditt tak av idag?</label>
       <CheckboxContainer>
-        {data.map((option) => (
+        {MaterialType.map((option) => (
           <CheckboxBg key={option.id}>
             <Checkbox
               className="checkbox-input"
               key={option.id}
               id={option.id}
-              handleCheck={() => {
-                handleChange(option);
+              checked={option.name === materialType}
+              handleCheck={(e) => {
+                updateFields({ materialType: e.target.name });
               }}
+              value={materialType}
               name={option.name}
               type="checkbox"
             />
@@ -136,4 +146,14 @@ const LeftInput = styled(InputLeft)`
   input {
     margin-left: 5px;
   }
+`;
+const Image = styled.img`
+  width: 115px;
+  margin: 0 auto;
+`;
+const CheckboxWrapper = styled(CheckboxContainer)`
+  display: grid;
+  grid-template-columns: 130px 130px 130px 130px;
+  grid-template-rows: 2;
+  grid-gap: 5px;
 `;

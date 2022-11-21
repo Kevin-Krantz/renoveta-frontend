@@ -15,11 +15,13 @@ export async function getAllForms() {
   return forms.data;
 }
 
-interface FormId {
-  id?: string | any;
-}
+// get one form
 
 // get one form
-export function getUserForm(formId: FormId) {
+export function getUserForm(formId: string) {
   return http.get(formApi + "/" + formId);
+}
+
+export async function postForm(data: any) {
+  return await http.post(formApi + "/", data);
 }

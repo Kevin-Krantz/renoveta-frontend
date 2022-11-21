@@ -1,8 +1,10 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, FormEvent, useContext } from "react";
 import styled from "styled-components";
 import Checkbox from "../../../common/Checkbox";
 import { useState } from "react";
 import Right from "./RenovetaForm";
+
+
 
 type RenovationData = {
   typeOfRenovation: string;
@@ -19,28 +21,14 @@ export function RenovationForm({
   updateFields,
 }: RenovationFormProps) {
   const data = [
-    { id: 1, name: "Plåtarbete" },
-    { id: 2, name: "Takomläggning" },
-    { id: 3, name: "Takrenovering" },
-    { id: 4, name: "Takbyte" },
-    { id: 5, name: "Taktvätt" },
-    { id: 6, name: "Annat" },
-  ];
+    { id: "1", name: "Omläggning" },
+    { id: "2", name: "Tvätt" },
+    { id: "3", name: "Målning"}
 
-  const [options, setOptions] = useState([]);
-  //@ts-ignore
-  const handleChange = (item: any) => {
-    let selectedOption = options;
-    if (selectedOption.some((option: any) => option.id === item.id)) {
-      selectedOption = selectedOption.filter(
-        (option: any) => option.id !== item.id
-      );
-    } else {
-      //@ts-ignore
-      selectedOption.push(item);
-    }
-    setOptions(selectedOption);
-  };
+  ];
+  
+ 
+ 
 
   return (
     <>
@@ -53,9 +41,11 @@ export function RenovationForm({
                 className="checkbox-input"
                 key={option.id}
                 id={option.id}
-                //@ts-ignore
-                handleCheck={() => {
-                  handleChange(option);
+                checked={option.name === typeOfRenovation}
+               
+                handleCheck={(e) => {
+                 updateFields({typeOfRenovation: e.target.name});
+                 
                 }}
                 name={option.name}
                 type="checkbox"

@@ -5,7 +5,9 @@ import { FormEvent, useState, useEffect } from "react";
 import { PropertyForm } from "./PropertyForm";
 import { QuestionForm } from "./QuestionForm";
 import { PersonalInfoForm } from "./PersonalInfoForm";
-import BoxLeft from "../calculator/BoxLeft";
+import BoxLeft from "../../../HomePage/components/calculator/BoxLeft";
+import RegisterForm from "../../../HomePage/RegisterForm";
+import { postForm } from "../../../services/formService";
 
 type FormData = {
   typeOfRenovation: string;
@@ -45,6 +47,10 @@ const INITIAL_DATA: FormData = {
   city: "",
 };
 
+interface response {
+  response: string | "No response";
+}
+
 function RenovetaForm() {
   const [data, setData] = useState(INITIAL_DATA);
   // const [input, setInput] = useState("");
@@ -73,12 +79,16 @@ function RenovetaForm() {
     <PropertyForm {...data} updateFields={updateFields} />,
     <QuestionForm {...data} updateFields={updateFields} />,
     <PersonalInfoForm {...data} updateFields={updateFields} />,
+    // <RegisterForm/>
   ]);
 
-  function onSubmit(e: FormEvent) {
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!isLastStep) return nextStep();
+    // postForm(data);
   }
+
+  // Registerform - finns doSubmit - Link/path över till Reg.Form
 
   return (
     <Container>
