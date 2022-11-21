@@ -36,7 +36,7 @@ function DesktopMenue({ user }: Props): JSX.Element {
           {user && (
             <>
               <li>
-                <Link onClick={handleClick} to="/me">
+                <Link onClick={handleClick} to="/forms">
                   Mina Sidor
                 </Link>
               </li>
