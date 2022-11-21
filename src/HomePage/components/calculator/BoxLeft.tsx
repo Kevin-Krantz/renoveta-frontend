@@ -38,6 +38,7 @@ const Left = styled.span`
   border-top-left-radius: 45px;
   border-bottom-left-radius: 45px;
   padding-left: 72px;
+  padding-right: 24px;
   padding-top: 100px;
   padding-bottom: 72px;
 

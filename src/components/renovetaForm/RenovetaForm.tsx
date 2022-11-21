@@ -7,9 +7,8 @@ import { QuestionForm } from "./QuestionForm";
 import { PersonalInfoForm } from "./PersonalInfoForm";
 import BoxLeft from "../../HomePage/components/calculator/BoxLeft";
 import RegisterForm from "../../HomePage/RegisterForm";
-import {postForm} from "../../services/formService";
-
-
+import { postForm } from "../../services/formService";
+import userService from "../../services/userService";
 
 type FormData = {
   typeOfRenovation: string;
@@ -23,8 +22,9 @@ type FormData = {
   addImg: string;
   email: string;
   phone: string;
-  firstName: string;
-  lastName: string;
+  userId: string;
+  name: string;
+  password: string;
   address: string;
   propertyName: string;
   city: string;
@@ -42,21 +42,15 @@ const INITIAL_DATA: FormData = {
   addImg: "",
   email: "",
   phone: "",
-  firstName: "",
-  lastName: "",
+  userId: "",
+  name: "",
+  password: "",
   address: "",
   propertyName: "",
   city: "",
 };
 
-interface response {
-  response: string | "No response"
-}
-
-
 function RenovetaForm() {
- 
-
   const [data, setData] = useState(INITIAL_DATA);
 
   function updateFields(fields: Partial<FormData>) {
@@ -77,19 +71,24 @@ function RenovetaForm() {
     <PropertyForm {...data} updateFields={updateFields} />,
     <QuestionForm {...data} updateFields={updateFields} />,
     <PersonalInfoForm {...data} updateFields={updateFields} />,
-    <RegisterForm/>
-    
   ]);
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!isLastStep) return nextStep();
+
+    const user = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+    };
+
+    const dbUser: any = userService.register(user);
+    data.userId = dbUser._id;
     postForm(data);
   }
 
-
-
-  // Registerform - finns doSubmit - Link/path över till Reg.Form 
+  // Registerform - finns doSubmit - Link/path över till Reg.Form
 
   return (
     <Container>
@@ -99,7 +98,7 @@ function RenovetaForm() {
         <Right>
           <Form onSubmit={onSubmit}>
             <div>
-              {currentStepIndex + 1}/ {steps.length}
+              {currentStepIndex + 1}/{steps.length}
             </div>
             {step}
             <ButtonContainer>
@@ -137,7 +136,6 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 60%;
 
   .form-input {
     border-radius: 10px;
@@ -145,6 +143,7 @@ const Form = styled.form`
     border: 3px solid;
     border-color: var(--text-secondary);
     margin-top: 20px;
+    padding: 8px 16px;
   }
   .form-input-small {
     height: 35px;
@@ -173,7 +172,8 @@ export const Right = styled.span`
   border-top-right-radius: 45px;
   border-bottom-right-radius: 45px;
   border: 5px solid var(--bg-secondary);
-  padding-left: 72px;
+  padding-left: 24px;
+  padding-right: 24px;
   line-height: 28px;
   position: relative;
 `;
@@ -208,5 +208,3 @@ const Button = styled.button`
     transform: scale(1);
   }
 `;
-
-
