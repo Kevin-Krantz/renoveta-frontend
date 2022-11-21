@@ -7,9 +7,7 @@ import { QuestionForm } from "./QuestionForm";
 import { PersonalInfoForm } from "./PersonalInfoForm";
 import BoxLeft from "../../HomePage/components/calculator/BoxLeft";
 import RegisterForm from "../../HomePage/RegisterForm";
-import {postForm} from "../../services/formService";
-
-
+import { postForm } from "../../services/formService";
 
 type FormData = {
   typeOfRenovation: string;
@@ -50,13 +48,10 @@ const INITIAL_DATA: FormData = {
 };
 
 interface response {
-  response: string | "No response"
+  response: string | "No response";
 }
 
-
 function RenovetaForm() {
- 
-
   const [data, setData] = useState(INITIAL_DATA);
 
   function updateFields(fields: Partial<FormData>) {
@@ -77,8 +72,7 @@ function RenovetaForm() {
     <PropertyForm {...data} updateFields={updateFields} />,
     <QuestionForm {...data} updateFields={updateFields} />,
     <PersonalInfoForm {...data} updateFields={updateFields} />,
-    <RegisterForm/>
-    
+    // <RegisterForm />,
   ]);
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -87,9 +81,7 @@ function RenovetaForm() {
     postForm(data);
   }
 
-
-
-  // Registerform - finns doSubmit - Link/path över till Reg.Form 
+  // Registerform - finns doSubmit - Link/path över till Reg.Form
 
   return (
     <Container>
@@ -208,5 +200,3 @@ const Button = styled.button`
     transform: scale(1);
   }
 `;
-
-

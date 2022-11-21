@@ -92,6 +92,7 @@ function useForm({
   };
 
   return {
+    formData,
     handleSubmit,
     renderInput,
     renderButton,
