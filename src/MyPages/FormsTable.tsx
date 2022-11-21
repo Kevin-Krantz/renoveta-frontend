@@ -13,15 +13,14 @@ function Form({ user }: Props) {
   const [allForms, setAllForms] = useState([]);
 
   useEffect(() => {
-    populateForms();
-    populateAllForms();
+    user?.isAdmin ? populateAllForms() : populateForms();
   }, []);
 
   function populateForms() {
     const fetchForms = async () => {
       const forms = await getUserForms();
+      console.log(forms);
       setForms(forms);
-      console.log("forms", forms);
     };
     fetchForms();
   }
@@ -30,13 +29,13 @@ function Form({ user }: Props) {
     const fetchAllForms = async () => {
       const forms = await getAllForms();
       setAllForms(forms);
-      console.log("forms", forms);
     };
     fetchAllForms();
   }
 
   async function handleClick() {
-    <Link to={"/foods/:id"} />;
+    console.log("testing");
+    // <Link to={"/foods/:id"} />;
   }
 
   function formatDate(date: Date) {
@@ -71,14 +70,16 @@ function Form({ user }: Props) {
               <Table key={form._id}>
                 <div>{i + 1}</div>
                 <div>{formatDate(form.dateIssued)}</div>
-                <div>{form.renovationType}</div>
-                <Button
-                  className="button"
-                  type="button"
-                  label="Läs mer"
-                  primary={true}
-                  onClick={handleClick}
-                />
+                <div>{form.renovationType.join(" ")}</div>
+                <Link to={"/forms/" + form._id}>
+                  <Button
+                    className="button"
+                    type="button"
+                    label="Läs mer"
+                    primary={true}
+                    onClick={handleClick}
+                  />
+                </Link>
               </Table>
             ))}
           </Container>
