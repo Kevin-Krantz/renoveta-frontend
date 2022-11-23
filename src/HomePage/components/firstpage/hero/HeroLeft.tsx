@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../../../common/Button";
+import { Link as LinkToScroll } from "react-scroll";
+import { Link } from "react-router-dom";
 import { ScrollToTop } from "../../../../common/ScrollToTop";
 
 function HeroLeft() {
@@ -24,13 +25,20 @@ function HeroLeft() {
             className="buttonleft"
           />
         </Link>
-        <Button
-          label="Kom igång!"
-          primary={true}
-          type="button"
-          className="buttonright"
-          // onClick={}
-        />
+        <LinkToScroll
+          to="calculator"
+          spy={true}
+          smooth={true}
+          offset={-100}
+          duration={1000}
+        >
+          <Button
+            label="Kom igång!"
+            primary={true}
+            type="button"
+            className="buttonright"
+          />
+        </LinkToScroll>
       </StyledButton>
     </Container>
   );
