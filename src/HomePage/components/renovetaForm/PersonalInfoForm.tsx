@@ -3,8 +3,8 @@ import styled from "styled-components";
 type PersonalData = {
   email: string;
   phone: string;
-  firstName: string;
-  lastName: string;
+  name: string;
+  password: string;
   address: string;
   propertyName: string;
   city: string;
@@ -17,8 +17,8 @@ type PersonalFormProps = PersonalData & {
 export function PersonalInfoForm({
   email,
   phone,
-  firstName,
-  lastName,
+  name,
+  password,
   address,
   propertyName,
   city,
@@ -47,17 +47,17 @@ export function PersonalInfoForm({
         <InputRight>
           <input
             className="form-input-small"
-            placeholder="Förnamn"
-            type="text"
-            value={firstName}
-            onChange={(e) => updateFields({ firstName: e.target.value })}
+            placeholder="Önskat lösenord"
+            type="password"
+            value={password}
+            onChange={(e) => updateFields({ password: e.target.value })}
           />
           <input
             className="form-input-small"
-            placeholder="Efternamn"
+            placeholder="För- och efternamn"
             type="text"
-            value={lastName}
-            onChange={(e) => updateFields({ lastName: e.target.value })}
+            value={name}
+            onChange={(e) => updateFields({ name: e.target.value })}
           />
         </InputRight>
       </InputContainer>
@@ -118,7 +118,6 @@ export const InputContainer = styled.div`
   }
   .form-input-small::placeholder {
     font-size: 12px;
-    padding-left: 20px;
     font-family: "Catamaran", sans-serif;
     font-weight: 700;
     color: var(--text-secondary);
@@ -130,6 +129,7 @@ export const InputLeft = styled.div`
 
   .form-input-small {
     margin-top: 15px;
+    padding-left: 8px;
   }
 `;
 export const InputRight = styled.div`
@@ -138,5 +138,6 @@ export const InputRight = styled.div`
 
   .form-input-small {
     margin-top: 15px;
+    padding-left: 8px;
   }
 `;

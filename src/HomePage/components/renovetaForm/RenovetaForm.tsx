@@ -5,9 +5,16 @@ import { FormEvent, useState, useEffect } from "react";
 import { PropertyForm } from "./PropertyForm";
 import { QuestionForm } from "./QuestionForm";
 import { PersonalInfoForm } from "./PersonalInfoForm";
+<<<<<<< HEAD:src/HomePage/components/renovetaForm/RenovetaForm.tsx
 import BoxLeft from "../../../HomePage/components/calculator/BoxLeft";
 import RegisterForm from "../../../HomePage/RegisterForm";
 import { postForm } from "../../../services/formService";
+=======
+import BoxLeft from "../../HomePage/components/calculator/BoxLeft";
+import RegisterForm from "../../HomePage/RegisterForm";
+import { postForm } from "../../services/formService";
+import userService from "../../services/userService";
+>>>>>>> master:src/components/renovetaForm/RenovetaForm.tsx
 
 type FormData = {
   typeOfRenovation: string;
@@ -21,8 +28,9 @@ type FormData = {
   addImg: string;
   email: string;
   phone: string;
-  firstName: string;
-  lastName: string;
+  userId: string;
+  name: string;
+  password: string;
   address: string;
   propertyName: string;
   city: string;
@@ -40,8 +48,9 @@ const INITIAL_DATA: FormData = {
   addImg: "",
   email: "",
   phone: "",
-  firstName: "",
-  lastName: "",
+  userId: "",
+  name: "",
+  password: "",
   address: "",
   propertyName: "",
   city: "",
@@ -82,10 +91,26 @@ function RenovetaForm() {
     // <RegisterForm/>
   ]);
 
+<<<<<<< HEAD:src/HomePage/components/renovetaForm/RenovetaForm.tsx
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!isLastStep) return nextStep();
     // postForm(data);
+=======
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (!isLastStep) return nextStep();
+
+    const user = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+    };
+
+    const dbUser: any = userService.register(user);
+    data.userId = dbUser._id;
+    postForm(data);
+>>>>>>> master:src/components/renovetaForm/RenovetaForm.tsx
   }
 
   // Registerform - finns doSubmit - Link/path över till Reg.Form
@@ -97,7 +122,11 @@ function RenovetaForm() {
         <Right>
           <Form onSubmit={onSubmit}>
             <div>
+<<<<<<< HEAD:src/HomePage/components/renovetaForm/RenovetaForm.tsx
               {currentStepIndex + 1} / {steps.length}
+=======
+              {currentStepIndex + 1}/{steps.length}
+>>>>>>> master:src/components/renovetaForm/RenovetaForm.tsx
             </div>
             {step}
             <ButtonContainer>
@@ -127,6 +156,10 @@ const Container = styled.div`
   color: var(--text-secondary);
   text-align: center;
   width: 100vw;
+<<<<<<< HEAD:src/HomePage/components/renovetaForm/RenovetaForm.tsx
+=======
+  height: 100vh;
+>>>>>>> master:src/components/renovetaForm/RenovetaForm.tsx
   font-weight: 900;
 `;
 
@@ -134,7 +167,6 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 60%;
 
   .form-input {
     border-radius: 10px;
@@ -142,6 +174,7 @@ const Form = styled.form`
     border: 3px solid;
     border-color: var(--text-secondary);
     margin-top: 20px;
+    padding: 8px 16px;
   }
   .form-input-small {
     height: 35px;
@@ -178,7 +211,8 @@ export const Right = styled.span`
   border-top-right-radius: 45px;
   border-bottom-right-radius: 45px;
   border: 5px solid var(--bg-secondary);
-  padding-left: 72px;
+  padding-left: 24px;
+  padding-right: 24px;
   line-height: 28px;
   position: relative;
 

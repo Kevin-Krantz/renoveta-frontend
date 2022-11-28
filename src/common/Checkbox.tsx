@@ -22,7 +22,7 @@ function Checkbox(props: CheckboxProps) {
         className={props.className}
         name={props.name}
       />
-      {props.name}
+      <label htmlFor={`${props.id}`}>{props.name}</label>
     </>
   );
 }

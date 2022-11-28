@@ -5,7 +5,7 @@ const formApi = config.apiEndpoint + "/forms";
 
 //get forms
 export async function getUserForms() {
-  const form = await http.get(formApi + "/");
+  const form = await http.get(formApi);
   return form.data;
 }
 
@@ -16,12 +16,10 @@ export async function getAllForms() {
 }
 
 // get one form
-
-// get one form
 export function getUserForm(formId: string) {
   return http.get(formApi + "/" + formId);
 }
 
 export async function postForm(data: any) {
-  return await http.post(formApi + "/", data);
+  return await http.post(formApi, data);
 }
