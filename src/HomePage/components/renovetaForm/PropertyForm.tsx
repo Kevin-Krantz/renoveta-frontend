@@ -65,7 +65,6 @@ export function PropertyForm({
           </CheckboxBg>
         ))}
       </CheckboxWrapper>
-
       <label>Vilket material består ditt tak av idag?</label>
       <CheckboxContainer>
         {MaterialType.map((option) => (

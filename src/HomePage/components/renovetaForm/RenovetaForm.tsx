@@ -138,8 +138,8 @@ const Container = styled.div`
   display: grid;
   color: var(--text-secondary);
   text-align: center;
-  width: 100vw;
-  height: 100vh;
+
+  height: 150vh;
   font-weight: 900;
 `;
 
@@ -167,7 +167,7 @@ const Box = styled.span`
   justify-content: center;
   align-self: center;
   text-align: left;
-  width: 60%;
+  width: 90vw;
   position: relative;
   padding-bottom: 32px;
   font-size: 18px;
@@ -193,7 +193,7 @@ export const Right = styled.span`
   border: 5px solid var(--bg-secondary);
   padding-left: 24px;
   padding-right: 24px;
-  line-height: 28px;
+  line-height: 18px;
   position: relative;
 
   @media screen and (max-width: 880px) {

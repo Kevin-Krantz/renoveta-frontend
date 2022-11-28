@@ -18,19 +18,13 @@ function BoxLeft() {
         <li>Skräddarsytt avtal </li>
         <li>Regel-koll</li>
       </ul>
-      <Button
-        className="button"
-        primary={true}
-        type="submit"
-        label={"Registrera dig"}
-      />
     </Left>
   );
 }
 
 export default BoxLeft;
 
-const Left = styled.span`
+const Left = styled.div`
   width: 450px;
   background-color: var(--bg-secondary);
   color: var(--text-primary);
@@ -61,11 +55,6 @@ const Left = styled.span`
 
     h1 {
       font-size: 18px;
-    }
-
-    .button {
-      width: 120px;
-      height: 30px;
     }
   }
 `;
