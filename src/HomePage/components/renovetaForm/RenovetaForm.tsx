@@ -5,16 +5,10 @@ import { FormEvent, useState, useEffect } from "react";
 import { PropertyForm } from "./PropertyForm";
 import { QuestionForm } from "./QuestionForm";
 import { PersonalInfoForm } from "./PersonalInfoForm";
-<<<<<<< HEAD:src/HomePage/components/renovetaForm/RenovetaForm.tsx
 import BoxLeft from "../../../HomePage/components/calculator/BoxLeft";
 import RegisterForm from "../../../HomePage/RegisterForm";
 import { postForm } from "../../../services/formService";
-=======
-import BoxLeft from "../../HomePage/components/calculator/BoxLeft";
-import RegisterForm from "../../HomePage/RegisterForm";
-import { postForm } from "../../services/formService";
-import userService from "../../services/userService";
->>>>>>> master:src/components/renovetaForm/RenovetaForm.tsx
+import userService from "../../../services/userService";
 
 type FormData = {
   typeOfRenovation: string;
@@ -91,12 +85,6 @@ function RenovetaForm() {
     // <RegisterForm/>
   ]);
 
-<<<<<<< HEAD:src/HomePage/components/renovetaForm/RenovetaForm.tsx
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (!isLastStep) return nextStep();
-    // postForm(data);
-=======
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!isLastStep) return nextStep();
@@ -110,7 +98,6 @@ function RenovetaForm() {
     const dbUser: any = userService.register(user);
     data.userId = dbUser._id;
     postForm(data);
->>>>>>> master:src/components/renovetaForm/RenovetaForm.tsx
   }
 
   // Registerform - finns doSubmit - Link/path över till Reg.Form
@@ -122,11 +109,7 @@ function RenovetaForm() {
         <Right>
           <Form onSubmit={onSubmit}>
             <div>
-<<<<<<< HEAD:src/HomePage/components/renovetaForm/RenovetaForm.tsx
-              {currentStepIndex + 1} / {steps.length}
-=======
               {currentStepIndex + 1}/{steps.length}
->>>>>>> master:src/components/renovetaForm/RenovetaForm.tsx
             </div>
             {step}
             <ButtonContainer>
@@ -156,10 +139,7 @@ const Container = styled.div`
   color: var(--text-secondary);
   text-align: center;
   width: 100vw;
-<<<<<<< HEAD:src/HomePage/components/renovetaForm/RenovetaForm.tsx
-=======
   height: 100vh;
->>>>>>> master:src/components/renovetaForm/RenovetaForm.tsx
   font-weight: 900;
 `;
 

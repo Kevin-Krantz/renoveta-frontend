@@ -1,9 +1,5 @@
 import styled from "styled-components";
-<<<<<<< HEAD:src/HomePage/components/renovetaForm/PropertyForm.tsx
 import Checkbox from "../../../common/Checkbox";
-=======
-import Checkbox from "../../common/Checkbox";
->>>>>>> master:src/components/renovetaForm/PropertyForm.tsx
 import { useState, useEffect } from "react";
 import { CheckboxContainer, CheckboxBg } from "./RenovationForm";
 import { InputLeft, Container } from "./PersonalInfoForm";
@@ -30,24 +26,6 @@ export function PropertyForm({
   updateFields,
 }: PropertyFormProps) {
   const MaterialType = [
-<<<<<<< HEAD:src/HomePage/components/renovetaForm/PropertyForm.tsx
-    { id: "1", name: "Tegelpannor" },
-    { id: "2", name: "Plåt" },
-    { id: "3", name: "Papp/Shingel" },
-    { id: "4", name: "Eternit" },
-    { id: "5", name: "Betongpannor" },
-    { id: "6", name: "Annat" },
-  ];
-
-  const RoofType = [
-    { id: "1", name: "Sadeltak", img: "images/roofstyles/sadeltak.png" },
-    { id: "2", name: "Pulpettak", img: "images/roofstyles/pulpettak.png" },
-    { id: "3", name: "Valmat tak", img: "images/roofstyles/valmat.png" },
-    { id: "4", name: "Mansardtak", img: "images/roofstyles/mansard.png" },
-    { id: "5", name: "Motfallstak", img: "images/roofstyles/motfalls.png" },
-    { id: "6", name: "Platt tak", img: "images/roofstyles/platt.png" },
-    { id: "7", name: "Annat", img: "images/roofstyles/annat.png" },
-=======
     { id: "11", name: "Tegelpannor" },
     { id: "22", name: "Plåt" },
     { id: "33", name: "Papp/Shingel" },
@@ -64,7 +42,6 @@ export function PropertyForm({
     { id: "50", name: "Motfallstak", img: "images/roofstyles/motfalls.png" },
     { id: "60", name: "Platt tak", img: "images/roofstyles/platt.png" },
     { id: "70", name: "Annat", img: "images/roofstyles/annat.png" },
->>>>>>> master:src/components/renovetaForm/PropertyForm.tsx
   ];
 
   return (
