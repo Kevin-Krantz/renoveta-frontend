@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import { createClient } from "contentful";
-import { useState, useEffect } from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { IFaq } from "../types/contenful";
+import { IFaq } from "../../../types/contenful";
+import { useState, useEffect } from "react";
 
 const client = createClient({
   space: process.env.REACT_APP_CONTENTFUL_SPACE_ID || "",
   accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_KEY || "",
 });
 
-function FAQ() {
+function FAQSection() {
   const [faqs, setFaqs] = useState<IFaq[]>([]);
   const [selected, setSelected] = useState(null);
 
@@ -21,7 +21,6 @@ function FAQ() {
     }
     loadEntries();
   }, []);
-
   const toggle = (item: any) => {
     if (selected === item) {
       return setSelected(null);
@@ -29,12 +28,11 @@ function FAQ() {
 
     setSelected(item);
   };
-
   return (
-    <Container>
-      <h1>Vanliga frågor</h1>
+    <StyledFAQ>
+      <h1>Vanliga frågor och svar</h1>
       {faqs.map((faq, item) => (
-        <FAQSection key={faq.sys.id}>
+        <StyleFAQSection key={faq.sys.id}>
           <IconContainer onClick={() => toggle(item)}>
             <Icon>{selected === item ? "-" : "+"}</Icon>
           </IconContainer>
@@ -50,31 +48,35 @@ function FAQ() {
               )}
             </div>
           </div>
-        </FAQSection>
+        </StyleFAQSection>
       ))}
       <p>Hittade du inte det du sökte? Fråga Renoveta</p>
-    </Container>
+    </StyledFAQ>
   );
 }
 
-export default FAQ;
+export default FAQSection;
 
-const Container = styled.div`
-  display: grid;
-  grid-template-columns: 600px;
-  margin-left: 300px;
-  margin-bottom: 50px;
+const StyledFAQ = styled.div`
+  margin: 40px;
+  z-index: 0;
+  box-sizing: border-box;
   h1 {
     text-align: center;
+    font-size: 32px;
   }
   p {
     margin-top: 50px;
     margin-bottom: 50px;
     margin-right: 15px;
   }
+
+  @media screen and (max-width: 880px) {
+    margin-left: 0px !important;
+  }
 `;
 
-const FAQSection = styled.div`
+const StyleFAQSection = styled.div`
   display: grid;
   grid-template-columns: 100px auto;
   align-items: center;
@@ -109,6 +111,11 @@ const H3Question = styled.h3`
   margin: 16px 0px;
   padding-top: 4px;
   padding-right: 40px;
+
+  @media screen and (max-width: 880px) {
+    margin-left: 0px;
+    width: 300px;
+  }
 `;
 
 const AnswerHidden = styled.h3`
@@ -122,4 +129,9 @@ const AnswerShow = styled.h3`
   font-size: 16px;
   text-align: left;
   font-weight: lighter;
+
+  @media screen and (max-width: 880px) {
+    margin-left: 0px;
+    width: 300px;
+  }
 `;

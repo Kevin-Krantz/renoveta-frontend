@@ -1,4 +1,3 @@
-import { x } from "joi";
 import styled from "styled-components";
 
 function Review() {
@@ -34,7 +33,12 @@ function Review() {
 export default Review;
 
 const Container = styled.div`
-  height: 100vh;
+  height: 120vh;
+
+  @media screen and (max-width: 880px) {
+    height: 90vh;
+    width: 880px;
+  }
 `;
 
 const MainContainer = styled.div`
@@ -64,16 +68,11 @@ const LeftContainer = styled.div`
     width: 55vw;
     margin-left: 10vw;
   }
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
-    img {
-      width: 70vw;
-      margin-left: 0;
-    }
-  }
-  @media screen and (max-width: 767px) {
+
+  @media screen and (max-width: 880px) {
     img {
       width: 80vw;
-      margin-left: 0px;
+      margin-left: -100px;
     }
   }
 `;
@@ -93,15 +92,9 @@ const RightContainer = styled.div`
   border-radius: 500px 0 0 500px;
   margin-top: 10vh;
 
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  @media screen and (max-width: 880px) {
     width: 70vw;
-    height: 30vh;
-    margin-top: 3vh;
-    align-self: flex-end;
-  }
-  @media screen and (max-width: 767px) {
-    width: 80vw;
-    height: 30vh;
+    height: 40vh;
     align-self: center;
   }
 `;

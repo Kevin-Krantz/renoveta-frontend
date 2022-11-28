@@ -104,7 +104,6 @@ function Form({ user }: Props) {
                   type="button"
                   label="Svara"
                   primary={true}
-                  onClick={handleClick}
                 />
               </Table>
             ))}

@@ -1,8 +1,10 @@
 import React, { ChangeEvent, FormEvent, useContext } from "react";
 import styled from "styled-components";
-import Checkbox from "../../common/Checkbox";
+import Checkbox from "../../../common/Checkbox";
 import { useState } from "react";
 import Right from "./RenovetaForm";
+
+
 
 type RenovationData = {
   typeOfRenovation: string;
@@ -21,9 +23,19 @@ export function RenovationForm({
   const data = [
     { id: "1", name: "Omläggning" },
     { id: "2", name: "Tvätt" },
+<<<<<<< HEAD:src/HomePage/components/renovetaForm/RenovationForm.tsx
+    { id: "3", name: "Målning"}
+
+  ];
+  
+ 
+ 
+
+=======
     { id: "3", name: "Målning" },
   ];
 
+>>>>>>> master:src/components/renovetaForm/RenovationForm.tsx
   return (
     <>
       <label className="checkbox-title">
@@ -38,8 +50,15 @@ export function RenovationForm({
                 key={option.id}
                 id={option.id}
                 checked={option.name === typeOfRenovation}
+<<<<<<< HEAD:src/HomePage/components/renovetaForm/RenovationForm.tsx
+               
+                handleCheck={(e) => {
+                 updateFields({typeOfRenovation: e.target.name});
+                 
+=======
                 handleCheck={(e) => {
                   updateFields({ typeOfRenovation: e.target.name });
+>>>>>>> master:src/components/renovetaForm/RenovationForm.tsx
                 }}
                 name={option.name}
                 type="checkbox"

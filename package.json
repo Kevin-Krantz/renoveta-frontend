@@ -20,6 +20,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
+    "react-scroll": "^1.8.8",
     "react-toastify": "^9.0.8",
     "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
@@ -53,6 +54,7 @@
     "@types/node": "^18.11.9",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
+    "@types/react-scroll": "^1.8.5",
     "@types/styled-components": "^5.1.26",
     "contentful-management": "^10.19.1",
     "contentful-typescript-codegen": "^3.2.3",
