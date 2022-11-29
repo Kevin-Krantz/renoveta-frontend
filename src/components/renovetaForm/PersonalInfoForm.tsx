@@ -5,8 +5,8 @@ type PersonalData = {
   phone: string;
   name: string;
   password: string;
-  address: string;
-  propertyName: string;
+  streetAdressAndNumber: string;
+  propertyDesignation: string;
   city: string;
 };
 
@@ -19,8 +19,8 @@ export function PersonalInfoForm({
   phone,
   name,
   password,
-  address,
-  propertyName,
+  streetAdressAndNumber,
+  propertyDesignation,
   city,
   updateFields,
 }: PersonalFormProps) {
@@ -69,15 +69,15 @@ export function PersonalInfoForm({
             className="form-input-small"
             placeholder="Adress"
             type="address"
-            value={address}
-            onChange={(e) => updateFields({ address: e.target.value })}
+            value={ streetAdressAndNumber}
+            onChange={(e) => updateFields({  streetAdressAndNumber: e.target.value })}
           />
           <input
             className="form-input-small"
             placeholder="Fastighetsbeteckning"
             type="text"
-            value={propertyName}
-            onChange={(e) => updateFields({ propertyName: e.target.value })}
+            value={propertyDesignation}
+            onChange={(e) => updateFields({ propertyDesignation: e.target.value })}
           />
         </InputLeft>
         <InputRight>

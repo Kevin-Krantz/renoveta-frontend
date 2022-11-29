@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 type QuestionData = {
-  anyQuestions: string;
+  questions: string;
   addImg: string;
 };
 
@@ -10,7 +10,7 @@ type QuestionFormProps = QuestionData & {
 };
 
 export function QuestionForm({
-  anyQuestions,
+  questions,
   addImg,
   updateFields,
 }: QuestionFormProps) {
@@ -20,8 +20,8 @@ export function QuestionForm({
       <input
         className="form-input"
         type="text"
-        value={anyQuestions}
-        onChange={(e) => updateFields({ anyQuestions: e.target.value })}
+        value={questions}
+        onChange={(e) => updateFields({ questions: e.target.value })}
       />
     </Container>
   );

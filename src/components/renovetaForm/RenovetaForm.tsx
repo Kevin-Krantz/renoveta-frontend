@@ -11,42 +11,42 @@ import { postForm } from "../../services/formService";
 import userService from "../../services/userService";
 
 type FormData = {
-  typeOfRenovation: string;
+  renovationType: string;
   changeApperance: string;
-  roofType: string;
-  materialType: string;
+  typeOfRoof: string;
+  roofMaterial: string;
   roofAngle: string;
   propertyWidth: string;
   propertyLength: string;
-  anyQuestions: string;
+  questions: string;
   addImg: string;
   email: string;
   phone: string;
   userId: string;
   name: string;
   password: string;
-  address: string;
-  propertyName: string;
+  streetAdressAndNumber: string;
+  propertyDesignation: string;
   city: string;
 };
 
 const INITIAL_DATA: FormData = {
-  typeOfRenovation: "",
+  renovationType: "",
   changeApperance: "",
-  roofType: "",
-  materialType: "",
+  typeOfRoof: "",
+  roofMaterial: "",
   roofAngle: "",
   propertyWidth: "",
   propertyLength: "",
-  anyQuestions: "",
+  questions: "",
   addImg: "",
   email: "",
   phone: "",
   userId: "",
   name: "",
   password: "",
-  address: "",
-  propertyName: "",
+  streetAdressAndNumber: "",
+  propertyDesignation: "",
   city: "",
 };
 
@@ -83,7 +83,7 @@ function RenovetaForm() {
       password: data.password,
     };
 
-    const dbUser: any = userService.register(user);
+    const dbUser: any = await userService.register(user);
     data.userId = dbUser._id;
     postForm(data);
   }
