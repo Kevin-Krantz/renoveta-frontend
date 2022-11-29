@@ -75,6 +75,7 @@ export default DesktopMenue;
 
 const Container = styled.div`
   margin-top: 25px;
+  width: 100vw;
 
   button {
     background-color: var(--bg-color);
@@ -82,6 +83,7 @@ const Container = styled.div`
     font-weight: bold;
     color: white;
     margin-top: 20px;
+    
   }
 
   button:hover {

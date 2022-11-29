@@ -19,14 +19,18 @@ export default Calculator;
 
 const Image = styled.div`
   background-image: url("images/bg-photo-paint.png");
-  background-size: 1350px;
+  width: 100vw;
   background-repeat: none;
+  background-size: 100vw;
 `;
 
 const Container = styled.div`
-  display: grid;
+  display: flex;
+  width: 100vw;
+  justify-content: center;
   color: var(--text-secondary);
   text-align: center;
+ padding-bottom: 30px;
 `;
 
 const Box = styled.span`
@@ -34,7 +38,7 @@ const Box = styled.span`
   justify-content: center;
   text-align: left;
   width: 1100px;
-  left: 100px;
+  
   position: relative;
   margin-top: 100px;
   margin-bottom: 100px;
@@ -42,8 +46,9 @@ const Box = styled.span`
   font-size: 18px;
 
   @media screen and (max-width: 1000px) {
-    width: 800px;
+    width: 90vw;
     left: -5px;
     font-size: 12px;
+  
   }
 `;

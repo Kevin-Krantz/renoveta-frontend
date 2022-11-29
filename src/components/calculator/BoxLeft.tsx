@@ -66,6 +66,9 @@ const Left = styled.span`
       width: 120px;
       height: 30px;
     }
+    p, h1, ul, button {
+      display: none;
+    }
   }
 `;
 const Logo = styled.img`

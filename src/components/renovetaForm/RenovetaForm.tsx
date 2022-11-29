@@ -85,10 +85,10 @@ function RenovetaForm() {
 
     const dbUser: any = await userService.register(user);
     data.userId = dbUser._id;
-    postForm(data);
+     postForm(data);
   }
 
-  // Registerform - finns doSubmit - Link/path över till Reg.Form
+  
 
   return (
     <Container>

@@ -219,6 +219,7 @@ const Right = styled.span`
     font-size: 12px;
     padding-top: 20px;
     padding-left: 32px;
+    padding-bottom: 35px;
 
     a {
       font-size: 16px;

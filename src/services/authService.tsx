@@ -10,14 +10,14 @@ http.setAuthHeader(getJwt());
 async function login({ formData }: any) {
   const data = {
     email: formData.email,
-
     password: formData.password,
   };
+
   const { data: jwt } = await http.post(authApi, data);
   localStorage.setItem(tokenKey, jwt);
 }
 
-function loginWithJwt({ jwt }: any) {
+function loginWithJwt( {jwt}: any) {
   localStorage.setItem(tokenKey, jwt);
 }
 
@@ -34,6 +34,7 @@ function getCurrentUser() {
     const token: any = getJwt();
     const user = jwtDecode(token);
     return user;
+
   } catch (error) {
     return null;
   }
