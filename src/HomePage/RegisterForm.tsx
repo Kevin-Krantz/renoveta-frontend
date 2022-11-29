@@ -5,9 +5,6 @@ import useForm from "../common/Form";
 import user from "../services/userService";
 import { useNavigate } from "react-router-dom";
 
-interface Window {
-  location: Location | string;
-}
 interface RegisterFormData {
   name: string;
   email: string;
@@ -64,11 +61,11 @@ function RegisterForm() {
 
   return (
     <Wrapper onSubmit={handleSubmit}>
-      <Title>Register Form</Title>
-      {renderInput({ label: "Name", name: "name" })}
-      {renderInput({ label: "E-mail", name: "email" })}
-      {renderInput({ label: "Password", name: "password", type: "password" })}
-      {renderButton({ label: "Register" })}
+      <Title>Registrera dig</Title>
+      {renderInput({ label: "Namn", name: "name" })}
+      {renderInput({ label: "Mail", name: "email" })}
+      {renderInput({ label: "Lösenord", name: "password", type: "password" })}
+      {renderButton({ label: "Registrera" })}
     </Wrapper>
   );
 }

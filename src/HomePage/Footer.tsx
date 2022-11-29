@@ -35,7 +35,7 @@ function Footer({ menue }: Props): JSX.Element {
 export default Footer;
 
 const Container = styled.div`
-  height: 550px;
+  height: 450px;
   background: #c8e5d9;
   padding-bottom: 40px;
   padding-top: 40px;

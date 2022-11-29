@@ -57,10 +57,10 @@ function LoginForm() {
 
   return (
     <Container onSubmit={handleSubmit}>
-      <Title>Login Form</Title>
-      {renderInput({ label: "E-mail", name: "email" })}
-      {renderInput({ label: "Password", name: "password", type: "password" })}
-      {renderButton({ label: "Log in" })}
+      <Title>Logga in</Title>
+      {renderInput({ label: "Mail", name: "email" })}
+      {renderInput({ label: "Lösenord", name: "password", type: "password" })}
+      {renderButton({ label: "Logga in" })}
       <Link to="/register" onClick={ScrollToTop} className="link">
         Registrera dig här!
       </Link>
