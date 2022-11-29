@@ -74,12 +74,12 @@ function DesktopMenue({ user }: Props): JSX.Element {
 export default DesktopMenue;
 
 const Container = styled.div`
-  margin-top: 25px;
   width: 100vw;
+  padding-top: 15px;
 
   button {
     background-color: var(--bg-color);
-    font-size: 24px;
+    font-size: 18px;
     font-weight: bold;
     color: white;
     margin-top: 20px;

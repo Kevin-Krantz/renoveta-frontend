@@ -29,8 +29,8 @@ interface ButtonProps {
 }
 
 const StyledButton = styled.button<ButtonProps>`
-  width: 209px;
-  height: 57px;
+  width: 180px;
+  height: 45px;
   border-radius: 45px;
   border: 2px solid var(--bg-color);
   background-color: var(--bg-primary);
