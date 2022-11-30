@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { useState } from "react";
 import useForm from "../common/Form";
 import auth from "../services/authService";
+import { ScrollToTop } from "../common/ScrollToTop";
+import { Link } from "react-router-dom";
 
 interface LoginFormData {
   email: string;
@@ -55,10 +57,13 @@ function LoginForm() {
 
   return (
     <Container onSubmit={handleSubmit}>
-      <Title>Login Form</Title>
-      {renderInput({ label: "E-mail", name: "email" })}
-      {renderInput({ label: "Password", name: "password", type: "password" })}
-      {renderButton({ label: "Log in" })}
+      <Title>Logga in</Title>
+      {renderInput({ label: "Mail", name: "email" })}
+      {renderInput({ label: "Lösenord", name: "password", type: "password" })}
+      {renderButton({ label: "Logga in" })}
+      <Link to="/register" onClick={ScrollToTop} className="link">
+        Registrera dig här!
+      </Link>
     </Container>
   );
 }
@@ -66,6 +71,7 @@ function LoginForm() {
 export default LoginForm;
 
 const Container = styled.form`
+  display: grid;
   background-color: var(--bg-secondary);
   border: 5px solid var(--bg-primary);
   border-radius: 45px;
@@ -79,6 +85,20 @@ const Container = styled.form`
   margin-top: 20px;
   margin-bottom: 100px;
   margin-left: 400px;
+
+  .link {
+    margin-top: 10px;
+    font-size: 18px;
+    margin: 24px;
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-weight: bold;
+  }
+
+  @media screen and (max-width: 880px) {
+    margin-left: 50px;
+  }
 `;
 
 const Title = styled.span`

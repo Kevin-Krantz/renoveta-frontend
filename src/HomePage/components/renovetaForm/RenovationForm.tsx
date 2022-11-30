@@ -1,6 +1,6 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, FormEvent, useContext } from "react";
 import styled from "styled-components";
-import Checkbox from "../../common/Checkbox";
+import Checkbox from "../../../common/Checkbox";
 import { useState } from "react";
 import Right from "./RenovetaForm";
 
@@ -19,32 +19,16 @@ export function RenovationForm({
   updateFields,
 }: RenovationFormProps) {
   const data = [
-    { id: 1, name: "Plåtarbete" },
-    { id: 2, name: "Takomläggning" },
-    { id: 3, name: "Takrenovering" },
-    { id: 4, name: "Takbyte" },
-    { id: 5, name: "Taktvätt" },
-    { id: 6, name: "Annat" },
+    { id: "1", name: "Omläggning" },
+    { id: "2", name: "Tvätt" },
+    { id: "3", name: "Målning" },
   ];
-
-  const [options, setOptions] = useState([]);
-  //@ts-ignore
-  const handleChange = (item: any) => {
-    let selectedOption = options;
-    if (selectedOption.some((option: any) => option.id === item.id)) {
-      selectedOption = selectedOption.filter(
-        (option: any) => option.id !== item.id
-      );
-    } else {
-      //@ts-ignore
-      selectedOption.push(item);
-    }
-    setOptions(selectedOption);
-  };
 
   return (
     <>
-      <label>Vad för typ av renovering planerar du på att utföra?</label>
+      <label className="checkbox-title">
+        Vad för typ av renovering planerar du på att utföra?
+      </label>
       <CheckboxContainer>
         {data.map((option) => {
           return (
@@ -53,9 +37,9 @@ export function RenovationForm({
                 className="checkbox-input"
                 key={option.id}
                 id={option.id}
-                //@ts-ignore
-                handleCheck={() => {
-                  handleChange(option);
+                checked={option.name === typeOfRenovation}
+                handleCheck={(e) => {
+                  updateFields({ typeOfRenovation: e.target.name });
                 }}
                 name={option.name}
                 type="checkbox"
@@ -64,7 +48,6 @@ export function RenovationForm({
           );
         })}
       </CheckboxContainer>
-
       <label>Planerar du på att ändra - färg, material eller form?</label>
       <input
         className="form-input"
@@ -81,6 +64,7 @@ export const CheckboxContainer = styled.ul`
   list-style: none;
   column-count: 2;
   column-fill: balance;
+  margin-bottom: 40px;
 
   input {
     margin: 9px;
@@ -93,4 +77,10 @@ export const CheckboxBg = styled.div`
   background-color: #d4ede4;
   margin-bottom: 5px;
   border-radius: 5px;
+`;
+
+const Description = styled.div`
+  & input {
+    margin-top: 0;
+  }
 `;
