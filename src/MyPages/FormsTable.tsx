@@ -2,35 +2,27 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../common/Button";
+import { getUserForms } from "../services/formService";
+import auth from "../services/authService";
 import { IUser } from "../types/User";
-import { getUserForms, getAllForms } from "../services/formService";
 
-interface Props {
-  user?: IUser;
-}
-function Form({ user }: Props) {
+function Form() {
   const [forms, setForms] = useState([]);
-  const [allForms, setAllForms] = useState([]);
+
+  const currentUser = auth.getCurrentUser() as IUser;
+  console.log(currentUser.isAdmin);
 
   useEffect(() => {
-    user?.isAdmin ? populateAllForms() : populateForms();
+    !currentUser.isAdmin && populateForms();
   }, []);
 
   function populateForms() {
     const fetchForms = async () => {
       const forms = await getUserForms();
-      console.log(forms);
+      console.log("userforms", forms);
       setForms(forms);
     };
     fetchForms();
-  }
-
-  function populateAllForms() {
-    const fetchAllForms = async () => {
-      const forms = await getAllForms();
-      setAllForms(forms);
-    };
-    fetchAllForms();
   }
 
   async function handleClick() {
@@ -57,97 +49,110 @@ function Form({ user }: Props) {
 
   return (
     <>
-      {!user?.isAdmin && (
-        <>
-          <Head>
-            <p>#</p>
-            <p>Datum inskickat</p>
-            <p>RenoveringsTyp</p>
-            <></>
-          </Head>
-          <Container>
-            {forms.map((form: any, i) => (
-              <Table key={form._id}>
-                <div>{i + 1}</div>
-                <div>{formatDate(form.dateIssued)}</div>
-                <div>{form.renovationType.join(" ")}</div>
-                <Link to={"/forms/" + form._id}>
-                  <Button
-                    className="button"
-                    type="button"
-                    label="Läs mer"
-                    primary={true}
-                    onClick={handleClick}
-                  />
-                </Link>
-              </Table>
-            ))}
-          </Container>
-        </>
-      )}
-      {user?.isAdmin && (
-        <>
-          <Head>
-            <p>#</p>
-            <p>Datum inskickat</p>
-            <p>Kund</p>
-            <></>
-          </Head>
-          <Container>
-            {allForms.map((form: any, i) => (
-              <Table key={form._id}>
-                <div>{i + 1}</div>
-                <div>{formatDate(form.dateIssued)}</div>
-                <div>{form.userInfo.name}</div>
-                <Button
-                  className="button"
-                  type="button"
-                  label="Svara"
-                  primary={true}
-                  onClick={handleClick}
-                />
-              </Table>
-            ))}
-          </Container>
-        </>
-      )}
+      <Container>
+        {forms.map((form: any, i) => (
+          <Table key={form._id}>
+            {/* <div>{i + 1}</div> */}
+            {/* <div>{formatDate(form.dateIssued)}</div> */}
+            <p style={{ fontWeight: "bolder" }}>
+              {form.renovationType.join(" ")}
+            </p>
+            <p>
+              {form.userInfo.residence.streetAdressAndNumber} {""}
+              {form.userInfo.residence.city}
+            </p>
+            <Link to={"/forms/" + form._id}>
+              <Button
+                className="button"
+                type="button"
+                label="Lär mer"
+                primary={true}
+                onClick={handleClick}
+              />
+            </Link>
+          </Table>
+        ))}
+      </Container>
+      <Container2>
+        {forms.map((form: any, i) => (
+          <Link to={"/forms/" + form._id}>
+            <Table2 key={form._id}>
+              {/* <div>{i + 1}</div> */}
+              {/* <div>{formatDate(form.dateIssued)}</div> */}
+              <div>
+                <p style={{ fontWeight: "bolder" }}>
+                  {form.renovationType.join(" ")}
+                </p>
+                <p>
+                  {form.userInfo.residence.streetAdressAndNumber} {""}
+                  {form.userInfo.residence.city}
+                </p>
+              </div>
+            </Table2>
+          </Link>
+        ))}
+      </Container2>
     </>
   );
 }
 
 export default Form;
 
-const Head = styled.div`
-  width: 600px;
-  margin-top: 32px;
-  margin-bottom: 8px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  margin-left: 8px;
-  margin-right: 8px;
-  font-weight: bolder;
-`;
-
 const Container = styled.div`
-  width: 600px;
-  border: 2px solid var(--bg-secondary);
+  width: auto;
+  margin-bottom: 16px;
+  border: 2px solid #035a4b;
   border-radius: 16px;
 `;
 
 const Table = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   width: 600px;
-  margin-left: 8px;
-  margin-right: 8px;
-  margin-top: 8px;
-  margin-bottom: 8px;
+  padding-left: 32px;
+  padding-right: 8px;
+  padding-top: 32px;
+  padding-bottom: 8px;
 
   p.firstchild {
     margin-left: 18px;
   }
   .button {
-    width: 65px;
-    height: 25px;
+    width: 120px;
+    height: 40px;
+    font-weight: bolder;
+    float: right;
+    margin-bottom: 8px;
+    margin-right: 8px;
+  }
+`;
+
+const Container2 = styled.div`
+  width: auto;
+  height: 400;
+  margin-bottom: 16px;
+  border: 2px solid #035a4b;
+  border-radius: 16px;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+`;
+
+const Table2 = styled.div`
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  width: 600px;
+  padding-left: 32px;
+  padding-right: 8px;
+  padding-top: 32px;
+  padding-bottom: 8px;
+
+  :hover {
+    background: #59bd9d;
+    border-radius: 14px;
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
   }
 `;
