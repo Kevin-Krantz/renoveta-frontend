@@ -35,6 +35,15 @@ export function PropertyForm({
   ];
 
   const RoofType = [
+<<<<<<< HEAD:src/components/renovetaForm/PropertyForm.tsx
+    { id: "1", name: "Sadeltak", img: "images/roofstyles/sadeltak.png" },
+    { id: "2", name: "Pulpettak", img: "images/roofstyles/pulpettak.png" },
+    { id: "3", name: "Valmat tak", img: "images/roofstyles/valmat.png" },
+    { id: "4", name: "Mansardtak", img: "images/roofstyles/mansard.png" },
+    { id: "5", name: "Motfallstak", img: "images/roofstyles/motfalls.png" },
+    { id: "6", name: "Platt tak", img: "images/roofstyles/platt.png" },
+    { id: "7", name: "Annat", img: "images/roofstyles/annat.png" },
+=======
     { id: "10", name: "Sadeltak", img: "images/roofstyles/sadeltak.png" },
     { id: "20", name: "Pulpettak", img: "images/roofstyles/pulpettak.png" },
     { id: "30", name: "Valmat tak", img: "images/roofstyles/valmat.png" },
@@ -42,6 +51,7 @@ export function PropertyForm({
     { id: "50", name: "Motfallstak", img: "images/roofstyles/motfalls.png" },
     { id: "60", name: "Platt tak", img: "images/roofstyles/platt.png" },
     { id: "70", name: "Annat", img: "images/roofstyles/annat.png" },
+>>>>>>> master:src/HomePage/components/renovetaForm/PropertyForm.tsx
   ];
 
   return (
