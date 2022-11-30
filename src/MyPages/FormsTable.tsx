@@ -49,30 +49,6 @@ function Form() {
 
   return (
     <>
-      <Container>
-        {forms.map((form: any, i) => (
-          <Table key={form._id}>
-            {/* <div>{i + 1}</div> */}
-            {/* <div>{formatDate(form.dateIssued)}</div> */}
-            <p style={{ fontWeight: "bolder" }}>
-              {form.renovationType.join(" ")}
-            </p>
-            <p>
-              {form.userInfo.residence.streetAdressAndNumber} {""}
-              {form.userInfo.residence.city}
-            </p>
-            <Link to={"/forms/" + form._id}>
-              <Button
-                className="button"
-                type="button"
-                label="Lär mer"
-                primary={true}
-                onClick={handleClick}
-              />
-            </Link>
-          </Table>
-        ))}
-      </Container>
       <Container2>
         {forms.map((form: any, i) => (
           <Link to={"/forms/" + form._id}>
