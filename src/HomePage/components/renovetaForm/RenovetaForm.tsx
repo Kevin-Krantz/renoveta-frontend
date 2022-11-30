@@ -5,16 +5,10 @@ import { FormEvent, useState, useEffect } from "react";
 import { PropertyForm } from "./PropertyForm";
 import { QuestionForm } from "./QuestionForm";
 import { PersonalInfoForm } from "./PersonalInfoForm";
-<<<<<<< HEAD:src/components/renovetaForm/RenovetaForm.tsx
-import BoxLeft from "../../HomePage/components/calculator/BoxLeft";
-import RegisterForm from "../../HomePage/RegisterForm";
-import { postForm } from "../../services/formService";
-=======
 import BoxLeft from "../../../HomePage/components/calculator/BoxLeft";
 import RegisterForm from "../../../HomePage/RegisterForm";
 import { postForm } from "../../../services/formService";
 import userService from "../../../services/userService";
->>>>>>> master:src/HomePage/components/renovetaForm/RenovetaForm.tsx
 
 type FormData = {
   typeOfRenovation: string;
@@ -88,11 +82,7 @@ function RenovetaForm() {
     <PropertyForm {...data} updateFields={updateFields} />,
     <QuestionForm {...data} updateFields={updateFields} />,
     <PersonalInfoForm {...data} updateFields={updateFields} />,
-<<<<<<< HEAD:src/components/renovetaForm/RenovetaForm.tsx
-    // <RegisterForm />,
-=======
     // <RegisterForm/>
->>>>>>> master:src/HomePage/components/renovetaForm/RenovetaForm.tsx
   ]);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {

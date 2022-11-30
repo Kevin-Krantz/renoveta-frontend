@@ -204,58 +204,74 @@ function Form() {
           </Table>
         ))}
       </Container>
-      {currentUser.isAdmin &&
-        extendedForm.map((form: IForm) => (
-          <Test key={form._id}>
-            <div className="container">
-              <img
-                src="/logo/renoveta-logo--forrest-symbol-540.png"
-                alt="Avatar"
-              />
-              {extendedForm.map((form: IForm) => (
-                <p key={form._id}>{form.adminResponse}</p>
-              ))}
-              <span className="time-right">
-                {new Date().toLocaleString() + ""}
-              </span>
-            </div>
-            {form.adminResponse ? (
-              <AdminForm>
-                <form onSubmit={handleSubmit}>
-                  <input
-                    type="text"
-                    placeholder="Ändra ditt svar"
-                    value={input}
-                    onChange={onInputChange}
-                  />
-                  <Button
-                    label="Ändra"
-                    type="submit"
-                    className="submit"
-                    primary={true}
-                  />
-                </form>
-              </AdminForm>
-            ) : (
-              <AdminForm>
-                <form onSubmit={handleSubmit}>
-                  <input
-                    type="text"
-                    placeholder="Skriv ditt svar"
-                    value={input}
-                    onChange={onInputChange}
-                  />
-                  <Button
-                    label="Svara"
-                    type="submit"
-                    className="submit"
-                    primary={true}
-                  />
-                </form>
-              </AdminForm>
-            )}
-          </Test>
-        ))}
+      {currentUser.isAdmin
+        ? extendedForm.map((form: IForm) => (
+            <Test key={form._id}>
+              <div className="container">
+                <img
+                  src="/logo/renoveta-logo--forrest-symbol-540.png"
+                  alt="Avatar"
+                />
+                {extendedForm.map((form: IForm) => (
+                  <p key={form._id}>{form.adminResponse}</p>
+                ))}
+                <span className="time-right">
+                  {new Date().toLocaleString() + ""}
+                </span>
+              </div>
+              {form.adminResponse ? (
+                <AdminForm>
+                  <form onSubmit={handleSubmit}>
+                    <input
+                      type="text"
+                      placeholder="Ändra ditt svar"
+                      value={input}
+                      onChange={onInputChange}
+                    />
+                    <Button
+                      label="Ändra"
+                      type="submit"
+                      className="submit"
+                      primary={true}
+                    />
+                  </form>
+                </AdminForm>
+              ) : (
+                <AdminForm>
+                  <form onSubmit={handleSubmit}>
+                    <input
+                      type="text"
+                      placeholder="Skriv ditt svar"
+                      value={input}
+                      onChange={onInputChange}
+                    />
+                    <Button
+                      label="Svara"
+                      type="submit"
+                      className="submit"
+                      primary={true}
+                    />
+                  </form>
+                </AdminForm>
+              )}
+            </Test>
+          ))
+        : extendedForm.map((form: IForm) => (
+            <Test key={form._id}>
+              <div className="container">
+                <img
+                  src="/logo/renoveta-logo--forrest-symbol-540.png"
+                  alt="Avatar"
+                />
+                {extendedForm.map((form: IForm) => (
+                  <p key={form._id}>{form.adminResponse}</p>
+                ))}
+                <span className="time-right">
+                  {new Date().toLocaleString() + ""}
+                </span>
+              </div>
+            </Test>
+          ))}
     </Parent>
   );
 }
