@@ -1,7 +1,76 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, ChangeEvent, FormEvent } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { getUserForm } from "../services/formService";
+import { putUserForm } from "../services/formService";
+import Button from "../common/Button";
+import axios from "axios";
+import auth from "../services/authService";
+import nodeTest from "node:test";
+interface IForm {
+  _id: string;
+  user: any;
+  renovationType: RenovationType[];
+  extraRenovationRequirements: string;
+  typeOfRoof: TypeOfRoof[];
+  roofMaterial: RoofMaterial[];
+  roofAngle: number;
+  houseMeasurements: HouseMeasurements;
+  questions: string;
+  fileUpload: string; // måste kunna ladda upp på något sätt
+  userInfo: UserInfo;
+  adminResponse: string;
+  dateIssued: Date;
+}
+
+interface HouseMeasurements {
+  length: number;
+  width: number;
+}
+
+interface UserInfo {
+  email: string;
+  phone: number;
+  name: string;
+  password: string;
+  residence: Residence;
+  wantToRegister: boolean;
+  signAgreement: boolean;
+}
+
+interface Residence {
+  streetAdressAndNumber: string;
+  propertyDesignation: string;
+  city: string;
+}
+
+enum RenovationType {
+  SHEETMETALWORK = "Sheetmetalwork",
+  REEROOFING = "Reroofing",
+  ROOFRENOVATION = "Roofrenovation",
+  ROOFREPLACEMENT = "Roofreplacement",
+  ROOFWASHING = "Roofwashing",
+  OTHER = "Other",
+}
+
+enum RoofMaterial {
+  BRICK = "Brick",
+  SHEETMETAL = "Sheet Metal",
+  ETERNIT = "Eternit",
+  ROOFINGFELT = "Roofing Felt",
+  ROOFSHINGLE = "Roof Shingle",
+  OTHER = "Other",
+}
+
+enum TypeOfRoof {
+  GABLEROOF = "Gableroof",
+  SHEDROOF = "Shedroof",
+  HIPROOF = "Hiproof",
+  MANSARDROOF = "Mansardroof",
+  BUTTERFLYROOF = "Butterflyroof",
+  FLATROOF = "Flatroof",
+  OTHER = "Other",
+}
 
 type RouteParams = {
   userId: string;
@@ -10,12 +79,46 @@ type RouteParams = {
 function Form() {
   const { userId } = useParams<RouteParams>();
   const [extendedForm, setExtendedForm] = useState<any>([]);
+  const [input, setInput] = useState<string>("");
+
+  // async function handleUpdate(form: any) {
+  //   form = {};
+  //   form.adminResponse = input;
+  //   setExtendedForm(form);
+  //   const result = await axios.patch(
+  //     "http://localhost:8000/api/forms" + "/" + userId,
+  //     form
+  //   );
+  //   return result;
+  // }
+
+  const currentUser = auth.getCurrentUser() as any;
+
+  async function handleSubmit() {
+    const form = {} as IForm;
+    form.adminResponse = input;
+
+    try {
+      await axios.patch("http://localhost:8000/api/forms" + "/" + userId, form);
+    } catch (error) {
+      console.log(error);
+    }
+
+    const forms = [...extendedForm];
+    const index = forms.indexOf(form);
+    forms[index] = { ...form };
+    setExtendedForm(input);
+  }
+
+  function onInputChange(e: ChangeEvent<HTMLInputElement>) {
+    setInput(e.target.value);
+  }
 
   useEffect(() => {
     async function loadUserForm() {
       if (!userId) return;
       const { data } = await getUserForm(userId);
-      setExtendedForm([data]);
+      setExtendedForm([data as IForm]);
     }
     loadUserForm();
   }, [userId]);
@@ -38,9 +141,9 @@ function Form() {
   }
 
   return (
-    <div>
+    <Parent>
       <Container>
-        {extendedForm.map((form: any) => (
+        {extendedForm.map((form: IForm) => (
           <Table key={form._id}>
             <tbody>
               <tr>
@@ -66,12 +169,13 @@ function Form() {
               <tr>
                 <td> Husets mått längd/bredd</td>
                 <td>
-                  {form.houseMeasurements.length} &
+                  {form.houseMeasurements.length} &{" "}
                   {form.houseMeasurements.width}
                 </td>
               </tr>
               <tr>
                 <td>Frågor/funderingar</td>
+                <td>{form.questions}</td>
               </tr>
               <tr>
                 <td>Bifogade bilder/bilagor</td>
@@ -89,14 +193,10 @@ function Form() {
                 <td>{form.userInfo.name}</td>
               </tr>
               <tr>
-                <td>Efternamn</td>
-                <td>{form.userInfo.lastName}</td>
-              </tr>
-              <tr>
                 <td>Din Bostad</td>
                 <td>
-                  {form.userInfo.residence.streetAdressAndNumber}
-                  {form.userInfo.residence.propertyDesignation}
+                  {form.userInfo.residence.streetAdressAndNumber}{" "}
+                  {form.userInfo.residence.propertyDesignation}{" "}
                   {form.userInfo.residence.city}
                 </td>
               </tr>
@@ -104,67 +204,92 @@ function Form() {
           </Table>
         ))}
       </Container>
-      {extendedForm.map((form: any) =>
-        form.adminResponse ? (
-          <Test>
+      {currentUser.isAdmin &&
+        extendedForm.map((form: IForm) => (
+          <Test key={form._id}>
             <div className="container">
               <img
                 src="/logo/renoveta-logo--forrest-symbol-540.png"
                 alt="Avatar"
               />
-              {extendedForm.map((form: any) => (
-                <p>{form.adminResponse}</p>
+              {extendedForm.map((form: IForm) => (
+                <p key={form._id}>{form.adminResponse}</p>
               ))}
-              <br />
               <span className="time-right">
                 {new Date().toLocaleString() + ""}
               </span>
             </div>
+            {form.adminResponse ? (
+              <AdminForm>
+                <form onSubmit={handleSubmit}>
+                  <input
+                    type="text"
+                    placeholder="Ändra ditt svar"
+                    value={input}
+                    onChange={onInputChange}
+                  />
+                  <Button
+                    label="Ändra"
+                    type="submit"
+                    className="submit"
+                    primary={true}
+                  />
+                </form>
+              </AdminForm>
+            ) : (
+              <AdminForm>
+                <form onSubmit={handleSubmit}>
+                  <input
+                    type="text"
+                    placeholder="Skriv ditt svar"
+                    value={input}
+                    onChange={onInputChange}
+                  />
+                  <Button
+                    label="Svara"
+                    type="submit"
+                    className="submit"
+                    primary={true}
+                  />
+                </form>
+              </AdminForm>
+            )}
           </Test>
-        ) : (
-          <Test>
-            <div className="container">
-              <img
-                src="/logo/renoveta-logo--forrest-symbol-540.png"
-                alt="Avatar"
-              />
-              {extendedForm.map((form: any) => (
-                <p>Vi ser över ditt ärende och du kommer att se svaret här!</p>
-              ))}
-              <br />
-              <span className="time-right">
-                {new Date().toLocaleString() + ""}
-              </span>
-            </div>
-          </Test>
-        )
-      )}
-    </div>
+        ))}
+    </Parent>
   );
 }
 
-const Test = styled.div`
-  position: absolute;
-  right: 400px;
-  top: 130px;
+const Parent = styled.div`
+  display: flex;
+`;
 
-  /* Chat containers */
+const Test = styled.div`
+  flex: 1;
+
+  @media screen and (max-width: 1500px) {
+    right: 150px;
+  }
+
   .container {
     border: 2px solid #dedede;
     background-color: #f1f1f1;
     border-radius: 10px;
-    padding: 10px;
-    margin: 10px 0;
+    margin: 16px 16px;
+    padding: 16px 16px;
+    width: 600px;
   }
 
-  /* Clear floats */
   .container::after {
     content: "";
     clear: both;
     display: table;
   }
 
-  /* Style images */
+  p {
+    word-wrap: break-word;
+  }
+
   .container img {
     float: left;
     max-width: 60px;
@@ -173,21 +298,28 @@ const Test = styled.div`
     border-radius: 50%;
   }
 
-  /* Style time text */
   .time-right {
     float: right;
     color: #aaa;
   }
+
+  button {
+    background-color: var(--bg-color);
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+  }
 `;
 
 const Container = styled.div`
-  width: 600px;
+  width: 544px;
   border: 2px solid var(--bg-secondary);
   border-radius: 16px;
   margin-top: 18px;
   margin-bottom: 18px;
-  margin-left: 18px;
-  padding-left: 18px;
+  margin-left: 8px;
+  padding-left: 8px;
+  margin-left: 50px;
 `;
 
 const Table = styled.table`
@@ -195,11 +327,10 @@ const Table = styled.table`
   margin: 25px 0;
   font-size: 0.9em;
   font-family: sans-serif;
-  min-width: 400px;
 
   th,
   td {
-    padding: 12px 15px;
+    padding: 8px 8px;
   }
 
   tbody tr {
@@ -214,6 +345,19 @@ const Table = styled.table`
   tr.active-row {
     font-weight: bold;
     color: #015a4b;
+  }
+`;
+
+const AdminForm = styled.div`
+  input {
+    width: 400px;
+    padding: 12px 20px;
+    margin-left: 16px;
+    margin-right: 16px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
   }
 `;
 
