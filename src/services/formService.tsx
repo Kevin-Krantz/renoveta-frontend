@@ -16,8 +16,12 @@ export async function getAllForms() {
 }
 
 // get one form
-
-// get one form
 export function getUserForm(formId: string) {
   return http.get(formApi + "/" + formId);
+}
+
+export function putUserForm(form: any) {
+  const { _id: formId, ...body } = form;
+
+  return http.put(formApi + "/" + formId, body);
 }
