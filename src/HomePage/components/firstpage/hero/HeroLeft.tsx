@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../../../common/Button";
+import { Link as LinkToScroll } from "react-scroll";
+import { Link } from "react-router-dom";
+import { ScrollToTop } from "../../../../common/ScrollToTop";
 
 function HeroLeft() {
   return (
@@ -15,20 +17,28 @@ function HeroLeft() {
         Prova idag - enkelt, smidigt och kostnadsfritt.
       </p>
       <StyledButton>
-        <Button
-          label=" Om tjänsten"
-          primary={false}
-          type="button"
-          className="buttonleft"
-        />
-        <Link to="/kalkylen">
+        <Link onClick={ScrollToTop} to="/whyrenoveta">
           <Button
-            label="Prova kalkylen"
+            label=" Om tjänsten"
+            primary={false}
+            type="button"
+            className="buttonleft"
+          />
+        </Link>
+        <LinkToScroll
+          to="calculator"
+          spy={true}
+          smooth={true}
+          offset={-100}
+          duration={1000}
+        >
+          <Button
+            label="Kom igång!"
             primary={true}
             type="button"
             className="buttonright"
           />
-        </Link>
+        </LinkToScroll>
       </StyledButton>
     </Container>
   );
@@ -54,12 +64,13 @@ const Container = styled.div`
     display: grid;
     grid-template-rows: 100px 80px;
     margin-top: 20px;
+    width: 200px;
     h1 {
       font-size: 24px;
     }
 
     p {
-      font-size: 16px;
+      font-size: 18px;
     }
   }
 `;
@@ -72,7 +83,9 @@ const StyledButton = styled.div`
   .buttonleft {
     width: 185px;
     align-items: left;
-    margin-right: 80px;
+    margin-right: 30px;
+    background-color: transparent;
+    color: var(--text-primary);
   }
   .buttonright {
     width: 185px;
@@ -85,12 +98,12 @@ const StyledButton = styled.div`
     .buttonleft {
       width: 100px;
       height: 40px;
-      top: 5px;
+      margin-top: 25px;
     }
     .buttonright {
       width: 100px;
       height: 40px;
-      top: 5px;
+      margin-top: 25px;
     }
   }
 `;

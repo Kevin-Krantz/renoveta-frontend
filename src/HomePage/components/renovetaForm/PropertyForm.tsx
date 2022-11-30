@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Checkbox from "../../common/Checkbox";
+import Checkbox from "../../../common/Checkbox";
 import { useState, useEffect } from "react";
 import { CheckboxContainer, CheckboxBg } from "./RenovationForm";
 import { InputLeft, Container } from "./PersonalInfoForm";
@@ -26,15 +26,16 @@ export function PropertyForm({
   updateFields,
 }: PropertyFormProps) {
   const MaterialType = [
-    { id: "1", name: "Tegelpannor" },
-    { id: "2", name: "Plåt" },
-    { id: "3", name: "Papp/Shingel" },
-    { id: "4", name: "Eternit" },
-    { id: "5", name: "Betongpannor" },
-    { id: "6", name: "Annat" },
+    { id: "11", name: "Tegelpannor" },
+    { id: "22", name: "Plåt" },
+    { id: "33", name: "Papp/Shingel" },
+    { id: "44", name: "Eternit" },
+    { id: "55", name: "Betongpannor" },
+    { id: "66", name: "Annat" },
   ];
 
   const RoofType = [
+<<<<<<< HEAD:src/components/renovetaForm/PropertyForm.tsx
     { id: "1", name: "Sadeltak", img: "images/roofstyles/sadeltak.png" },
     { id: "2", name: "Pulpettak", img: "images/roofstyles/pulpettak.png" },
     { id: "3", name: "Valmat tak", img: "images/roofstyles/valmat.png" },
@@ -42,6 +43,15 @@ export function PropertyForm({
     { id: "5", name: "Motfallstak", img: "images/roofstyles/motfalls.png" },
     { id: "6", name: "Platt tak", img: "images/roofstyles/platt.png" },
     { id: "7", name: "Annat", img: "images/roofstyles/annat.png" },
+=======
+    { id: "10", name: "Sadeltak", img: "images/roofstyles/sadeltak.png" },
+    { id: "20", name: "Pulpettak", img: "images/roofstyles/pulpettak.png" },
+    { id: "30", name: "Valmat tak", img: "images/roofstyles/valmat.png" },
+    { id: "40", name: "Mansardtak", img: "images/roofstyles/mansard.png" },
+    { id: "50", name: "Motfallstak", img: "images/roofstyles/motfalls.png" },
+    { id: "60", name: "Platt tak", img: "images/roofstyles/platt.png" },
+    { id: "70", name: "Annat", img: "images/roofstyles/annat.png" },
+>>>>>>> master:src/HomePage/components/renovetaForm/PropertyForm.tsx
   ];
 
   return (
@@ -92,19 +102,20 @@ export function PropertyForm({
           className="form-input-xs"
           type="text"
           value={roofAngle}
+          placeholder="Ange vinkel"
           onChange={(e) => updateFields({ roofAngle: e.target.value })}
         />
         <label>Vad är måtten på din bostad?</label>
         <LeftInput>
           <input
-            placeholder="Längd"
+            placeholder="Ange längd"
             className="form-input-xs"
             type="text"
             value={propertyLength}
             onChange={(e) => updateFields({ propertyLength: e.target.value })}
           />
           <input
-            placeholder="Bredd"
+            placeholder="Ange bredd"
             className="form-input-xs"
             type="text"
             value={propertyWidth}
@@ -131,10 +142,11 @@ const InputContainer = styled.div`
     margin-bottom: 5px;
     border-radius: 5px;
     border: none;
+    padding: 4px;
+    text-align: center;
   }
   input::placeholder {
     font-size: 12px;
-    padding-left: 20px;
     font-family: "Catamaran", sans-serif;
     font-weight: 700;
     color: var(--text-secondary);

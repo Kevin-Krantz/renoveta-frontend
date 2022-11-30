@@ -38,35 +38,35 @@ function BoxRight() {
 
   const data: Data[] = [
     {
-      id: "1",
+      id: "10",
       name: MaterialType.SHEET_METAL,
       [RenovationType.REROOFING]: 1150,
       [RenovationType.PAINTING]: 100,
       [RenovationType.CLEANING]: 100,
     },
     {
-      id: "2",
+      id: "20",
       name: MaterialType.PAPER,
       [RenovationType.REROOFING]: 750,
       [RenovationType.PAINTING]: 100,
       [RenovationType.CLEANING]: 100,
     },
     {
-      id: "3",
+      id: "30",
       name: MaterialType.ETHERNITE,
       [RenovationType.REROOFING]: 1850,
       [RenovationType.PAINTING]: 100,
       [RenovationType.CLEANING]: 100,
     },
     {
-      id: "4",
+      id: "40",
       name: MaterialType.BRICK_SHEETS,
       [RenovationType.REROOFING]: 1500,
       [RenovationType.PAINTING]: 100,
       [RenovationType.CLEANING]: 100,
     },
     {
-      id: "5",
+      id: "50",
       name: MaterialType.CONCRETE_SHEETS,
       [RenovationType.REROOFING]: 1200,
       [RenovationType.PAINTING]: 100,

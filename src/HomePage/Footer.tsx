@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { ScrollToTop } from "../common/ScrollToTop";
+import { IMenue } from "../types/Menue";
 
-const handleClick = () => {
-  ScrollToTop();
-};
-
-function Footer(): JSX.Element {
+interface Props {
+  menue: IMenue[];
+}
+function Footer({ menue }: Props): JSX.Element {
   return (
     <Container>
       <img src="/images/Renovetalogo.png" />
@@ -17,37 +17,14 @@ function Footer(): JSX.Element {
         <VerticalLine></VerticalLine>
         <Column>
           <FooterLink>
-            <h2>
-              <Link onClick={handleClick} className="Link" to="/">
-                Varför Renoveta?
-              </Link>
-            </h2>
-          </FooterLink>
-          <FooterLink>
-            <h2>
-              <Link onClick={handleClick} className="Link" to="/">
-                Tjänsten
-              </Link>
-            </h2>
-          </FooterLink>
-          <FooterLink>
-            <h2>
-              <Link onClick={handleClick} className="Link" to="/aboutus">
-                Om oss
-              </Link>
-            </h2>
-          </FooterLink>
-          <FooterLink>
-            <h2>
-              <Link onClick={handleClick} className="Link" to="/faq">
-                Q&A
-              </Link>
-            </h2>
-          </FooterLink>
-          <br />
-          <br />
-          <FooterLink className="nounderline">
-            <h2>Följ oss på sociala medier</h2>
+            {menue.map((menue) => (
+              <h2 key={menue.url}>
+                <Link onClick={ScrollToTop} className="Link" to={menue.url}>
+                  {menue.title}
+                </Link>
+              </h2>
+            ))}
+            <h2 className="end">Följ oss på sociala medier</h2>
           </FooterLink>
         </Column>
       </Row>
@@ -65,10 +42,18 @@ const Container = styled.div`
   position: relative;
   color: var(--text-secondary) !important;
 
-  @media screen and (max-width: 900px) {
+  img {
+    position: relative;
+
+    left: 25px;
+  }
+
+  @media screen and (max-width: 1000px) {
     img {
+      position: relative;
       height: 100px;
       width: 300px;
+      left: -20px;
     }
   }
 `;
@@ -89,7 +74,7 @@ const Row = styled.div`
   }
 `;
 
-const FooterLink = styled.a`
+const FooterLink = styled.div`
   font-size: 18px;
   text-underline-offset: 5px;
   line-height: 2.5em;
@@ -107,7 +92,11 @@ const FooterLink = styled.a`
     transition: 50ms ease-in;
   }
 
-  @media screen and (max-width: 900px) {
+  .end {
+    margin-top: 30px;
+  }
+
+  @media screen and (max-width: 880px) {
     font-size: 14px;
     h2 {
       margin-right: 25px;
@@ -124,12 +113,12 @@ const Heading = styled.div`
     width: 552px;
   }
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1000px) {
     font-size: 18px;
 
     h1 {
-      width: 350px;
-      margin-left: 10px;
+      width: 300px;
+
       margin-right: 25px;
     }
   }
@@ -140,4 +129,8 @@ const VerticalLine = styled.div`
   height: 350px;
   position: absolute;
   top: 70px;
+
+  @media screen and (max-width: 1000px) {
+    left: 350px;
+  }
 `;

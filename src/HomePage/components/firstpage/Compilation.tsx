@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../../common/Button";
+import { ScrollToTop } from "../../../common/ScrollToTop";
 
 function Compilation() {
   return (
@@ -16,11 +18,13 @@ function Compilation() {
           hur du undviker vanliga misstag. Det ska vara lätt att göra rätt. Låt
           oss hjälpa dig.
         </p>
-        <Button
-          primary={true}
-          type="register"
-          label={"Registrera dig"}
-        ></Button>
+        <Link onClick={ScrollToTop} to="/register">
+          <Button
+            primary={true}
+            type="register"
+            label={"Registrera dig"}
+          ></Button>
+        </Link>
       </Text>
     </Container>
   );
@@ -37,7 +41,7 @@ const Container = styled.div`
   background-position: bottom, left top;
   background-repeat: no-repeat, no-repeat;
   @media screen and (max-width: 880px) {
-    grid-template-columns: 150px 150px;
+    grid-template-columns: 80px 150px;
   }
 `;
 
@@ -51,9 +55,9 @@ const Image = styled.img`
   border-top-right-radius: 40px;
 
   @media screen and (max-width: 880px) {
-    width: 280px;
-    height: 270px;
-    left: 20px;
+    width: 220px;
+    height: 250px;
+    left: 10px;
   }
 `;
 
@@ -75,7 +79,7 @@ const Text = styled.div`
   }
 
   @media screen and (max-width: 880px) {
-    width: 350px;
+    width: 300px;
     margin-left: 200px;
 
     h1 {

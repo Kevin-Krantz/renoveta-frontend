@@ -18,7 +18,7 @@ function DesktopMenue({ user }: Props): JSX.Element {
         <img alt="Logo" src="./images/Renovetalogo.png" />
         <>
           <li>
-            <Link onClick={handleClick} to="/">
+            <Link onClick={handleClick} to="/whyrenoveta">
               Varför Renoveta?
             </Link>
           </li>

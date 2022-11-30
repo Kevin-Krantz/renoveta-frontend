@@ -3,7 +3,11 @@ import styled from "styled-components";
 import { useState } from "react";
 import useForm from "../common/Form";
 import user from "../services/userService";
+import { useNavigate } from "react-router-dom";
 
+interface Window {
+  location: Location | string;
+}
 interface RegisterFormData {
   name: string;
   email: string;
@@ -25,6 +29,7 @@ type RegisterFormErrors = Strict<Partial<RegisterFormData>>;
 function RegisterForm() {
   const [formData, setFormData] = useState<Strict<RegisterFormData>>(data);
   const [formErrors, setFormErrors] = useState<RegisterFormErrors>({});
+  const navigate = useNavigate();
 
   const rule = {
     schema: Joi.object<RegisterFormData>({
@@ -40,8 +45,8 @@ function RegisterForm() {
     doSubmit: async () => {
       try {
         await user.register(formData);
-        console.log(formData);
-        window.location.replace("/login"); //funkar ej
+
+        navigate("/login");
       } catch (error) {
         if (error.response?.status === 400) {
           const formErrors = { email: error.response.data };
@@ -84,6 +89,10 @@ const Wrapper = styled.form`
   margin-top: 20px;
   margin-left: 400px;
   margin-bottom: 100px;
+
+  @media screen and (max-width: 880px) {
+    margin-left: 50px;
+  }
 `;
 
 const Title = styled.span`

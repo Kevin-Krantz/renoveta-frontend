@@ -38,6 +38,7 @@ const Left = styled.span`
   border-top-left-radius: 45px;
   border-bottom-left-radius: 45px;
   padding-left: 72px;
+  padding-right: 24px;
   padding-top: 100px;
   padding-bottom: 72px;
 
@@ -77,6 +78,6 @@ const Logo = styled.img`
   @media screen and (max-width: 880px) {
     width: 120px;
     top: -10px;
-    left: 25px;
+    left: -20px;
   }
 `;
