@@ -25,6 +25,6 @@ export function putUserForm(form: any) {
   return http.put(formApi + "/" + formId, body);
 }
 
-export async function postForm(data: any) {
-  return await http.post(formApi, data);
+export  function postForm(data: any) {
+  return  http.post(formApi, data);
 }

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 type PersonalData = {
   email: string;
-  phone: string;
+  phone: number;
   name: string;
   password: string;
   address: string;
@@ -41,7 +41,7 @@ export function PersonalInfoForm({
             placeholder="Telefonnummer"
             type="text"
             value={phone}
-            onChange={(e) => updateFields({ phone: e.target.value })}
+            onChange={(e) => updateFields({ phone: Number(e.target.value) })}
           />
         </InputLeft>
         <InputRight>

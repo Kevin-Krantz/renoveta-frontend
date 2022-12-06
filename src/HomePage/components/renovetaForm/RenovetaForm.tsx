@@ -1,33 +1,33 @@
 import { useMultistepForm } from "./useMultistepForm";
 import styled from "styled-components";
 import { RenovationForm } from "./RenovationForm";
-import { FormEvent, useState, useEffect } from "react";
+import {  useState } from "react";
 import { PropertyForm } from "./PropertyForm";
 import { QuestionForm } from "./QuestionForm";
 import { PersonalInfoForm } from "./PersonalInfoForm";
 import BoxLeft from "../../../HomePage/components/calculator/BoxLeft";
-import RegisterForm from "../../../HomePage/RegisterForm";
 import { postForm } from "../../../services/formService";
 import userService from "../../../services/userService";
 
 type FormData = {
+  user: string;
   typeOfRenovation: string;
   changeApperance: string;
   roofType: string;
   materialType: string;
   roofAngle: string;
-  propertyWidth: string;
-  propertyLength: string;
+  propertyWidth: number;
+  propertyLength: number;
   anyQuestions: string;
   addImg: string;
   email: string;
-  phone: string;
-  userId: string;
+  phone: number;
   name: string;
   password: string;
   address: string;
   propertyName: string;
   city: string;
+  adminResponse: string;
 };
 
 const INITIAL_DATA: FormData = {
@@ -36,18 +36,19 @@ const INITIAL_DATA: FormData = {
   roofType: "",
   materialType: "",
   roofAngle: "",
-  propertyWidth: "",
-  propertyLength: "",
+  propertyWidth: 0,
+  propertyLength: 0,
   anyQuestions: "",
   addImg: "",
   email: "",
-  phone: "",
-  userId: "",
+  phone: 0,
+  user: "",
   name: "",
   password: "",
   address: "",
   propertyName: "",
   city: "",
+  adminResponse: "",
 };
 
 interface response {
@@ -82,7 +83,7 @@ function RenovetaForm() {
     <PropertyForm {...data} updateFields={updateFields} />,
     <QuestionForm {...data} updateFields={updateFields} />,
     <PersonalInfoForm {...data} updateFields={updateFields} />,
-    // <RegisterForm/>
+    
   ]);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -95,9 +96,33 @@ function RenovetaForm() {
       password: data.password,
     };
 
-    const dbUser: any = userService.register(user);
-    data.userId = dbUser._id;
-    postForm(data);
+     const dbUser: any =  userService.register(user);
+    
+    const payload: any={
+      user: dbUser._id,
+      renovationType: data.typeOfRenovation,
+      extraRenovationRequirements: data.changeApperance,
+      typeOfRoof: data.roofType,
+      roofMaterial: data.materialType,
+      roofAngle: data.roofAngle,
+      houseMeasurements: {
+        width: data.propertyWidth,
+        length: data.propertyLength,
+      },
+      userInfo: {
+        email: data.email,
+        phone: data.phone,
+        name: data.name,
+        password: data.password,
+        residence: {
+          streetAdressAndNumber: data.address,
+          propertyDesignation: data.propertyName,
+          city: data.city,
+        }
+      },
+      adminResponse: data.adminResponse,
+    }
+     postForm(payload);
   }
 
   // Registerform - finns doSubmit - Link/path över till Reg.Form
