@@ -10,15 +10,16 @@ import RegisterForm from "../../../HomePage/RegisterForm";
 import { postForm } from "../../../services/formService";
 import userService from "../../../services/userService";
 
+
 type FormData = {
-  typeOfRenovation: string;
+  renovationType: string;
   changeApperance: string;
-  roofType: string;
-  materialType: string;
+  typeOfRoof: string;
+  roofMaterial: string;
   roofAngle: string;
   propertyWidth: string;
   propertyLength: string;
-  anyQuestions: string;
+  questions: string;
   addImg: string;
   email: string;
   phone: string;
@@ -28,17 +29,17 @@ type FormData = {
   address: string;
   propertyName: string;
   city: string;
-};
+}
 
 const INITIAL_DATA: FormData = {
-  typeOfRenovation: "",
+  renovationType: "",
   changeApperance: "",
-  roofType: "",
-  materialType: "",
+  typeOfRoof: "",
+  roofMaterial: "",
   roofAngle: "",
   propertyWidth: "",
   propertyLength: "",
-  anyQuestions: "",
+  questions: "",
   addImg: "",
   email: "",
   phone: "",
@@ -50,12 +51,19 @@ const INITIAL_DATA: FormData = {
   city: "",
 };
 
+
+
+type RouteParams = {
+  userId: string;
+};
+
 interface response {
   response: string | "No response";
 }
 
 function RenovetaForm() {
   const [data, setData] = useState(INITIAL_DATA);
+
   // const [input, setInput] = useState("");
   // localStorage.setItem("key", "value");
 
