@@ -1,54 +1,59 @@
 import { useMultistepForm } from "./useMultistepForm";
 import styled from "styled-components";
 import { RenovationForm } from "./RenovationForm";
-import { FormEvent, useState, useEffect } from "react";
+import {  useState } from "react";
 import { PropertyForm } from "./PropertyForm";
 import { QuestionForm } from "./QuestionForm";
 import { PersonalInfoForm } from "./PersonalInfoForm";
 import BoxLeft from "../../../HomePage/components/calculator/BoxLeft";
-import RegisterForm from "../../../HomePage/RegisterForm";
 import { postForm } from "../../../services/formService";
 import userService from "../../../services/userService";
+import { useNavigate } from "react-router-dom";
 
 type FormData = {
+  _id: string,
+  userId: string;
   typeOfRenovation: string;
   changeApperance: string;
   roofType: string;
   materialType: string;
   roofAngle: string;
-  propertyWidth: string;
-  propertyLength: string;
+  propertyWidth: number;
+  propertyLength: number;
   anyQuestions: string;
-  addImg: string;
   email: string;
-  phone: string;
-  userId: string;
+  phone: number;
   name: string;
   password: string;
   address: string;
   propertyName: string;
   city: string;
+  adminResponse?: string;
+  dateIssued: Date;
+ 
 };
 
 const INITIAL_DATA: FormData = {
+  _id: "",
+  userId: "",
   typeOfRenovation: "",
   changeApperance: "",
   roofType: "",
   materialType: "",
   roofAngle: "",
-  propertyWidth: "",
-  propertyLength: "",
+  propertyWidth: 0,
+  propertyLength: 0,
   anyQuestions: "",
-  addImg: "",
   email: "",
-  phone: "",
-  userId: "",
+  phone: 0,
   name: "",
   password: "",
   address: "",
   propertyName: "",
   city: "",
-};
+  adminResponse: "Inget svar än",
+  dateIssued: new Date(),
+  };
 
 interface response {
   response: string | "No response";
@@ -56,6 +61,8 @@ interface response {
 
 function RenovetaForm() {
   const [data, setData] = useState(INITIAL_DATA);
+  const navigate = useNavigate();
+
   // const [input, setInput] = useState("");
   // localStorage.setItem("key", "value");
 
@@ -63,6 +70,8 @@ function RenovetaForm() {
   //   // storing input name
   //   localStorage.setItem("input", JSON.stringify(input));
   // }, [input]);
+
+
 
   function updateFields(fields: Partial<FormData>) {
     setData((prev) => {
@@ -82,25 +91,56 @@ function RenovetaForm() {
     <PropertyForm {...data} updateFields={updateFields} />,
     <QuestionForm {...data} updateFields={updateFields} />,
     <PersonalInfoForm {...data} updateFields={updateFields} />,
-    // <RegisterForm/>
+    
   ]);
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!isLastStep) return nextStep();
-
+    
     const user = {
       name: data.name,
       email: data.email,
       password: data.password,
     };
+    
+     const dbUser: any =  await userService.register(user);
+     data.userId = dbUser._id;
 
-    const dbUser: any = userService.register(user);
-    data.userId = dbUser._id;
-    postForm(data);
+     console.log(dbUser); 
+    
+     const payload: any = {
+      _id: dbUser.data._id,
+      user: dbUser.data._id,
+      renovationType: data.typeOfRenovation,
+      extraRenovationRequirements: data.changeApperance,
+      typeOfRoof: data.roofType,
+      roofMaterial: data.materialType,
+      roofAngle: data.roofAngle,
+      houseMeasurements: {
+        width: data.propertyWidth,
+        length: data.propertyLength,
+      },
+      userInfo: {
+        email: data.email,
+        phone: data.phone,
+        name: data.name,
+        password: data.password,
+        residence: {
+          streetAdressAndNumber: data.address,
+          propertyDesignation: data.propertyName,
+          city: data.city,
+        }
+      },
+      adminResponse: data.adminResponse,
+      dateIssued: data.dateIssued,
+    }
+
+     postForm(payload);
+     // Lägg till en slutsida - Tack för din registrering! 
+     //navigate("/login");
+      console.log(payload)
   }
-
-  // Registerform - finns doSubmit - Link/path över till Reg.Form
 
   return (
     <Container>

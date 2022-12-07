@@ -2,7 +2,7 @@ import Joi from "joi";
 import styled from "styled-components";
 import { useState } from "react";
 import useForm from "../common/Form";
-import user from "../services/userService";
+import  user from "../services/userService";
 import { useNavigate } from "react-router-dom";
 
 interface RegisterFormData {
@@ -41,9 +41,9 @@ function RegisterForm() {
 
     doSubmit: async () => {
       try {
-        await user.register(formData);
+       await user.register(formData);
 
-        navigate("/login");
+       navigate("/login");
       } catch (error) {
         if (error.response?.status === 400) {
           const formErrors = { email: error.response.data };
