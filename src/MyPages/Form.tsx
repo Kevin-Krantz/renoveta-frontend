@@ -20,7 +20,7 @@ interface IForm {
   questions: string;
   fileUpload: string; // måste kunna ladda upp på något sätt
   userInfo: UserInfo;
-  adminResponse: string;
+  adminResponse?: string;
   dateIssued: Date;
 }
 

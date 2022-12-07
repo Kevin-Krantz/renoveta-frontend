@@ -8,5 +8,5 @@ function register(user: any) {
 }
 
 export default {
-  register,
+  register
 };

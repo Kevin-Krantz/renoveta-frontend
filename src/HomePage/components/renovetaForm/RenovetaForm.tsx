@@ -10,7 +10,7 @@ import { postForm } from "../../../services/formService";
 import userService from "../../../services/userService";
 
 type FormData = {
-  user: string;
+  userId: string;
   typeOfRenovation: string;
   changeApperance: string;
   roofType: string;
@@ -19,7 +19,6 @@ type FormData = {
   propertyWidth: number;
   propertyLength: number;
   anyQuestions: string;
-  addImg: string;
   email: string;
   phone: number;
   name: string;
@@ -27,10 +26,13 @@ type FormData = {
   address: string;
   propertyName: string;
   city: string;
-  adminResponse: string;
+  adminResponse?: string;
+  dateIssued: Date;
+ 
 };
 
 const INITIAL_DATA: FormData = {
+  userId: "",
   typeOfRenovation: "",
   changeApperance: "",
   roofType: "",
@@ -39,17 +41,16 @@ const INITIAL_DATA: FormData = {
   propertyWidth: 0,
   propertyLength: 0,
   anyQuestions: "",
-  addImg: "",
   email: "",
   phone: 0,
-  user: "",
   name: "",
   password: "",
   address: "",
   propertyName: "",
   city: "",
-  adminResponse: "",
-};
+  adminResponse: "Skriv här",
+  dateIssued: new Date(),
+  };
 
 interface response {
   response: string | "No response";
@@ -57,6 +58,7 @@ interface response {
 
 function RenovetaForm() {
   const [data, setData] = useState(INITIAL_DATA);
+
   // const [input, setInput] = useState("");
   // localStorage.setItem("key", "value");
 
@@ -64,6 +66,8 @@ function RenovetaForm() {
   //   // storing input name
   //   localStorage.setItem("input", JSON.stringify(input));
   // }, [input]);
+
+
 
   function updateFields(fields: Partial<FormData>) {
     setData((prev) => {
@@ -86,20 +90,21 @@ function RenovetaForm() {
     
   ]);
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!isLastStep) return nextStep();
-
+    
     const user = {
       name: data.name,
       email: data.email,
       password: data.password,
     };
-
-     const dbUser: any =  userService.register(user);
     
-    const payload: any={
-      user: dbUser._id,
+     const dbUser: any =  userService.register(user);
+     console.log(dbUser);
+    
+     const payload: any = {
+      userId: dbUser._id,
       renovationType: data.typeOfRenovation,
       extraRenovationRequirements: data.changeApperance,
       typeOfRoof: data.roofType,
@@ -121,11 +126,12 @@ function RenovetaForm() {
         }
       },
       adminResponse: data.adminResponse,
+      dateIssued: data.dateIssued,
     }
-     postForm(payload);
-  }
 
-  // Registerform - finns doSubmit - Link/path över till Reg.Form
+     postForm(payload);
+      console.log(payload)
+  }
 
   return (
     <Container>
