@@ -57,7 +57,7 @@ function Form() {
               {/* <div>{formatDate(form.dateIssued)}</div> */}
               <div>
                 <p style={{ fontWeight: "bolder" }}>
-                  {form.renovationType.join(" ")}
+                  {form.renovationType}
                 </p>
                 <p>
                   {form.userInfo.residence.streetAdressAndNumber} {""}

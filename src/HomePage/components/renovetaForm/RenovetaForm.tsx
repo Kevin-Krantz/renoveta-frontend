@@ -8,8 +8,10 @@ import { PersonalInfoForm } from "./PersonalInfoForm";
 import BoxLeft from "../../../HomePage/components/calculator/BoxLeft";
 import { postForm } from "../../../services/formService";
 import userService from "../../../services/userService";
+import { useNavigate } from "react-router-dom";
 
 type FormData = {
+  _id: string,
   userId: string;
   typeOfRenovation: string;
   changeApperance: string;
@@ -32,6 +34,7 @@ type FormData = {
 };
 
 const INITIAL_DATA: FormData = {
+  _id: "",
   userId: "",
   typeOfRenovation: "",
   changeApperance: "",
@@ -48,7 +51,7 @@ const INITIAL_DATA: FormData = {
   address: "",
   propertyName: "",
   city: "",
-  adminResponse: "Skriv här",
+  adminResponse: "Inget svar än",
   dateIssued: new Date(),
   };
 
@@ -58,6 +61,7 @@ interface response {
 
 function RenovetaForm() {
   const [data, setData] = useState(INITIAL_DATA);
+  const navigate = useNavigate();
 
   // const [input, setInput] = useState("");
   // localStorage.setItem("key", "value");
@@ -100,11 +104,14 @@ function RenovetaForm() {
       password: data.password,
     };
     
-     const dbUser: any =  userService.register(user);
-     console.log(dbUser);
+     const dbUser: any =  await userService.register(user);
+     data.userId = dbUser._id;
+
+     console.log(dbUser); 
     
      const payload: any = {
-      userId: dbUser._id,
+      _id: dbUser.data._id,
+      user: dbUser.data._id,
       renovationType: data.typeOfRenovation,
       extraRenovationRequirements: data.changeApperance,
       typeOfRoof: data.roofType,
@@ -130,6 +137,8 @@ function RenovetaForm() {
     }
 
      postForm(payload);
+     // Lägg till en slutsida - Tack för din registrering! 
+     //navigate("/login");
       console.log(payload)
   }
 
