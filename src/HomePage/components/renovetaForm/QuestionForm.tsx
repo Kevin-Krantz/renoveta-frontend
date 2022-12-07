@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 type QuestionData = {
   anyQuestions: string;
-  addImg: string;
 };
 
 type QuestionFormProps = QuestionData & {
@@ -11,7 +10,6 @@ type QuestionFormProps = QuestionData & {
 
 export function QuestionForm({
   anyQuestions,
-  addImg,
   updateFields,
 }: QuestionFormProps) {
   return (
@@ -35,7 +33,6 @@ const Container = styled.div`
   display: flex;
   padding-top: 40px;
   flex-direction: column;
-
   label {
     font-weight: 900;
   }

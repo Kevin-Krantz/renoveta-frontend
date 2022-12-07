@@ -8,8 +8,8 @@ type PropertyData = {
   roofType: string;
   materialType: string;
   roofAngle: string;
-  propertyWidth: string;
-  propertyLength: string;
+  propertyWidth: number;
+  propertyLength: number;
 };
 
 type PropertyFormProps = PropertyData & {
@@ -99,16 +99,20 @@ export function PropertyForm({
           <input
             placeholder="Ange längd"
             className="form-input-xs"
-            type="text"
+            type="number"
             value={propertyLength}
-            onChange={(e) => updateFields({ propertyLength: e.target.value })}
+            onChange={(e) =>
+              updateFields({ propertyLength: Number(e.target.value) })
+            }
           />
           <input
             placeholder="Ange bredd"
             className="form-input-xs"
             type="text"
             value={propertyWidth}
-            onChange={(e) => updateFields({ propertyWidth: e.target.value })}
+            onChange={(e) =>
+              updateFields({ propertyWidth: Number(e.target.value) })
+            }
           />
         </LeftInput>
       </InputContainer>
@@ -119,11 +123,9 @@ export function PropertyForm({
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-
   label {
     margin: 10px 0 5px 0;
   }
-
   input {
     width: 100px;
     height: 25px;
@@ -143,7 +145,6 @@ const InputContainer = styled.div`
 `;
 const LeftInput = styled(InputLeft)`
   margin-left: 0;
-
   input {
     margin-left: 5px;
   }

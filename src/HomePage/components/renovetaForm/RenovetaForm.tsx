@@ -1,53 +1,54 @@
 import { useMultistepForm } from "./useMultistepForm";
 import styled from "styled-components";
 import { RenovationForm } from "./RenovationForm";
-import { FormEvent, useState, useEffect } from "react";
+import { useState } from "react";
 import { PropertyForm } from "./PropertyForm";
 import { QuestionForm } from "./QuestionForm";
 import { PersonalInfoForm } from "./PersonalInfoForm";
 import BoxLeft from "../../../HomePage/components/calculator/BoxLeft";
-import RegisterForm from "../../../HomePage/RegisterForm";
 import { postForm } from "../../../services/formService";
 import userService from "../../../services/userService";
 
 type FormData = {
+  userId: string;
   typeOfRenovation: string;
   changeApperance: string;
   roofType: string;
   materialType: string;
   roofAngle: string;
-  propertyWidth: string;
-  propertyLength: string;
+  propertyWidth: number;
+  propertyLength: number;
   anyQuestions: string;
-  addImg: string;
   email: string;
-  phone: string;
-  userId: string;
+  phone: number;
   name: string;
   password: string;
   address: string;
   propertyName: string;
   city: string;
+  adminResponse?: string;
+  dateIssued: Date;
 };
 
 const INITIAL_DATA: FormData = {
+  userId: "",
   typeOfRenovation: "",
   changeApperance: "",
   roofType: "",
   materialType: "",
   roofAngle: "",
-  propertyWidth: "",
-  propertyLength: "",
+  propertyWidth: 0,
+  propertyLength: 0,
   anyQuestions: "",
-  addImg: "",
   email: "",
-  phone: "",
-  userId: "",
+  phone: 0,
   name: "",
   password: "",
   address: "",
   propertyName: "",
   city: "",
+  adminResponse: "Skriv här",
+  dateIssued: new Date(),
 };
 
 interface response {
@@ -56,6 +57,7 @@ interface response {
 
 function RenovetaForm() {
   const [data, setData] = useState(INITIAL_DATA);
+
   // const [input, setInput] = useState("");
   // localStorage.setItem("key", "value");
 
@@ -82,7 +84,6 @@ function RenovetaForm() {
     <PropertyForm {...data} updateFields={updateFields} />,
     <QuestionForm {...data} updateFields={updateFields} />,
     <PersonalInfoForm {...data} updateFields={updateFields} />,
-    // <RegisterForm/>
   ]);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -95,12 +96,40 @@ function RenovetaForm() {
       password: data.password,
     };
 
-    const dbUser: any = userService.register(user);
-    data.userId = dbUser._id;
-    postForm(data);
-  }
+    const dbUser: any = await userService.register(user);
+    console.log("user", dbUser);
 
-  // Registerform - finns doSubmit - Link/path över till Reg.Form
+    const payload: any = {
+      userId: dbUser.data._id,
+      renovationType: data.typeOfRenovation,
+      extraRenovationRequirements: data.changeApperance,
+      typeOfRoof: data.roofType,
+      roofMaterial: data.materialType,
+      roofAngle: data.roofAngle,
+      houseMeasurements: {
+        width: data.propertyWidth,
+        length: data.propertyLength,
+      },
+      userInfo: {
+        email: data.email,
+        phone: data.phone,
+        name: data.name,
+        password: data.password,
+        residence: {
+          streetAdressAndNumber: data.address,
+          propertyDesignation: data.propertyName,
+          city: data.city,
+        },
+      },
+      adminResponse: data.adminResponse,
+      dateIssued: data.dateIssued,
+    };
+
+    postForm(payload);
+    console.log("userid", dbUser.data._id);
+
+    console.log(payload);
+  }
 
   return (
     <Container>
@@ -138,7 +167,6 @@ const Container = styled.div`
   display: grid;
   color: var(--text-secondary);
   text-align: center;
-
   height: 150vh;
   font-weight: 900;
 `;
@@ -147,7 +175,6 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   height: 100%;
-
   .form-input {
     border-radius: 10px;
     height: 45px;
@@ -172,7 +199,6 @@ const Box = styled.span`
   padding-bottom: 32px;
   font-size: 18px;
   margin: 0 auto;
-
   @media screen and (max-width: 880px) {
     margin-top: 0px;
     margin-left: 20px;
@@ -195,7 +221,6 @@ export const Right = styled.span`
   padding-right: 24px;
   line-height: 18px;
   position: relative;
-
   @media screen and (max-width: 880px) {
     position: relative;
     width: 550px;
@@ -220,17 +245,14 @@ const Button = styled.button`
   background-color: var(--bg-color);
   color: var(--text-primary);
   cursor: pointer;
-
   &.secondary {
     background-color: #ffffff;
     border: 3px solid var(--bg-color);
     color: var(--bg-color);
   }
-
   :hover {
     transform: scale(1.03);
   }
-
   :active {
     transform: scale(1);
   }

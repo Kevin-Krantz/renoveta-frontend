@@ -86,7 +86,6 @@ const Wrapper = styled.form`
   margin-top: 20px;
   margin-left: 400px;
   margin-bottom: 100px;
-
   @media screen and (max-width: 880px) {
     margin-left: 50px;
   }

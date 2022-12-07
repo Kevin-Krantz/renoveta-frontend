@@ -6,7 +6,7 @@ import { putUserForm } from "../services/formService";
 import Button from "../common/Button";
 import axios from "axios";
 import auth from "../services/authService";
-import nodeTest from "node:test";
+
 interface IForm {
   _id: string;
   user: any;
@@ -19,7 +19,7 @@ interface IForm {
   questions: string;
   fileUpload: string; // måste kunna ladda upp på något sätt
   userInfo: UserInfo;
-  adminResponse: string;
+  adminResponse?: string;
   dateIssued: Date;
 }
 
@@ -282,11 +282,9 @@ const Parent = styled.div`
 
 const Test = styled.div`
   flex: 1;
-
   @media screen and (max-width: 1500px) {
     right: 150px;
   }
-
   .container {
     border: 2px solid #dedede;
     background-color: #f1f1f1;
@@ -295,17 +293,14 @@ const Test = styled.div`
     padding: 16px 16px;
     width: 600px;
   }
-
   .container::after {
     content: "";
     clear: both;
     display: table;
   }
-
   p {
     word-wrap: break-word;
   }
-
   .container img {
     float: left;
     max-width: 60px;
@@ -313,12 +308,10 @@ const Test = styled.div`
     margin-right: 20px;
     border-radius: 50%;
   }
-
   .time-right {
     float: right;
     color: #aaa;
   }
-
   button {
     background-color: var(--bg-color);
     font-size: 24px;
@@ -343,20 +336,16 @@ const Table = styled.table`
   margin: 25px 0;
   font-size: 0.9em;
   font-family: sans-serif;
-
   th,
   td {
     padding: 8px 8px;
   }
-
   tbody tr {
     border-bottom: 1px solid #dddddd;
   }
-
   tbody tr:nth-of-type(even) {
     background-color: #035a4c20;
   }
-
   tbody,
   tr.active-row {
     font-weight: bold;

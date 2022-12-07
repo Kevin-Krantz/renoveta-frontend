@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 type PersonalData = {
   email: string;
-  phone: string;
+  phone: number;
   name: string;
   password: string;
   address: string;
@@ -41,7 +41,7 @@ export function PersonalInfoForm({
             placeholder="Telefonnummer"
             type="text"
             value={phone}
-            onChange={(e) => updateFields({ phone: e.target.value })}
+            onChange={(e) => updateFields({ phone: Number(e.target.value) })}
           />
         </InputLeft>
         <InputRight>
@@ -102,7 +102,6 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   margin-top: 55px;
-
   label {
     font-weight: 900;
   }
@@ -111,7 +110,6 @@ export const Container = styled.div`
 export const InputContainer = styled.div`
   display: flex;
   flex-direction: row;
-
   .form-input-small {
     border: 3px solid;
     border-color: var(--text-secondary);
@@ -126,7 +124,6 @@ export const InputContainer = styled.div`
 export const InputLeft = styled.div`
   width: 50%;
   margin: 10px;
-
   .form-input-small {
     margin-top: 15px;
     padding-left: 8px;
@@ -135,7 +132,6 @@ export const InputLeft = styled.div`
 export const InputRight = styled.div`
   width: 50%;
   margin: 10px 10px 10px 65px;
-
   .form-input-small {
     margin-top: 15px;
     padding-left: 8px;
