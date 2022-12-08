@@ -20,7 +20,7 @@ type FormData = {
   propertyLength: number;
   anyQuestions: string;
   email: string;
-  phone: number;
+  phone: string;
   name: string;
   password: string;
   address: string;
@@ -41,7 +41,7 @@ const INITIAL_DATA: FormData = {
   propertyLength: 0,
   anyQuestions: "",
   email: "",
-  phone: 0,
+  phone: "",
   name: "",
   password: "",
   address: "",
