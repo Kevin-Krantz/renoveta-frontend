@@ -7,70 +7,7 @@ import Button from "../common/Button";
 import axios from "axios";
 import auth from "../services/authService";
 import nodeTest from "node:test";
-interface IForm {
-  _id: string;
-  user: any;
-  renovationType: RenovationType[];
-  extraRenovationRequirements: string;
-  typeOfRoof: TypeOfRoof[];
-  roofMaterial: RoofMaterial[];
-  roofAngle: number;
-  houseMeasurements: HouseMeasurements;
-  questions: string;
-  fileUpload: string; // måste kunna ladda upp på något sätt
-  userInfo: UserInfo;
-  adminResponse: string;
-  dateIssued: Date;
-}
-
-interface HouseMeasurements {
-  length: number;
-  width: number;
-}
-
-interface UserInfo {
-  email: string;
-  phone: number;
-  name: string;
-  password: string;
-  residence: Residence;
-  wantToRegister: boolean;
-  signAgreement: boolean;
-}
-
-interface Residence {
-  streetAdressAndNumber: string;
-  propertyDesignation: string;
-  city: string;
-}
-
-enum RenovationType {
-  SHEETMETALWORK = "Sheetmetalwork",
-  REEROOFING = "Reroofing",
-  ROOFRENOVATION = "Roofrenovation",
-  ROOFREPLACEMENT = "Roofreplacement",
-  ROOFWASHING = "Roofwashing",
-  OTHER = "Other",
-}
-
-enum RoofMaterial {
-  BRICK = "Brick",
-  SHEETMETAL = "Sheet Metal",
-  ETERNIT = "Eternit",
-  ROOFINGFELT = "Roofing Felt",
-  ROOFSHINGLE = "Roof Shingle",
-  OTHER = "Other",
-}
-
-enum TypeOfRoof {
-  GABLEROOF = "Gableroof",
-  SHEDROOF = "Shedroof",
-  HIPROOF = "Hiproof",
-  MANSARDROOF = "Mansardroof",
-  BUTTERFLYROOF = "Butterflyroof",
-  FLATROOF = "Flatroof",
-  OTHER = "Other",
-}
+import { IForm } from "../types/Form";
 
 type RouteParams = {
   userId: string;
@@ -152,7 +89,7 @@ function Form() {
               </tr>
               <tr>
                 <td>Renoverings Typ</td>
-                <td>{form.renovationType.join(", ")}</td>
+                <td>{form.renovationType}</td>
               </tr>
               <tr>
                 <td>Typ av tak</td>

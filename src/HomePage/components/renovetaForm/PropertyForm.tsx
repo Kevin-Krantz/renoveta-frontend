@@ -5,8 +5,8 @@ import { CheckboxContainer, CheckboxBg } from "./RenovationForm";
 import { InputLeft, Container } from "./PersonalInfoForm";
 
 type PropertyData = {
-  roofType: string;
-  materialType: string;
+  typeOfRoof: string;
+  roofMaterial: string;
   roofAngle: string;
   propertyWidth: string;
   propertyLength: string;
@@ -17,8 +17,8 @@ type PropertyFormProps = PropertyData & {
 };
 
 export function PropertyForm({
-  roofType,
-  materialType,
+  typeOfRoof,
+  roofMaterial,
   roofAngle,
   propertyWidth,
   propertyLength,
@@ -54,11 +54,11 @@ export function PropertyForm({
               className="checkbox-input"
               key={option.id}
               id={option.id}
-              checked={option.name === roofType}
+              checked={option.name === typeOfRoof}
               handleCheck={(e) => {
-                updateFields({ roofType: e.target.name });
+                updateFields({ typeOfRoof: e.target.name });
               }}
-              value={roofType}
+              value={typeOfRoof}
               name={option.name}
               type="checkbox"
             />
@@ -73,11 +73,11 @@ export function PropertyForm({
               className="checkbox-input"
               key={option.id}
               id={option.id}
-              checked={option.name === materialType}
+              checked={option.name === roofMaterial}
               handleCheck={(e) => {
-                updateFields({ materialType: e.target.name });
+                updateFields({ roofMaterial: e.target.name });
               }}
-              value={materialType}
+              value={roofMaterial}
               name={option.name}
               type="checkbox"
             />

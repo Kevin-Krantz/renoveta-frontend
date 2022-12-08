@@ -4,6 +4,7 @@ import { RoofMaterial } from "./RoofMaterial";
 
 export interface IForm {
   user: any;
+  _id: string;
   renovationType: RenovationType[];
   extraRenovationRequirements: string;
   typeOfRoof: TypeOfRoof[];
@@ -14,6 +15,7 @@ export interface IForm {
   fileUpload: string; // måste kunna ladda upp på något sätt
   userInfo: UserInfo;
   dateIssued: Date;
+  adminResponse?: string;
 }
 
 export interface HouseMeasurements {
