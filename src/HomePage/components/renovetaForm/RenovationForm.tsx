@@ -5,7 +5,7 @@ import { useState } from "react";
 import Right from "./RenovetaForm";
 
 type RenovationData = {
-  typeOfRenovation: string;
+  renovationType: string;
   changeApperance: string;
 };
 
@@ -14,7 +14,7 @@ type RenovationFormProps = RenovationData & {
 };
 
 export function RenovationForm({
-  typeOfRenovation,
+  renovationType,
   changeApperance,
   updateFields,
 }: RenovationFormProps) {
@@ -37,10 +37,11 @@ export function RenovationForm({
                 className="checkbox-input"
                 key={option.id}
                 id={option.id}
-                checked={option.name === typeOfRenovation}
+                checked={option.name === renovationType}
                 handleCheck={(e) => {
-                  updateFields({ typeOfRenovation: e.target.name });
+                  updateFields({ renovationType: e.target.name });
                 }}
+                value={renovationType}
                 name={option.name}
                 type="checkbox"
               />

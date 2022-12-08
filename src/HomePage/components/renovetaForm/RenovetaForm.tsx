@@ -11,10 +11,10 @@ import { postForm } from "../../../services/formService";
 import userService from "../../../services/userService";
 
 type FormData = {
-  typeOfRenovation: string;
+  renovationType: string;
   changeApperance: string;
-  roofType: string;
-  materialType: string;
+  typeOfRoof: string;
+  roofMaterial: string;
   roofAngle: string;
   propertyWidth: string;
   propertyLength: string;
@@ -31,10 +31,10 @@ type FormData = {
 };
 
 const INITIAL_DATA: FormData = {
-  typeOfRenovation: "",
+  renovationType: "",
   changeApperance: "",
-  roofType: "",
-  materialType: "",
+  typeOfRoof: "",
+  roofMaterial: "",
   roofAngle: "",
   propertyWidth: "",
   propertyLength: "",
