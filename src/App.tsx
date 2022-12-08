@@ -50,7 +50,7 @@ function App(): JSX.Element {
         {/* <Route path="/register" element={<RegisterForm />} /> */}
         <Route path="/faq" element={<FAQ />} />
         <Route path="/logout" element={<Logout />} />
-        <Route path="/forms" element={<MyPage user={users} />} />
+        <Route path="/minasidor" element={<MyPage user={users} />} />
         <Route path="/forms/:userId" element={<Form />} />
       </Routes>
       <Footer menue={menue} />

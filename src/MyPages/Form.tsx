@@ -152,7 +152,7 @@ function Form() {
               </tr>
               <tr>
                 <td>Renoverings Typ</td>
-                <td>{form.renovationType.join(", ")}</td>
+                <td>{form.renovationType}</td>
               </tr>
               <tr>
                 <td>Typ av tak</td>
@@ -169,7 +169,7 @@ function Form() {
               <tr>
                 <td> Husets mått längd/bredd</td>
                 <td>
-                  {form.houseMeasurements.length} &{" "}
+                  {form.houseMeasurements.length} &
                   {form.houseMeasurements.width}
                 </td>
               </tr>
@@ -195,8 +195,8 @@ function Form() {
               <tr>
                 <td>Din Bostad</td>
                 <td>
-                  {form.userInfo.residence.streetAdressAndNumber}{" "}
-                  {form.userInfo.residence.propertyDesignation}{" "}
+                  {form.userInfo.residence.streetAdressAndNumber}
+                  {form.userInfo.residence.propertyDesignation}
                   {form.userInfo.residence.city}
                 </td>
               </tr>

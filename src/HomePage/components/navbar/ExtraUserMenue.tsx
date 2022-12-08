@@ -6,7 +6,7 @@ function ExtraUserMenue() {
   return (
     <>
       <li>
-        <Link onClick={ScrollToTop} to="/forms">
+        <Link onClick={ScrollToTop} to="/minasidor">
           Mina Sidor
         </Link>
       </li>

@@ -5,6 +5,7 @@ import Button from "../common/Button";
 import { getUserForms } from "../services/formService";
 import auth from "../services/authService";
 import { IUser } from "../types/User";
+import { ScrollToTop } from "../common/ScrollToTop";
 
 function Form() {
   const [forms, setForms] = useState([]);
@@ -19,76 +20,70 @@ function Form() {
   function populateForms() {
     const fetchForms = async () => {
       const forms = await getUserForms();
-      console.log("userforms", forms);
       setForms(forms);
     };
     fetchForms();
   }
 
-  async function handleClick() {
-    console.log("testing");
-    // <Link to={"/foods/:id"} />;
-  }
+  // date formate to only yy-mm-dd
+  // function formatDate(date: Date) {
+  //   const dt = Date();
+  //   const newdate = new Date(dt);
 
-  function formatDate(date: Date) {
-    const dt = Date();
-    const newdate = new Date(dt);
-
-    if (
-      typeof newdate === "object" &&
-      newdate !== null &&
-      "getDate" in newdate
-    ) {
-      return `${newdate.getDate()}-${
-        newdate.getMonth() + 1
-      }-${newdate.getFullYear()}`;
-    } else {
-      console.log("Invalid Date Object");
-    }
-  }
+  //   if (
+  //     typeof newdate === "object" &&
+  //     newdate !== null &&
+  //     "getDate" in newdate
+  //   ) {
+  //     return `${newdate.getDate()}-${
+  //       newdate.getMonth() + 1
+  //     }-${newdate.getFullYear()}`;
+  //   } else {
+  //     console.log("Invalid Date Object");
+  //   }
+  // }
 
   return (
-    <>
-      <Container>
-        {forms.map((form: any, i) => (
-          <Table key={form._id}>
-            {/* <div>{i + 1}</div> */}
-            {/* <div>{formatDate(form.dateIssued)}</div> */}
-            <p style={{ fontWeight: "bolder" }}>{form.renovationType}</p>
-            <p>
-              {form.userInfo.residence.streetAdressAndNumber} {""}
-              {form.userInfo.residence.city}
-            </p>
-            <Link to={"/forms/" + form._id}>
-              <Button
-                className="button"
-                type="button"
-                label="Lär mer"
-                primary={true}
-                onClick={handleClick}
-              />
-            </Link>
-          </Table>
-        ))}
-      </Container>
-      <Container2>
-        {forms.map((form: any, i) => (
-          <Link to={"/forms/" + form._id}>
-            <Table2 key={form._id}>
-              {/* <div>{i + 1}</div> */}
-              {/* <div>{formatDate(form.dateIssued)}</div> */}
-              <div>
-                <p style={{ fontWeight: "bolder" }}>{form.renovationType}</p>
-                <p>
-                  {form.userInfo.residence.streetAdressAndNumber} {""}
-                  {form.userInfo.residence.city}
-                </p>
-              </div>
-            </Table2>
+    // <>
+    <Container>
+      {forms.map((form: any, i) => (
+        <Table key={form._id}>
+          {/* <div>{i + 1}</div> */}
+          {/* <div>{formatDate(form.dateIssued)}</div> */}
+          <p style={{ fontWeight: "bolder" }}>{form.renovationType}</p>
+          <p>
+            {form.userInfo.residence.streetAdressAndNumber}
+            {form.userInfo.residence.city}
+          </p>
+          <Link to={"/forms/" + form._id} onClick={ScrollToTop}>
+            <Button
+              className="button"
+              type="button"
+              label="Läs mer"
+              primary={true}
+            />
           </Link>
-        ))}
-      </Container2>
-    </>
+        </Table>
+      ))}
+    </Container>
+    //   <Container2>
+    //     {forms.map((form: any, i) => (
+    //       <Link to={"/forms/" + form._id} onClick={ScrollToTop}>
+    //         <Table2 key={form._id}>
+    //           {/* <div>{i + 1}</div> */}
+    //           {/* <div>{formatDate(form.dateIssued)}</div> */}
+    //           <div>
+    //             <p style={{ fontWeight: "bolder" }}>{form.renovationType}</p>
+    //             <p>
+    //               {form.userInfo.residence.streetAdressAndNumber}
+    //               {form.userInfo.residence.city}
+    //             </p>
+    //           </div>
+    //         </Table2>
+    //       </Link>
+    //     ))}
+    //   </Container2>
+    // </>
   );
 }
 

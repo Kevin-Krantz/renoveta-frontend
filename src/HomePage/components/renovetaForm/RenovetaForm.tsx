@@ -97,7 +97,6 @@ function RenovetaForm() {
     };
 
     const dbUser: any = await userService.register(user);
-    console.log("user", dbUser);
 
     const payload: any = {
       userId: dbUser.data._id,
@@ -125,10 +124,8 @@ function RenovetaForm() {
       dateIssued: data.dateIssued,
     };
 
-    postForm(payload);
-    console.log("userid", dbUser.data._id);
-
-    console.log(payload);
+    await postForm(payload);
+    window.location.replace("/login");
   }
 
   return (
