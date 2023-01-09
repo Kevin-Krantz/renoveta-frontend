@@ -30,7 +30,7 @@ interface HouseMeasurements {
 
 interface UserInfo {
   email: string;
-  phone: number;
+  phone: string;
   name: string;
   password: string;
   residence: Residence;

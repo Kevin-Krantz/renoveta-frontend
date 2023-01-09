@@ -8,6 +8,7 @@ import { PersonalInfoForm } from "./PersonalInfoForm";
 import BoxLeft from "../../../HomePage/components/calculator/BoxLeft";
 import { postForm } from "../../../services/formService";
 import userService from "../../../services/userService";
+import { useNavigate } from "react-router-dom";
 
 type FormData = {
   userId: string;
@@ -85,6 +86,7 @@ function RenovetaForm() {
     <QuestionForm {...data} updateFields={updateFields} />,
     <PersonalInfoForm {...data} updateFields={updateFields} />,
   ]);
+  const navigate = useNavigate();
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -125,7 +127,7 @@ function RenovetaForm() {
     };
 
     await postForm(payload);
-    window.location.replace("/login");
+    navigate("/login");
   }
 
   return (
