@@ -47,7 +47,7 @@ function App(): JSX.Element {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/whyrenoveta" element={<WhyRenoveta />} />
         <Route path="/renovetaform" element={<RenovetaForm />} />
-        {/* <Route path="/register" element={<RegisterForm />} /> */}
+        <Route path="/register" element={<RegisterForm />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/minasidor" element={<MyPage user={users} />} />
