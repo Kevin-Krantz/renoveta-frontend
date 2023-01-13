@@ -61,9 +61,9 @@ function LoginForm() {
       {renderInput({ label: "Mail", name: "email" })}
       {renderInput({ label: "Lösenord", name: "password", type: "password" })}
       {renderButton({ label: "Logga in" })}
-      <Link to="/register" onClick={ScrollToTop} className="link">
+      {/* <Link to="/register" onClick={ScrollToTop} className="link">
         Registrera dig här!
-      </Link>
+      </Link> */}
     </Container>
   );
 }
