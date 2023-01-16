@@ -127,7 +127,7 @@ function RenovetaForm() {
     };
 
     await postForm(payload);
-    window.location.replace("/home");
+    window.location.replace("/");
   }
 
   return (
